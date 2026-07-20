@@ -1,0 +1,5420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI automation use cases for finance, account , compliance and legal teams</title>
+    <style>
+        
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap');
+
+:root {
+  --bg: #f2f2f2;
+  --bg-muted: #f8f7f3ff;
+  --fg: #151820ff;
+  --fg-soft: #333;
+  --muted: #6c6a64;
+  --card: #ffffff;
+  --border: #e3d7bf;
+  --gold: #b88c2e;
+  --gold-soft: #d4a64a;
+  --gold-fg: #1d2538;
+  --shadow-xl: 0 30px 80px -30px rgba(20, 25, 40, .18);
+  --container: 1400px;
+  --display: "Sora", sans-serif;
+  --body: "Inter", system-ui, sans-serif;
+  --grn: #2DA85A;
+  --dim: #9A9388;
+  --bg-2: var(--bg-muted);
+  --text: var(--fg);
+  --line: var(--border);
+  --gold-2: var(--gold-soft);
+  --primary-navy: #0d1e33;
+  --accent-gold: #c8933e;
+  --bg-light: #ffffff;
+  --bg-banner: #f8fafc;
+  --border-light: #e2e8f0;
+  --text-muted: #64748b;
+}
+/* ---------- Reset / base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+     overflow-x: hidden;
+  width: 100%;
+
+  margin: 0;
+  padding-top: 76px;
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 20px;
+
+  -webkit-font-smoothing: antialiased;
+}
+html { scroll-padding-top: 88px; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; padding: 0; margin: 0; }
+button { font-family: inherit; cursor: pointer; border: 0; background: none; }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+@media (min-width: 768px) { .container { padding: 0 40px; } }
+.container.narrow { max-width: 880px; text-align: center; }
+.container.narrow-md { max-width: 920px; }
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Sora", sans-serif !important;
+  color: var(--fg);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0 0 0.9rem;
+  text-transform: uppercase;
+}
+
+h1 { font-size: clamp(2.1rem, 4.2vw, 2.625rem); }
+h2 { font-size: clamp(1.7rem, 3vw, 2.25rem); }
+h3 { font-size: clamp(1.2rem, 2vw, 1.45rem); }
+h4 { font-size: 1.05rem; }
+
+.display, .display-lg, .display-md, .display-sm {
+  font-family: "Sora", sans-serif !important;
+  color: var(--fg);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+.display { font-size: clamp(2.1rem, 4.2vw, 3rem); }
+.display-lg { font-size: clamp(1.8rem, 3.4vw, 2.35rem); }
+.display-md { font-size: clamp(1.45rem, 2.4vw, 1.95rem); }
+.display-sm { font-size: clamp(1.1rem, 1.8vw, 1.3rem); }
+.h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); letter-spacing: 0; }
+
+.eyebrow {
+  font-family: var(--body);
+font-size: 13px;
+    font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: inline-block;
+}
+.drag .eyebrow {
+   font-size: 14px;
+    letter-spacing: 0.1rem;
+}
+.eyebrow.gold, .gold { color: var(--gold); }
+.muted { color: var(--muted); }
+.problem-lead-muted{
+      font-size: 1rem;
+    color: var(--muted);
+   
+    line-height: 1.7;
+    margin: 0 0 2.5rem;
+}
+.not-italic { font-style: normal; }
+
+.lead { font-size:20px; color: var(--fg-soft); max-width: 36rem; margin: 0; line-height: 1.65; }
+.lead-muted { font-size: 1rem; color: var(--muted); max-width: 48rem; line-height: 1.5; margin: 0 0 1.5rem; }
+.lead-light { color: rgba(255,255,255,.72); max-width: 80rem; line-height: 1.2;
+    font-size: 22px; }
+.micro { font-size: 14px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); }
+.trust { margin-top: 2.4rem; font-size: 14px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); max-width: 32rem; line-height: 1.8; }
+.max-md { max-width: 34rem; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+     font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+  text-transform: uppercase;
+  transition: all .25s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: #B8952A;
+  color: var(--fg);
+}
+.btn-sm { padding: 10px 20px; }
+.btn-outline { background: var(--gold); color: var(--fg); border-color: var(--gold); }
+.btn-outline:hover { background: #d4ad5a; color: #151820; }
+.btn-solid { background: var(--fg); color: var(--bg); }
+.btn-solid:hover { background: #B8952A; color: #ffffff; }
+.btn.full { width: 100%; }
+.mt { margin-top: 2.4rem; }
+
+/* ---------- Nav ---------- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  background: #f8f5ed;
+  border-bottom: 1px solid rgba(216,213,199,.65);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; max-width: var(--container); margin: 0 auto; }
+@media (min-width: 768px) { .nav-inner { padding: 20px 40px; } }
+.brand { display: inline-flex; align-items: center; gap: 12px; font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; font-size: 1rem; }
+.brand-logo { height: 38px; width: auto; display: block; }
+.brand-mark { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid var(--fg); border-radius: 999px; font-size: .8rem; }
+.brand-mark.sm { width: 24px; height: 24px; font-size: .65rem; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 90vh;
+  left: 0;
+  right: 0;
+  background:
+    linear-gradient(#ffffffcc, #ffffffa8),
+    url("hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+.hero-grid {
+  position: relative;
+  display: grid;
+  gap: 3rem;
+  padding: 100px 0 90px;
+  align-items: start;
+  margin: 0 auto;
+}
+
+.hero-copy {
+ 
+  padding-top: 0px;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  font-family: 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hero h1,
+.hero .display {
+  font-family: var(--display);
+      font-size: 2.50rem ;
+    font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.15rem;
+  color: var(--fg);
+}
+
+.hero .lead {
+    
+    font-size: 0.90rem;
+    max-width: 40rem;
+  color: rgba(20,20,20,.82);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.hero-cta .btn {
+ font-size: 0.70rem;
+    letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
+  border-radius: 0;
+}
+
+.hero-cta .micro {
+  color: var(--fg-soft);
+  font-size: 0.70rem;
+  font-weight: 500;
+      letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+.hero-trust {
+  max-width: 38rem;
+  margin-top: 1.75rem;
+  font-size: 0.70rem;
+  color: var(--fg-soft);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .hero-grid { padding: 49px 24px 95px; }
+}
+
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: 1.4fr 1fr; gap: 5rem; padding: 85px 40px 54px; }
+}
+
+.lead { margin-top: 1.8rem; }
+
+/* Ops card mock */
+
+.contact-note {
+  margin-top: 0px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.contact-note a {
+  color: #b8891d; /* Match your gold theme */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contact-note a:hover {
+  text-decoration: underline;
+}
+
+/* ── SHELL ── */
+.shell{
+  width: 460px;
+  max-width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #E7DFD1;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(20,25,40,.12);
+}
+/* thin gold top bar — matches original */
+.shell::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;z-index:2;
+  background:linear-gradient(90deg,transparent,#B8952A 30%,#D4AF45 70%,transparent);
+}
+
+/* ── TOPBAR ── */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:11px 16px;border-bottom:1px solid #E2DBCE;
+  background:#FDFBF8;
+}
+.ttl{
+  font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:#B8952A;
+}
+.livebadge{
+  display:flex;align-items:center;gap:5px;font-size:9px;font-weight:600;
+  letter-spacing:.09em;text-transform:uppercase;color:#2DA85A;
+  background:rgba(45,168,90,.08);border:1px solid rgba(45,168,90,.22);
+  border-radius:20px;padding:2px 8px;
+}
+.ldot{width:6px;height:6px;border-radius:50%;background:#2DA85A;
+  animation:pulse 1.8s ease-in-out infinite}
+
+/* ── TABS ── */
+.tabs{display:flex;border-bottom:1px solid #E2DBCE;padding:0 16px;background:#FDFBF8}
+.tab{
+  font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  color:#9A9388;background:none;border:none;border-bottom:2px solid transparent;
+  padding:9px 12px;cursor:pointer;transition:color .18s,border-color .18s;
+}
+.tab:hover{color:#5C5649}
+.tab.on{color:#B8952A;border-bottom-color:#B8952A}
+
+.tb{padding:12px 16px}
+
+/* ── ROW HEADER ── */
+.rhdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.rlbl{font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#9A9388}
+.clock{font-size:10px;color:#9A9388;font-variant-numeric:tabular-nums}
+
+/* ── ACTIVITY ITEMS ── */
+.alist{display:flex;flex-direction:column;gap:5px}
+.aitem{
+  display:flex;align-items:center;gap:9px;padding:9px 12px;
+  background:#F4F1EC;border:1px solid #E2DBCE;border-radius:7px;
+  position:relative;overflow:hidden;transition:border-color .3s,background .3s;
+}
+.aitem.hi{border-color:rgba(184,149,42,.45);background:rgba(184,149,42,.04)}
+.aitem.sweep::after{
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(184,149,42,.1),transparent);
+  animation:sweep .65s ease forwards;
+}
+@keyframes sweep{to{left:100%}}
+
+.aico{
+  width:28px;height:28px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;flex-shrink:0;border:1px solid;
+}
+.ico-ap {background:rgba(45,168,90,.08); border-color:rgba(45,168,90,.22)}
+.ico-kyc{background:rgba(194,64,64,.08); border-color:rgba(194,64,64,.22)}
+.ico-ar {background:rgba(184,149,42,.1);  border-color:rgba(184,149,42,.3)}
+.ico-gl {background:rgba(80,110,220,.08); border-color:rgba(80,110,220,.2)}
+.ico-pay{background:rgba(45,168,90,.08); border-color:rgba(45,168,90,.22)}
+.ico-bd {background:rgba(192,122,26,.08); border-color:rgba(192,122,26,.22)}
+
+.ac{flex:1;min-width:0}
+.atop{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.aag{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#B8952A}
+.atit{
+  font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:#1A1714;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:2px 0 1px;
+}
+.adet{font-size:10px;color:#5C5649;line-height:1.35}
+
+/* progress */
+.prow{display:flex;align-items:center;gap:7px;margin-top:5px}
+.ptr{flex:1;height:2px;background:#E2DBCE;border-radius:1px;overflow:hidden}
+.pfil{height:100%;background:linear-gradient(90deg,#B8952A,#D4AF45);
+  border-radius:1px;transition:width 1.2s ease}
+.ppct{font-size:9px;color:#B8952A;font-variant-numeric:tabular-nums;min-width:22px;text-align:right}
+
+/* ── PILLS ── */
+.pill{
+  display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:600;
+  padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0;border:1px solid;
+}
+.pill::before{content:'';width:4px;height:4px;border-radius:50%}
+.p-run{background:rgba(184,149,42,.1);color:#C07A1A;border-color:rgba(184,149,42,.28)}
+.p-run::before{background:#C07A1A;animation:blink 1.1s ease-in-out infinite}
+.p-ok {background:rgba(45,168,90,.1); color:#2DA85A;border-color:rgba(45,168,90,.25)}
+.p-ok::before{background:#2DA85A}
+.p-flag{background:rgba(194,64,64,.08);color:#C24040;border-color:rgba(194,64,64,.22)}
+.p-flag::before{background:#C24040}
+.p-rev{background:rgba(184,149,42,.1);color:#C07A1A;border-color:rgba(184,149,42,.28)}
+.p-rev::before{background:#C07A1A}
+
+/* ── LIVE LOG ── */
+.log{
+  margin-top:9px;background:#F4F1EC;
+  border:1px solid #E2DBCE;border-radius:6px;padding:7px 10px;
+}
+.logline{font-size:10px;color:#5C5649;font-family:'Courier New',monospace;line-height:1.5}
+.lts{color:#B8952A;margin-right:5px;font-weight:600}
+.lcur{
+  display:inline-block;width:5px;height:9px;background:#B8952A;
+  vertical-align:middle;margin-left:2px;animation:blink .8s step-end infinite;
+}
+
+/* ── STATS ── */
+.srow{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:0 16px 12px}
+.scard{
+  background:#F4F1EC;border:1px solid #E2DBCE;border-radius:7px;
+  padding:9px 12px;text-align:center;
+}
+.sval{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;color:#1A1714;line-height:1}
+.sval em{font-size:11px;color:#B8952A;font-style:normal;font-weight:600}
+.slbl{font-size:9px;color:#9A9388;letter-spacing:.06em;text-transform:uppercase;margin-top:3px}
+
+/* ── FOOTER ── */
+.wfoot{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 16px 12px;border-top:1px solid #E2DBCE;
+}
+.ftag{font-size:9px;color:#9A9388;letter-spacing:.08em;text-transform:uppercase}
+.fcnt{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:#B8952A;letter-spacing:.04em}
+
+/* ── PACKETS TAB ── */
+.pkt-list{display:flex;flex-direction:column;gap:5px}
+.pkt{
+  display:flex;align-items:center;gap:9px;padding:9px 12px;
+  background:#F4F1EC;border:1px solid #E2DBCE;border-radius:7px;
+  position:relative;overflow:hidden;transition:border-color .4s;
+}
+.pkt.hi{border-color:rgba(184,149,42,.4)}
+.pkt.sweep::after{
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(184,149,42,.09),transparent);
+  animation:sweep .65s ease forwards;
+}
+.pkt-ico{
+  width:28px;height:28px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;
+  background:#EDE9E1;border:1px solid #E2DBCE;
+}
+.pkt-body{flex:1;min-width:0}
+.pkt-top{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:1px}
+.pkt-name{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:#1A1714;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pkt-meta{font-size:10px;color:#5C5649;margin-bottom:4px}
+.pkt-bar{height:2px;background:#E2DBCE;border-radius:1px;overflow:hidden}
+.pkt-fill{height:100%;border-radius:1px;transition:width 1.4s ease}
+
+/* ── AGENTS TAB ── */
+.ag-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.agc{
+  background:#F4F1EC;border:1px solid #E2DBCE;border-radius:7px;
+  padding:10px 12px;position:relative;overflow:hidden;transition:border-color .4s;
+}
+.agc.active{border-color:rgba(184,149,42,.38)}
+.agc.active::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,#B8952A,transparent);
+}
+.ag-ico{font-size:17px;margin-bottom:3px}
+.ag-name{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:#1A1714;margin-bottom:2px}
+.ag-stat{font-size:9px;color:#5C5649;display:flex;align-items:center;gap:4px}
+.ag-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+
+/* anims */
+@keyframes si{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.si{animation:si .32s ease forwards}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+/* ===========================
+   WHY PRODUC8IVE SECTION
+=========================== */
+
+.why-section{
+    color: #fff;
+    max-width: 100%;
+    margin: 0 auto;
+    background: #151820;
+    padding: 32px 84px;
+  
+}
+
+.why-title{
+   
+    display: inline-block;
+    color: #C89B3C;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.why-grid{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+}
+
+/* ===========================
+   ITEM
+=========================== */
+
+.why-item{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 14px;
+    padding: 0 23px;
+}
+
+/* Remove left padding from first item */
+.why-item:first-child{
+    padding-left:0;
+}
+
+/* Gold separator line */
+.why-item:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    right:0;
+    transform:translateY(-50%);
+    width:3px;
+    height:200px;
+    background:linear-gradient(
+        to bottom,
+        transparent,
+        rgba(200,155,60,.2),
+        #C89B3C,
+        rgba(200,155,60,.2),
+        transparent
+    );
+}
+
+/* ===========================
+   ICON
+=========================== */
+
+.why-icon{
+       flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    margin-top: 35px;
+}
+
+.why-icon svg{
+    width:100%;
+    height:100%;
+    stroke:var(--gold);
+    fill:none;
+}
+
+/* ===========================
+   TEXT
+=========================== */
+
+.why-text h3{
+        height: 3rem;
+    color: rgb(255 255 255 / 72%);
+    font-size: clamp(1rem, 1.1vw, 1.2rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 0.75rem;
+    text-transform: uppercase;
+
+}
+
+.why-text p{
+   color: rgb(255 255 255 / 72%);
+    font-size: 14px;
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media (max-width:1024px){
+
+    .why-section{
+        padding:32px 40px;
+    }
+
+    .why-grid{
+        grid-template-columns:repeat(3,1fr);
+        row-gap:35px;
+    }
+
+    .why-item{
+        padding:0 22px;
+    }
+
+    .why-item:first-child,
+    .why-item:nth-child(4){
+        padding-left:0;
+    }
+
+    /* Hide all separators first */
+    .why-item::after{
+        display:none;
+    }
+
+    /* Show separator after first two items of each row */
+    .why-item:not(:nth-child(3n))::after{
+        display:block;
+    }
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:640px){
+
+    .why-section{
+        padding:24px 20px;
+    }
+
+    .why-grid{
+        grid-template-columns:1fr;
+        gap:24px;
+    }
+
+    .why-item{
+        padding:0 0 22px;
+        border-bottom:1px solid rgba(200,155,60,.25);
+    }
+
+    .why-item:last-child{
+        border-bottom:none;
+        padding-bottom:0;
+    }
+
+    .why-item::after{
+        display:none;
+    }
+}
+/* ---------- Mobile (up to 768px) ---------- */
+@media (max-width: 768px) {
+  body {
+    padding-top: 72px;
+  }
+
+  .section {
+    padding: 50px 0;
+  }
+
+  .shift {
+    padding: 50px 16px 50px 50px !important;
+  }
+
+  .section-head,
+  .header-section {
+    margin-bottom: 1.2rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 18px;
+    overflow-x: hidden;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 40px 16px 60px;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+
+  .hero h1,
+  .hero .display {
+    font-size: clamp(1.7rem, 7vw, 2.2rem);
+    line-height: 1.15;
+  }
+
+  .hero .lead {
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 100%;
+  }
+
+  .hero-trust {
+    max-width: 100%;
+  }
+
+  .hero-cta {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin-top: 1.8rem;
+  }
+
+  .hero-cta .btn,
+  .hero-cta a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-trust {
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+
+  .scope-header h3 {
+    font-size: 14px;
+  }
+
+  .display-md {
+    font-size: clamp(1.4rem, 5vw, 1.85rem);
+  }
+
+  .lead {
+    margin-top: 1rem;
+  }
+
+  .nav-inner {
+    justify-content: flex-start;
+    padding: 16px;
+  }
+
+  .nav-inner .btn-outline {
+    display: none;
+  }
+
+  .brand {
+    width: auto;
+    justify-content: flex-start;
+  }
+
+  .brand-logo {
+    height: 30px;
+    width: auto;
+  }
+
+  .nav {
+    border-bottom: none;
+    background: #f8f5ed;
+  }
+
+  .shell {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .tabs {
+    padding: 0 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tab {
+    padding: 9px 8px;
+    font-size: 9px;
+    white-space: nowrap;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .flow-scroll,
+  .uc-marquee,
+  .flow-marquee {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .flow {
+    min-width: 100%;
+  }
+
+  .uc-track {
+    width: auto;
+  }
+
+  .ag-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .srow {
+    grid-template-columns: 1fr;
+  }
+
+  .wfoot {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+
+  .pkt-top,
+  .atop {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .pkt-name,
+  .atit {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+}
+
+  /* ════════════════════════════════
+     STATS BAR
+  ════════════════════════════════ */
+  .stats-bar {
+    width: 100%;
+   
+    background: #FFFFFF;
+    border: 1px solid #E2DBCE;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(90, 72, 40, 0.08), 0 1px 4px rgba(90, 72, 40, 0.05);
+    position: relative;
+  }
+
+  /* thin gold top edge */
+  .stats-bar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #B8952A 25%, #D4AF45 75%, transparent);
+  }
+
+  /* ── single stat cell ── */
+  .stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 22px 16px; 
+    position: relative;
+    text-align: center;
+    cursor: default;
+    transition: background 0.25s;
+  }
+  .stat:hover { background: #f2f2f2; }
+
+  /* divider between cells */
+  .stat + .stat::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 20%; bottom: 20%;
+    width: 1px;
+    background: #E2DBCE;
+  }
+
+  @media (max-width: 768px) {
+    .stats-bar {
+      grid-template-columns: 1fr;
+    }
+
+    .stat {
+      padding: 22px 18px;
+    }
+
+    .stat + .stat::before {
+      display: none;
+    }
+  }
+
+  /* ── number ── */
+  .stat-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1A1714;
+    line-height: 1;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: baseline;
+    gap: 1px;
+    /* start invisible, animate in */
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .stat-number.visible { opacity: 1; transform: translateY(0); }
+
+  .stat-number .prefix { font-size: 18px; color: #B8952A; font-weight: 700; }
+  .stat-number .suffix { font-size: 18px; color: #B8952A; font-weight: 700; }
+  .stat-number .val    { color: #1A1714; }
+
+  /* ── label ── */
+  .stat-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #7A7267;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+    max-width: 130px;
+    opacity: 0;
+    transition: opacity 0.5s ease 0.15s;
+  }
+  .stat-label.visible { opacity: 1; }
+
+  /* ── icon badge ── */
+  .stat-icon {
+    width: 28px; height: 28px;
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    margin-bottom: 7px;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .stat-icon.visible { opacity: 1; transform: scale(1); }
+
+  .ico-gold  { background: rgba(184,149,42,.1);  border: 1px solid rgba(184,149,42,.25); }
+  .ico-green { background: rgba(45,168,90,.09);  border: 1px solid rgba(45,168,90,.22); }
+  .ico-blue  { background: rgba(80,110,220,.09); border: 1px solid rgba(80,110,220,.2); }
+  .ico-red   { background: rgba(194,64,64,.08);  border: 1px solid rgba(194,64,64,.2); }
+
+  /* ── pulse ring on icon for "active" feel ── */
+  .stat-icon.pulse-ring {
+    animation: ring 2.4s ease-in-out infinite;
+  }
+  @keyframes ring {
+    0%,100% { box-shadow: 0 0 0 0 rgba(184,149,42,.3); }
+    50%      { box-shadow: 0 0 0 5px rgba(184,149,42,.0); }
+  }
+
+  /* ── counter flash on update ── */
+  @keyframes flash {
+    0%   { color: #B8952A; }
+    100% { color: #1A1714; }
+  }
+  .flash .val { animation: flash 0.6s ease forwards; }
+
+  /* ── mobile tweaks — keep the row intact ── */
+  @media (max-width: 600px) {
+    .stat-number { font-size: 24px; }
+  }
+
+/* ---------- Section base ---------- */
+.section-head,
+.header-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+  max-width: 45rem;
+}
+.section-head .eyebrow,
+.header-section .eyebrow {
+  margin-bottom: 0;
+}
+.section { padding: 50px 0; }
+@media (min-width: 768px) { .section { padding: 70px 0; } }
+.bg-muted { background: var(--bg-muted); }
+
+/* ---------- Two-col problem ---------- */
+.compare {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 40px -24px rgba(0,0,0,.18);
+}
+@media (min-width: 768px) { .compare { grid-template-columns: 1fr 1fr; } }
+.compare-col { padding: 31px 28px 29px 35px; position: relative; }
+.compare-list li {
+  font-size: 16px;
+  line-height: 1.55;
+  padding: 10px 12px;
+}
+.compare-col + .compare-col { border-top: 1px solid var(--border); }
+@media (min-width: 768px) {
+  .compare-col + .compare-col { border-top: 0; border-left: 1px solid var(--border); }
+}
+.compare-col.bad { background: linear-gradient(180deg, rgba(216,213,199,.35), transparent 60%); }
+.compare-col.good { background: linear-gradient(180deg, color-mix(in oklab, #eadcbc 14%, transparent), transparent 60%); }
+.compare-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+.compare-head .compare-eyebrow{
+      letter-spacing: 3px;
+    font-size: 20px;
+}
+.compare-badge {
+  width: 30px; height: 30px; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--heading-font); font-weight: 800; font-size: 14px;
+  flex-shrink: 0;
+}
+.compare-badge.bad { background: rgba(180,60,60,.12); color: #6e6e6e; }
+.compare-badge.good { background: color-mix(in oklab, var(--gold) 22%, transparent); color: var(--gold); }
+.compare-head .eyebrow { margin: 0; margin-bottom: 7px;}
+.compare-head h3 {
+  font-size: clamp(0.6rem, 1vw, 1.15rem);
+  font-weight: 500;
+  margin: 3;
+  letter-spacing: 0.02em;
+}
+.compare-list { display: flex; flex-direction: column; gap: 2px; }
+.compare-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 9px 10px;
+  font-size:15px; color: var(--fg-soft);
+  border-radius: 8px;
+  transition: background .2s, transform .2s;
+}
+.compare-list li:hover { background: color-mix(in oklab, var(--gold) 8%, transparent); transform: translateX(3px); }
+.compare-list li svg { width: 30px; height: 25px; margin-top: 0px; flex-shrink: 0; }
+.compare-list.bad li svg { color:#6e6e6e; opacity: .75; }
+.compare-list.good li svg { color: var(--gold); }
+/* 
+{% comment %} .drag-row { display: grid; gap: 1.8rem; grid-template-columns: 1fr; margin-bottom: 3rem; }
+@media (min-width: 768px) { .drag-row { grid-template-columns: repeat(3, 1fr); } }
+.drag { border-top: 1px solid var(--fg); padding-top: 18px; }
+.drag h4 { font-size: 1.3rem; margin: 8px 0 8px; }
+.drag p { color: var(--muted);  font-size: 1.2rem; margin: 0; }
+.drag .eyebrow { font-size: 10px; } {% endcomment %} */
+
+.workflow-section {
+
+            width: 100%;
+            max-width: 1321px;
+            margin: 0 auto;
+        }
+
+        /* PROCESS GRID */
+        .process-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            position: relative;
+        }
+
+        @media (min-width: 1024px) {
+            .process-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        /* PROCESS STEP CARD */
+        .step-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-light);
+            padding: 1.5rem;
+            position: relative;
+            min-height: 282px;
+        }
+
+        /* HEADER BADGES */
+        .step-header {
+            border: 1.5px solid #b88c2e;
+            border-radius: 8px;
+            padding: 0.5rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            width: 100%;
+            max-width: 300px;
+            justify-content: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .step-number {
+            color: #b88c2e;
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        .step-title {
+            color: var(--primary-navy);
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* GRAPHIC CONTAINERS */
+        .graphic-viewport {
+            width: 100%;
+            max-width: 280px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .graphic-viewport svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* DESKTOP CONNECTING ARROWS */
+        .flow-arrow {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .flow-arrow {
+                display: flex;
+                position: absolute;
+                top: 55%;
+                right: -30px;
+                transform: translateY(-50%);
+                z-index: 10;
+                background: var(--bg-light);
+                border: 1px solid var(--border-light);
+                border-radius: 50%;
+                width: 35px;
+                height: 35px;
+                align-items: center;
+                justify-content: center;
+                color: #94a3b8;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            }
+        }
+
+        /* FOOTER DRAG BANNER */
+        .drag-banner {
+            margin-top: 2.5rem;
+            width: 100%;
+            border: 1px solid var(--border-light);
+            background-color: var(--bg-banner);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .drag-banner {
+                flex-direction: row;
+                text-align: left;
+                padding: 0.5rem 2rem;
+                gap: 1.5rem;
+            }
+        }
+
+        .alert-icon-circle {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #b88c2e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-light);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .alert-icon-circle span {
+            color: #b88c2e;
+            font-weight: 900;
+            font-size: 1.25rem;
+        }
+
+        .banner-text {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            line-height: 1.5;
+        }
+
+       
+
+        .text-navy {
+            color: var(--primary-navy);
+        }
+
+        .text-gold {
+            color:#b88c2e;
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .text-gold {
+                display: inline;
+                margin-left: 0.25rem;
+            }
+        }
+
+/* ---------- Shift ---------- */
+.shift {
+  background: #f6f6f4;
+  padding: 90px 0 110px;
+}
+.shift .container {
+  max-width: 1180px;
+}
+.shift .eyebrow.gold {
+  font-size: 0.82rem;
+  letter-spacing: 0.10em;
+  margin-bottom: 1.8rem;
+}
+.shift-quote {
+    font-style: italic;
+  position: relative;
+  font-family: "Sora", sans-serif !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  margin: 0;
+  padding-left: 1.4rem;
+  color: var(--fg);
+}
+.shift-quote::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 3rem;
+  background: var(--gold);
+}
+.shift-grid {
+  margin-top: 3rem;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .shift-grid {
+    grid-template-columns: 0.7fr 1.1fr;
+    gap: 3rem;
+  }
+}
+.shift-grid .eyebrow.muted {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 1.75rem;
+}
+.check-grid {
+  display: grid;
+  gap: 0.7rem;
+}
+@media (min-width: 540px) {
+  .check-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.check-grid li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--fg-soft);
+}
+.check-grid li::before {
+  content: "";
+    position: absolute;
+    left: -7px;
+    top: 11px;
+    width: 16px;
+    height: 0.9px;
+  background: var(--gold);
+}
+
+/* ---------- Use cases ---------- */
+
+.usecase-grid { display: grid; gap: 1px; background: var(--border); grid-template-columns: 1fr; }
+@media (min-width: 768px) { .usecase-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .usecase-grid { grid-template-columns: repeat(3, 1fr); } }
+.usecase { background: var(--bg); padding: 32px 28px; transition: background .25s; }
+.usecase:hover { background: var(--bg-muted); }
+.usecase .num { font-family: var(--display); font-size: 1.5rem; font-weight: 800; color: var(--gold); margin-bottom: 16px; display: block; }
+.usecase h3 { font-size: clamp(1rem, 1.25vw, 1.2rem); margin-bottom: 1rem; }
+.usecase dl { display: grid; gap: 14px; margin: 0; }
+.usecase dt { font-size: 10px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.usecase dd { margin: 0; font-size: .88rem; color: var(--muted); line-height: 1.6; }
+
+/* ---------- Principles ---------- */
+.principles { display: grid; gap: 1px; background: var(--border); grid-template-columns: 1fr; }
+@media (min-width: 640px) { .principles { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .principles { grid-template-columns: repeat(4, 1fr); } }
+.principle { background: var(--bg); padding: 30px 24px; }
+.principle .rule { display: block; width: 70px; height: 1px; background: var(--gold); margin-bottom: 22px; }
+.principle h3 {
+  font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+  margin-bottom: 0.7rem;
+  line-height: 1.35;
+}
+.principle p { color: var(--muted); font-size: 1rem; margin: 0; line-height: 1.65; }
+
+/* ---------- Modules ---------- */
+/* {% comment %} 
+.modules{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+@media (max-width: 1024px){
+    .modules{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px){
+    .modules{
+        grid-template-columns: 1fr;
+    }
+}
+
+.module{
+    position: relative;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+top line
+.module::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--fg);
+}
+
+.module h3{
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+}
+
+.module > p{
+    color: var(--muted);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 0rem;
+    min-height: 60px;    }  /* keeps cards aligned */
+
+
+
+.module ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.module li{
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--fg-soft);
+}
+
+.module li::before{
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: .55rem;
+    flex-shrink: 0;
+} 
+
+.header-section {
+  max-width: 51rem;
+margin: 0 auto;
+            text-align: center;
+            margin-bottom: 0rem;
+        }
+
+        .header-title {
+               font-size: clamp(1.85rem, 2vw, 2.40rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: #0d1e33;
+            margin-bottom: 0.85rem;
+            line-height: 1.2;
+        }
+
+        .header-title span {
+            color: #c8933e;
+        }
+
+        .header-subtitle {
+                font-size: clamp(1rem, 1vw, 1rem);
+            color: #64748b;
+            font-weight: 500;
+            max-width: 760px;
+            margin: 0 auto 1.75rem auto;
+            line-height: 1.65;
+        }
+
+        /* Elegant Minimalist Title Divider */
+        .decorative-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .decorative-line {
+            width: 48px;
+            height: 2px;
+            background-color: #c8933e;
+            border-radius: 2px;
+        }
+
+        .decorative-dot {
+            width: 5px;
+            height: 5px;
+            background-color: #c8933e;
+            border-radius: 50%;
+        }
+
+        /* STABLE RESPONSIVE GRID GRID */
+        .assistants-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding-top: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .assistants-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .assistants-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        /* BASE ASYMMETRICAL COMPONENT CARD */
+        .assistant-card {
+           background: #ffffff;
+           border: 1px solid #d8d5c7;
+            border-radius: 16px;
+            padding: 2.5rem 1.5rem 2.2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+           
+            height: 100%;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.45s ease;
+        }
+
+        /* ELEVATION MODIFIERS ON MOUSE HOVER */
+        .assistant-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+            box-shadow: 0 28px 60px -30px rgba(20, 25, 40, .4);
+            z-index: 2;
+        }
+
+        /* Individual Card Hex Background Tint Allocations */
+        .card-blue { background-color: #ffffff; }
+        .card-green { background-color: #ffffff; }
+        .card-gold { background-color: #ffffff; }
+        .card-purple { background-color: #ffffff; }
+
+        /* .assistant-card:hover.card-blue { border-color: rgba(29, 99, 237, 0.25); }
+        .assistant-card:hover.card-green { border-color: rgba(21, 128, 61, 0.25); }
+        .assistant-card:hover.card-gold { border-color: rgba(200, 147, 62, 0.25); }
+        .assistant-card:hover.card-purple { border-color: rgba(124, 58, 237, 0.25); } */
+
+        /* HEADER CIRCULAR BADGES */
+        .badge-icon {
+          border: 1px solid #d8d5c7;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color:#b88c2e;
+            position: absolute;
+            top: -23px;
+            box-shadow: 0 6px 14px rgba(13, 30, 51, 0.12);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .assistant-card:hover .badge-icon {
+            transform: scale(1.12);
+        }
+
+        .badge-blue { background-color: rgba(201, 162, 74, 0.06); color: #b88c2e; }
+        .badge-green { background-color:rgba(201, 162, 74, 0.06); color: #b88c2e; }
+        .badge-gold { background-color: rgba(201, 162, 74, 0.06); color: #b88c2e; }
+        .badge-purple { background-color: rgba(201, 162, 74, 0.06); color: #b88c2e; }
+
+        /* COMPONENT MODULE SECTION HEADERS */
+        .card-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0d1e33;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            text-align: center;
+            margin-top: 0.6rem;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+
+        /* ILLUSTRATION GRAPHIC WRAPPER CONTAINER */
+        .assistant-card {
+            cursor: pointer;
+        }
+
+        .card-illustration {
+            width: 100%;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2.2rem;
+            background: rgba(201, 162, 74, 0.06);
+            border-radius: 14px;
+            padding: 0.5rem;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05), 0 8px 18px rgba(13, 30, 51, 0.08);
+            border: 1px solid rgba(200, 147, 62, 0.22);
+            overflow: hidden;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+        }
+
+        .assistant-card:hover .card-illustration {
+            transform: translateY(-4px);
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.06), 0 16px 34px rgba(13, 30, 51, 0.12);
+            background: rgba(201, 162, 74, 0.08);
+        }
+
+        .card-illustration svg {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 100%;
+            transition: transform 0.35s ease;
+        }
+
+        .assistant-card:hover .card-illustration svg {
+            transform: scale(1.02);
+        }
+
+        /* VALUE PROPOSITION LIST ROW ARCHITECTURE */
+        .workflow-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.80rem;
+            list-style: none;
+        }
+
+        .workflow-item {
+         
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d2926;
+    transition: transform 0.25s ease;
+        }
+
+        .assistant-card:hover .workflow-item {
+            transform: translateX(3px);
+        }
+
+        .item-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Custom SVG Bullet Color Configurations mapped straight to Hex */
+        .card-blue .item-icon { color:#c8933e; }
+        .card-green .item-icon { color: #c8933e; }
+        .card-gold .item-icon { color: #c8933e; }
+        .card-purple .item-icon { color: #c8933e; }
+
+/* ---------- Flow diagram ---------- */
+.flow-scroll { overflow-x: auto; padding-bottom: 16px; margin: 0 -24px; padding-left: 24px; padding-right: 24px; }
+@media (min-width: 768px) { .flow-scroll { margin: 0; padding-left: 0; padding-right: 0; } }
+.flow { display: flex; align-items: stretch; gap: 0; min-width: max-content; padding: 0; }
+.flow-step { display: flex; flex-direction: column; width: 260px; background: var(--bg); border: 1px solid var(--border); padding: 24px; }
+.flow-step .head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.flow-step .num { font-family: var(--display); font-size: 1.6rem; font-weight: 800; color: var(--gold); }
+.flow-step .small { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.flow-step h3 { font-size: 1.5rem; margin-bottom: 8px; letter-spacing: 0.05em; }
+.flow-step p { font-size: 1.3rem; color: var(--muted); margin: 0; line-height: 1.55; }
+.flow-arrow { display: flex; align-items: center; padding: 0 8px; color: var(--gold); }
+.result-line { margin-top: 3rem; }
+.result-label { font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg); }
+
+/* ---------- Outcomes ---------- */
+
+.outcomes { display: grid; gap: 3rem; grid-template-columns: 1fr;margin: 10px;}
+@media (min-width: 640px) { .outcomes { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .outcomes { grid-template-columns: repeat(3, 1fr); column-gap: 4rem; } }
+.outcome h3 { font-size: 1.7rem; margin: 14px 0 10px; }
+.outcome p { color: var(--muted); font-size: 1.3rem; margin: 0; line-height: 1.65; }
+
+
+/*---------integration-------*/
+/* 
+  {% comment %} :root{
+    --bg:#f2f2f2;
+    --bg-muted:#f8f7f3ff;
+    --fg:#151820ff;
+    --fg-soft:#0a0a0aff;
+    --muted:#0a0a0aff;
+    --card:#ffffff;
+    --border:#d8d5c7;
+    --gold:#b88c2e;
+    --gold-soft:#d4a64a;
+    --gold-fg:#1d2538;
+    --shadow-xl:0 30px 80px -30px rgba(20, 25, 40, .25);
+    --container:1400px;
+    --display:"Outfit", sans-serif;
+    --body:"Inter", system-ui, sans-serif;
+    --grn:#2DA85A;
+    --dim:#9A9388;
+
+    --bg-2:var(--bg-muted);
+    --text:var(--fg);
+    --line:var(--border);
+    --gold-2:var(--gold-soft);
+  } {% endcomment %}
+  {% comment %} *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg-muted);
+    font-family:var(--body);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+  } {% endcomment %} */
+
+  .integrations{
+    background:#151820;
+    padding:96px 24px;
+    position:relative;
+    overflow:hidden;
+  }
+  .integrations::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(1000px 500px at 85% 10%, rgba(201,162,74,0.08), transparent 60%),
+      radial-gradient(700px 400px at 10% 90%, rgba(201,162,74,0.05), transparent 60%);
+    pointer-events:none;
+  }
+  .container{
+    max-width:var(--container);
+    margin:0 auto;
+    position:relative;
+    z-index:1;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:var(--gold);
+    font-size:13px;
+    letter-spacing:0.22em;
+    font-weight:600;
+    text-transform:uppercase;
+    margin-bottom:28px;
+  }
+  .eyebrow .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 0 4px rgba(201,162,74,0.15);
+  }
+
+  h2.headline{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:clamp(2rem, 5vw, 3.5rem);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+    color:var(--text);
+    max-width:900px;
+  }
+  h2.headline em{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-weight:500;
+    color:var(--gold);
+    text-transform:none;
+    letter-spacing:0;
+  }
+
+  .lede{
+    margin-top:24px;
+    max-width:680px;
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .logos{
+    margin-top:72px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    align-items:stretch;
+    border-top:1px solid #d8d5c730;
+    border-bottom:1px solid #d8d5c730;
+  }
+  .logo-cell{
+    padding:27px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-right:1px solid #d8d5c736;
+    transition:background .3s ease;
+    min-height:116px;
+  }
+  .logo-cell:last-child{border-right:none}
+  .logo-cell:hover{background:rgba(255,255,255,0.02)}
+  .logo-cell svg, .logo-cell .txt{
+    opacity:.78;
+    transition:opacity .3s ease, transform .3s ease;
+    max-height:44px;
+    width:auto;
+  }
+  .logo-cell:hover svg, .logo-cell:hover .txt{opacity:1}
+
+  .txt{
+    color:#e6e4dd;
+    font-weight:700;
+    letter-spacing:0.02em;
+    font-size:26px;
+    text-align:center;
+    line-height:1;
+  }
+  .txt small{
+    display:block;
+    font-size:9px;
+    letter-spacing:0.3em;
+    color:#ffffff;
+    font-weight:500;
+    margin-top:6px;
+  }
+  .txt .accent{color:#ffffff}
+
+  .foot{
+    margin-top:36px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .count{
+    color:var(--muted);
+    font-size:13px;
+    letter-spacing:0.08em;
+  }
+  .count b{color:var(--gold);font-weight:700}
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 22px;
+    background:var(--gold);
+    color:#141821;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    text-decoration:none;
+    border-radius:2px;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .cta:hover{background:var(--gold-2);transform:translateY(-1px)}
+  .cta svg{width:14px;height:14px}
+
+  @media (max-width:900px){
+    .logos{grid-template-columns:repeat(2,1fr)}
+    .logo-cell:nth-child(2){border-right:none}
+    .logo-cell:nth-child(1),.logo-cell:nth-child(2){border-bottom:1px solid var(--line)}
+  }
+  @media (max-width:520px){
+    .integrations{padding:72px 20px}
+    .logos{grid-template-columns:1fr}
+    .logo-cell{border-right:none;border-bottom:1px solid var(--line)}
+    .logo-cell:last-child{border-bottom:none}
+  }
+
+
+/* ---------- Scope ----------.scope-grid { display: grid; gap: 3rem; grid-template-columns: 1fr; }
+@media (min-width: 768px) { .scope-grid { grid-template-columns: 1fr 2fr; } }
+.scope-body p { color: var(--fg-soft); font-size: 1.5rem; line-height: 1.7; margin: 0 0 1.2rem; }
+.scope-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 1.6rem 0; }
+.scope-list li { display: flex; align-items: center; gap: 12px; font-size: 1.3rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--fg-soft); }
+.scope-list li::before { content: ""; width: 22px; height: 1px; background: var(--gold); }
+.big-line { font-family: var(--display); font-size: 1.4rem; text-transform: uppercase; color: var(--fg); margin-top: 2rem !important; }  */
+
+/* ---------- Dark band ---------- */
+.dark { background: var(--fg); color: #fff; }
+.dark .display-md, .dark .display-lg { color: #fff; }
+.dark .display-md.light, .dark .display-lg.light { color: #fff; }
+.center { text-align: center; }
+.dark .eyebrow { color: var(--gold); }
+/* ===========================================
+   PANEL
+=========================================== */
+
+.scope-panel{
+    background:#F7F4ED;
+    border:1px solid #E7DFD1;
+   
+    overflow:hidden;
+    font-family:'Inter',sans-serif;
+    color:#141414;
+}
+
+/* ===========================================
+   GRID
+=========================================== */
+
+.scope-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+}
+
+.scope-col{
+    display:flex;
+    flex-direction:column;
+    padding:22px 0 12px;
+}
+
+.scope-col-left{
+    border-right:1px solid #E5DDCF;
+}
+
+/* ===========================================
+   HEADER
+=========================================== */
+
+.scope-header{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    padding:0 22px 22px;
+    border-bottom:1px solid #E5DDCF;
+}
+
+.scope-hero{
+    width:25px;
+    height:25px;
+    flex-shrink:0;
+}
+
+/* Left icon */
+.scope-col-left .scope-hero{
+    color:#8D8D8D;
+}
+
+/* Right icon */
+.scope-col-right .scope-hero{
+    color:#C89A35;
+}
+
+.scope-header h3{
+       margin: 0;
+    font-size: 16px;
+    line-height: 1.35;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #C89A35;
+}
+
+/* ===========================================
+   LIST
+=========================================== */
+
+.scope-list{
+    list-style:none;
+    margin:12px 0 0;
+    padding:0 18px;
+}
+
+.scope-list li{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:5px 18px;
+    border-radius:10px;
+    transition:.28s ease;
+    cursor:default;
+}
+
+/* Hover like screenshot */
+
+.scope-list li:hover{
+    background:#EFE7D8;
+}
+
+/* ===========================================
+   ICONS
+=========================================== */
+
+.scope-icon{
+    width:22px;
+    height:22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.scope-icon svg{
+    width:22px;
+    height:22px;
+    stroke-width:1.9;
+}
+
+/* Left icons grey */
+
+.scope-col-left .scope-icon{
+    color:#8D8D8D;
+}
+
+/* Right icons gold */
+
+.scope-col-right .scope-icon{
+    color:#C89A35;
+}
+
+/* ===========================================
+   TEXT
+=========================================== */
+
+.scope-text{
+       font-size: 14px;
+    font-weight: 550;
+   
+    color:#141414;
+    letter-spacing:.2px;
+}
+
+/* ===========================================
+   FOOTER
+=========================================== */
+
+.scope-footer{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:18px;
+    border-top:1px solid #E5DDCF;
+    background:#F7F4ED;
+    font-size:19px;
+    font-weight:500;
+    color:#141414;
+}
+
+.scope-footer-icon{
+    width:18px;
+    height:18px;
+    color:#C89A35;
+}
+
+/* ===========================================
+   RESPONSIVE
+=========================================== */
+
+@media (max-width:900px){
+
+    .scope-grid{
+        grid-template-columns:1fr;
+    }
+
+    .scope-col-left{
+        border-right:none;
+        border-bottom:1px solid #E5DDCF;
+    }
+
+    .scope-header{
+                padding: 3px 24px;
+    }
+
+    .scope-header h3{
+        font-size:14px;
+        letter-spacing:3px;
+    }
+
+    .scope-hero{
+       width: 44px;
+        height: 34px;
+    }
+}
+ /*----journey---*/
+
+  .journey{
+    background:#f2f2f2;
+    padding:96px 24px;
+    position:relative;
+    overflow:hidden;
+  }
+  .journey::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(1000px 500px at 15% 10%, rgba(201,162,74,0.08), transparent 60%),
+      radial-gradient(700px 400px at 90% 90%, rgba(201,162,74,0.05), transparent 60%);
+    pointer-events:none;
+  }
+  .container{
+    max-width:var(--container);
+    margin:0 auto;
+    position:relative;
+    z-index:1;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:var(--gold);
+    font-size:12px;
+    letter-spacing:0.22em;
+    font-weight:600;
+    text-transform:uppercase;
+    margin-bottom:24px;
+  }
+  .eyebrow .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 0 4px rgba(201,162,74,0.15);
+  }
+
+  h2.headline{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:clamp(2rem, 5vw, 3.5rem);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+    color:var(--text);
+    max-width:900px;
+  }
+  h2.headline em{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-weight:500;
+    color:var(--gold);
+    text-transform:none;
+    letter-spacing:0;
+  }
+
+  .lede{
+    margin-top:20px;
+    max-width:640px;
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  /* Timeline rail */
+  .rail{
+    position:relative;
+    margin-top:50px;
+  }
+  .rail::before{
+    content:"";
+    position:absolute;
+    top:56px;
+    left:5%;
+    right:5%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--line) 10%, var(--line) 90%, transparent);
+    z-index:0;
+  }
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:20px;
+    position:relative;
+    z-index:1;
+  }
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:28px 22px 26px;
+    display:flex;
+    flex-direction:column;
+    gap:13px;
+    min-height:240px;
+    backdrop-filter:blur(6px);
+    transition:border-color .3s ease, transform .3s ease, background .3s ease;
+    position:relative;
+  }
+  .card:hover{ transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 28px 60px -30px rgba(20,25,40,.4); z-index: 2; }
+
+  .card-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .num{
+/* font-family:'Inter',sans-serif;
+    font-size:12px;
+    letter-spacing:0.24em;
+    font-weight:600;
+    color:var(--muted); */
+
+
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .icon{
+    width:35px;height:35px;
+    display:grid;place-items:center;
+    border:1px solid var(--line);
+    border-radius:50%;
+    color:var(--gold);
+    background:rgba(201,162,74,0.06);
+  }
+  .icon svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.8}
+
+  .timeline-dot{
+    position:absolute;
+    top:-6px; left:50%;
+    width:10px;height:10px;
+    background:var(--gold);
+    border:2px solid var(--bg);
+    border-radius:50%;
+    transform:translateX(-50%);
+    box-shadow:0 0 0 3px rgba(201,162,74,0.15);
+    display:none; /* visual dot on rail — hidden by default, enable if desired */
+  }
+
+  h3.card-title{
+    
+    line-height: 1.5;
+    height: 13px;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-top: 9px;
+  }
+  .card p{
+        text-align: center;
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+
+  .card .week{
+        margin-top: auto;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+    text-align: center;
+  }
+
+  .foot{
+    margin-top:33px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .timeline-note{
+    color:var(--muted);
+    font-size:15px;
+    letter-spacing:0.06em;
+  }
+  .timeline-note b{color:var(--gold);font-weight:700}
+
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 22px;
+    background:var(--gold);
+    color:#141821;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    text-decoration:none;
+    border-radius:2px;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .cta:hover{background:var(--gold-2);transform:translateY(-1px)}
+  .cta svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:3}
+
+  @media (max-width:1080px){
+    .cards{grid-template-columns:repeat(3,1fr)}
+    .rail::before{display:none}
+  }
+  @media (max-width:720px){
+    .cards{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:520px){
+    .journey{padding:72px 20px}
+    .cards{grid-template-columns:1fr}
+  }
+
+
+/* ---------- FAQ ---------- */
+.faq { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: 0; }
+.faq-btn { width: 100%; text-align: left; padding: 15px 8px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; transition: background .2s; }
+.faq-btn:hover { background: rgba(216,213,199,.3); }
+.faq-btn h3 { font-size: 16px;
+    font-weight: 600; letter-spacing: 0.05em; }
+.faq-btn .sign { font-size: 1.7rem; color: var(--gold); margin-top: 2px; }
+.faq-answer { display: none; padding: 0 8px 22px; color: var(--muted); font-size:1rem; line-height: 1.7; max-width: 50rem; }
+.faq-item.open .faq-answer { display: block; animation: fade .3s ease; }
+
+/* ---------- Proof ---------- */
+.proof-grid { display: grid; gap: 4rem; grid-template-columns: 1fr; }
+@media (min-width: 768px) { .proof-grid { grid-template-columns: 1fr 1.4fr; } }
+.proof-list { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.proof-list li { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+.proof-list li:last-child { border-bottom: 0; }
+.proof-list .num { font-family: var(--display); font-size: 1.2rem; color: var(--gold); margin-right: 20px; font-weight: 800; }
+.proof-list b { font-family: var(--display); font-weight: 800; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.05em; flex: 1; }
+.proof-list small { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
+
+/* ---------- Risk reversal ---------- */
+.risk-wrap { padding: 0 24px 90px; }
+@media (min-width: 768px) { .risk-wrap { padding: 0 40px 130px; } }
+.risk-band { max-width: 920px; margin: 0 auto; border: 1px solid var(--gold); background: var(--bg); padding: 50px 30px; text-align: center; }
+@media (min-width: 768px) { .risk-band { padding: 70px 50px; } }
+.risk-band p { margin: 1.4rem auto 0; }
+
+/* ---------- Contact ---------- */
+.contact-grid { display: grid; gap: 4rem; grid-template-columns: 1fr; }
+@media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+.bullets { display: grid; gap: 12px; margin-top: 2.4rem; }
+.bullets li { display: flex; align-items: center; gap: 12px; font-weight: 500; font-size: 15px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--fg-soft); }
+.bullets .rule { width: 22px; height: 1px; background: var(--gold); }
+.contact .container c1{
+  margin:10px;
+}
+/* --- Form Container & Main Animations --- */
+.form {
+  position: relative;
+  /* Replaced linear gradient and color-mix values */
+  background: linear-gradient(180deg, #ffffff 0%, #f5f3edff 100%);
+  border: 1px solid #e4e4e7;
+  padding: 40px 36px;
+  display: grid;
+  gap: 17px;
+  box-shadow: 0 30px 60px -40px rgba(20, 25, 40, 0.15), 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+  overflow: hidden;
+  isolation: isolate;
+ 
+  transition: transform .5s cubic-bezier(.2, .7, .2, 1), box-shadow .5s ease, border-color .3s ease;
+}
+
+/* Luxury Form Background Glow Effects */
+.form::before {
+  content: "";
+  position: absolute; inset: -1px;
+  padding: 1px;
+  /* Replaced color-mix for the animated gold border */
+  background: linear-gradient(135deg, transparent 30%, rgba(188, 186, 179, 0.55) 50%, transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity .5s ease;
+  pointer-events: none; z-index: 2;
+}
+
+.form::after {
+  content: "";
+  position: absolute; top: -40%; left: -20%;
+  width: 60%; height: 180%;
+  /* Replaced color-mix for the soft ambient gold glow */
+  background: radial-gradient(closest-side, rgba(212, 175, 55, 0.15), transparent 70%);
+  transform: translateX(-30%); transition: transform .9s ease, opacity .6s ease;
+  opacity: 0; pointer-events: none; z-index: 0;
+}
+
+.form:hover { 
+  transform: translateY(-4px); 
+  box-shadow: 0 40px 80px -40px rgba(20, 25, 40, 0.25); 
+  /* Replaced hover border mix (Calculated Gold + Base Border) */
+  border-color: #DECE9B; 
+}
+.form:hover::before { opacity: 1; }
+.form:hover::after { opacity: 1; transform: translateX(120%); }
+
+.form > * { position: relative; z-index: 1; }
+
+/* --- Form Header Styling --- */
+.form-head { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.form-head .dot { 
+  width: 8px; height: 8px; border-radius: 999px; 
+  background: #d4af37; 
+  /* Replaced color-mix box shadow */
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.22); 
+  animation: pulseDot 2s ease-in-out infinite; 
+}
+.form-head .ft { font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: #71717a; font-weight: 700; }
+
+@keyframes pulseDot { 
+  0%, 100% { box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.22); } 
+  50% { box-shadow: 0 0 0 8px rgba(212, 175, 55, 0.08); } 
+}
+
+/* --- Input Fields & Precise Label Intersect Control --- */
+.field { 
+  position: relative; 
+}
+
+.field input, .field textarea {
+  width: 100%;
+  /* Replaced color-mix for field background */
+  background: rgba(250, 250, 250, 0.6);
+  border: 1px solid #e4e4e7;
+  border-radius: 10px;
+  padding: 13px 16px;
+  font-family: inherit;
+  font-size:18px;
+  color: #111111;
+  outline: 0;
+   border: 1px solid #e4e4e7;
+  transition: border-color .25s ease, background .25s ease, box-shadow .25s ease;
+}
+.field textarea { resize: vertical; min-height: 110px; }
+
+/* Initial Label State: Looks exactly like a placeholder text */
+.field label {
+  position: absolute; 
+  left: 16px; 
+  top: 18px;
+  font-size: 0.95rem; 
+  color: #71717a;
+  pointer-events: none;
+  padding: 0 6px;
+  background: transparent;
+  transform-origin: left top;
+  transition: transform .22s cubic-bezier(0.4, 0, 0.2, 1), color .22s ease, top .22s ease, background .1s ease;
+  z-index: 5; /* Forces text cleanly above lines */
+}
+
+/* Adjust initial label placement for textarea to line up with row 1 */
+.field textarea + label { top: 18px; }
+
+/* 1. HOVER STATE: Only changes field border to gold. Label stays completely still */
+.field:hover input, 
+.field:hover textarea {
+  /* Replaced color-mix for border hover */
+  border-color: #DBC474;
+}
+
+/* 2. CLICKED/FOCUSED & FILLED STATE: Moves label to the top border, turns gold, and hides underlying line */
+.field input:focus, .field textarea:focus {
+  border-color: #d4af37;
+  background: #ffffff;
+  /* Replaced color-mix focused ring glow */
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.12);
+}
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label {
+  top: 0;
+  transform: translateY(-50%) scale(0.8); /* Shrinks up perfectly into the center of the top border */
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #d4af37;
+  background: #ffffff; /* Explicitly hides the top border line perfectly */
+}
+
+/* --- Submit Button Styles --- */
+.form .btn.full { 
+  margin-top: 6px; 
+  position: relative; 
+  overflow: hidden; 
+  background:#b88c2e;
+  color: #000000;
+  border: 1px solid #b88c2e;
+  padding: 14px;
+  
+      font-weight: 700;
+    font-size: 14px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: background .3s, color .3s, border-color .3s, transform .2s;
+}
+
+.form .btn.full:hover {
+  background: #d4a64a;
+  color: #111111;
+  border-color: #ecc64cff;
+  transform: translateY(-1px);
+}
+
+.form .btn.full::after {
+  content: ""; position: absolute; top: 0; left: -120%; width: 60%; height: 100%;
+  background: linear-gradient(120deg, transparent, #ecc64cff, transparent);
+  transition: left .7s ease;
+}
+.form .btn.full:hover::after { left: 140%; }
+
+/* --- Form Status Styling --- */
+.form-status { font-size: 12px; color: #d4af37; margin: 0; min-height: 1em; letter-spacing: 0.06em; }
+.form-status.show { animation: fadeUp .4s ease both; }
+
+@keyframes fadeUp { 
+  from { opacity: 0; transform: translateY(6px); } 
+  to { opacity: 1; transform: none; } 
+}
+
+
+/* ---------- Footer ---------- */
+.footer { border-top: 1px solid var(--border); padding: 32px 0; }
+.footer-inner { display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; }
+@media (min-width: 768px) { .footer-inner { flex-direction: row; justify-content: space-between; text-align: left; } }
+
+/* ---------- Anim ---------- */
+@keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.fade-in { animation: fade .6s ease both; }
+
+/* ---------- Scroll reveal ---------- */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal.delay-1 { transition-delay: .08s; }
+.reveal.delay-2 { transition-delay: .16s; }
+.reveal.delay-3 { transition-delay: .24s; }
+.reveal.delay-4 { transition-delay: .32s; }
+
+/* ---------- Card hover lift ---------- */
+.usecase, .principle, .module, .drag, .outcome, .flow-step, .ops-tile, .col-card {
+  position: relative;
+  transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease, border-color .3s ease, background .3s ease;
+  will-change: transform;
+}
+.usecase:hover, .principle:hover, .module:hover, .drag:hover, .outcome:hover, .flow-step:hover, .ops-tile:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -28px rgba(20,25,40,.35);
+  z-index: 2;
+}
+.usecase::after, .principle::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0); transform-origin: left; transition: transform .55s ease;
+}
+.usecase:hover::after, .principle:hover::after { transform: scaleX(1); }
+.usecase .num { transition: transform .4s ease, color .3s ease; }
+.usecase:hover .num { transform: translateY(-2px) scale(1.08); }
+
+/* ---------- Use Cases marquee (auto slider) ---------- */
+.uc-marquee {
+  position: relative;
+  margin: 0 -24px;
+  padding: 8px 0 28px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+@media (min-width: 768px) { .uc-marquee { margin: 0 -40px; } }
+.uc-track {
+  display: flex; gap: 24px; width: max-content;
+will-change: transform;
+}
+.uc-marquee.is-paused .uc-track { /* paused via JS */ }
+.uc-card {
+  flex: 0 0 340px;
+  background: #f2f2f2;
+  border:1px solid #d8d5c7;
+  padding: 32px 28px;
+  transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s ease, border-color .3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.uc-card::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(420px 220px at var(--mx,50%) var(--my,0%), rgba(184,140,46,.10), transparent 60%);
+  opacity: 0; transition: opacity .4s ease; pointer-events: none;
+}
+.uc-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 30px 60px -30px rgba(20,25,40,.4); }
+.uc-card:hover::before { opacity: 1; }
+.uc-card .num { font-family: var(--display); font-size: 1.4rem; font-weight: 700; color: var(--gold); display: block; margin-bottom: 14px; }
+.uc-card h3 {     font-size: 17px;
+    font-weight: 600; margin-bottom: 18px; }
+.uc-card dl { margin: 0; display: grid; gap: 12px; }
+.uc-card dt { font-size: 15px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+.uc-card dd { margin: 0; font-size:13px; color: var(--muted); line-height: 1.5; }
+@keyframes ucScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+
+/* Use Cases nav buttons */
+.uc-wrap { position: relative; }
+.uc-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 5;
+  width: 48px; height: 48px; border-radius: 999px;
+  background: var(--bg); border: 1px solid var(--border);
+  color: var(--text);
+  display: grid; place-items: center; cursor: pointer;
+  transition: background .25s, border-color .25s, color .25s, transform .25s, box-shadow .3s;
+  box-shadow: 0 10px 30px -15px rgba(20,25,40,.35);
+}
+.uc-nav:hover { background: var(--gold); color: #fff; border-color: var(--gold); transform: translateY(-50%) scale(1.06); }
+.uc-nav:active { transform: translateY(-50%) scale(.94); }
+.uc-nav.prev { left: 6px; }
+.uc-nav.next { right: 6px; }
+@media (min-width: 768px) {
+  .uc-nav.prev { left: 14px; }
+  .uc-nav.next { right: 14px; }
+}
+.uc-nav svg { width: 18px; height: 18px; }
+
+/* ---------- Workflow Marquee (auto slider) ---------- */
+.flow-marquee {
+  position: relative;
+  margin: 0 -24px;
+  padding: 8px 0 12px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+@media (min-width: 768px) { .flow-marquee { margin: 0 -40px; } }
+.flow-track {
+  display: flex; align-items: stretch; gap: 0;
+  width: max-content;
+ 
+}
+
+.flow-card {
+  flex: 0 0 300px;
+  background: #f2f2f2;
+  border: 1px solid var(--border);
+  padding: 28px 26px;
+  margin-right: 0;
+  position: relative;
+  transition: transform .45s cubic-bezier(.2,.7,.2,1), border-color .3s ease, box-shadow .4s ease;
+}
+.flow-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 28px 60px -30px rgba(20,25,40,.4); z-index: 2; }
+.flow-card .head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.flow-card .head span{ font-size:14px;}
+.flow-card .big-num { font-family: var(--display); font-weight: 900; font-size: 2.2rem; color: var(--gold); line-height: 1; letter-spacing: -0.03em; }
+.flow-card .tag { font-size: 11px;  text-transform: uppercase; color:#000000; font-weight: 600; }
+.flow-card h3 {     font-weight: 500;
+    font-size: 16px; margin-bottom: 10px; letter-spacing: .04em; }
+.flow-card p {     font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;}
+.flow-arrow-i {
+  flex: 0 0 56px; display: grid; place-items: center; color: var(--gold);
+}
+
+
+
+/* ---------- Workflow Nav Buttons ---------- */
+
+.flow-wrap {
+  position: relative;
+}
+
+.flow-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+
+  transition:
+    background .25s,
+    border-color .25s,
+    color .25s,
+    transform .25s,
+    box-shadow .3s;
+
+  box-shadow: 0 10px 30px -15px rgba(20,25,40,.35);
+}
+
+.flow-nav:hover {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.flow-nav:active {
+  transform: translateY(-50%) scale(.94);
+}
+
+.flow-nav.prev {
+  left: 6px;
+}
+
+.flow-nav.next {
+  right: 6px;
+}
+
+@media (min-width: 768px) {
+  .flow-nav.prev {
+    left: 14px;
+  }
+
+  .flow-nav.next {
+    right: 14px;
+  }
+}
+
+.flow-nav svg {
+  width: 18px;
+  height: 18px;
+}
+/* ---------- Drag cards extra ---------- */
+.drag { padding: 18px 18px 22px; transition: transform .4s, border-color .3s, background .3s; }
+.drag:hover { background: var(--card); border-top-color: var(--gold); transform: translateY(-4px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .uc-track { animation: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .flow-progress.run span { animation: none !important; }
+}
+
+/* ===============================
+   TRUSTED BY FINANCE TEAMS
+================================= */
+
+.trusted-section{
+    background:#fff;
+    padding:90px 0;
+}
+
+.trusted-section .container{
+    max-width:1280px;
+    margin:auto;
+    padding:0 24px;
+}
+
+.section-header{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.eyebrow{
+    display:inline-block;
+    color:#C89B3C;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+.section-header h2{
+    color:#151820;
+    font-size:42px;
+    font-weight:700;
+    line-height:1.2;
+    margin:0;
+}
+
+.trusted-logos{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:32px;
+    flex-wrap:wrap;
+}
+
+.logo-card{
+       width: 283px;
+    height: 160px;
+    background:#fff;
+    border:1px solid #ECECEC;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+    transition:.35s ease;
+}
+
+.logo-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
+}
+
+.logo-card img{
+    max-width:100%;
+    max-height:90px;
+    object-fit:contain;
+    transition:.35s;
+}
+
+.logo-card:hover img{
+    transform:scale(1.05);
+}
+
+/* Tablet */
+
+@media(max-width:992px){
+
+    .trusted-logos{
+        gap:24px;
+    }
+
+    .logo-card{
+        width:320px;
+    }
+
+    .section-header h2{
+        font-size:34px;
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .trusted-section{
+        padding:70px 0;
+    }
+
+    .trusted-logos{
+        flex-direction:column;
+    }
+
+    .logo-card{
+        width:100%;
+        max-width:360px;
+        height:160px;
+    }
+
+    .section-header h2{
+        font-size:28px;
+    }
+
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand-logo {
+  height: 40px; /* Adjust as needed */
+  width: auto;
+  display: block;
+}
+
+.team-section{
+
+    background:#f2f2f2;
+    padding:70px 20px;
+}
+
+.team-title{
+
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.team-title h2{
+
+    font-size:33px;
+    font-weight:700;
+    color:#183455;
+    margin:0;
+}
+
+.team-card{
+
+    max-width:1350px;
+    margin:0 auto 45px;
+
+    display:flex;
+    align-items:center;
+    gap:40px;
+
+    background:#fff;
+
+    border:1px solid #dbe5ef;
+    border-radius:18px;
+
+    padding:42px;
+
+    box-shadow:0 8px 24px rgba(0,0,0,.05);
+
+    transition:.35s;
+}
+
+.team-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.09);
+}
+
+.team-card.reverse{
+
+    flex-direction:row;
+}
+
+.team-image{
+
+    width:170px;
+    flex-shrink:0;
+}
+
+.team-image img{
+
+    width:100%;
+    aspect-ratio:1;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+    display:block;
+}
+
+.team-content{
+
+    flex:1;
+}
+
+.team-content h3{
+
+    margin:0;
+
+    font-size:22px;
+    font-weight:600;
+
+    color:#183455;
+}
+
+.team-content h4{
+
+    margin:8px 0 16px;
+
+    color:#7a8798;
+
+    font-size:16px;
+
+    font-weight:500;
+}
+
+.team-content p{
+
+    margin:0;
+
+    line-height:1.3;
+
+    font-size:16px;
+
+    color:#5d6877;
+}
+
+.team-content a{
+
+    margin-top:12px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    text-decoration:none;
+
+    color:#c89227;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.team-content a svg{
+
+    width:20px;
+
+    height:20px;
+}
+
+.team-content a:hover{
+
+    color:#183455;
+}
+
+@media(max-width:992px){
+
+.team-card{
+
+flex-direction:column;
+
+text-align:center;
+
+padding:35px 25px;
+}
+
+.team-card.reverse{
+
+flex-direction:column;
+}
+
+.team-image{
+
+width:170px;
+order:-1;
+margin-bottom:24px;
+}
+
+.team-title h2{
+
+font-size:30px;
+}
+
+.team-content h3{
+
+font-size:32px;
+}
+
+.team-content h4{
+
+font-size:20px;
+}
+
+.team-content p{
+
+font-size:18px;
+}
+
+}
+
+@media(max-width:576px){
+
+.team-section{
+
+padding:50px 15px;
+}
+
+.team-title h2{
+
+font-size:30px;
+}
+
+.team-card{
+
+padding:25px 20px;
+
+border-radius:14px;
+}
+
+.team-image{
+
+width:130px;
+order:-1;
+margin-bottom:20px;
+}
+
+.team-content h3{
+
+font-size:26px;
+}
+
+.team-content h4{
+
+font-size:17px;
+}
+
+.team-content p{
+
+font-size:15px;
+
+line-height:1.7;
+}
+
+.team-content a{
+
+font-size:16px;
+}
+
+.team-content a svg{
+
+width:20px;
+height:20px;
+}
+
+}
+    </style>
+     <link rel="stylesheet" href="base.css">
+</head>
+<body>
+    
+    <header class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="brand">
+      <img src="images/logo_hero.png" alt="Produc8ive" class="brand-logo">
+    </a>
+    <a href="#contact" class="btn btn-outline btn-sm">Map a Workflow</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+ 
+  <div class="container hero-grid">
+    <div class="hero-copy fade-in">
+      <div class="hero-eyebrow">For bookkeeping, CFO support, finance ops, AP/AR & documentation teams</div>
+      <h1 class="display">AI Workflows That Eliminate Repetitive Finance Operations</h1>
+      <p class="lead hero-lead">Automate invoice processing, reconciliations, approvals, compliance and audit workflows. Reduce manual effort, eliminate bottlenecks, strengthen financial controls and accelerate month-end close—all without replacing your ERP.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-outline">Map One Finance Workflow</a>
+        <span class="micro">Start with one workflow. No migration.</span>
+      </div>
+      <p class="trust hero-trust">Built for bookkeeping Operations · AP queues · month-end close · investor reporting · documentation checks · audit-ready review packs</p>
+    </div>
+
+    <!-- Right-side ops command desk -->
+    
+    <div class="shell">
+
+            <!-- topbar -->
+            <div class="topbar">
+              <span class="ttl">Finance Ops · Today</span>
+              <div class="livebadge"><div class="ldot"></div>Demo</div>
+            </div>
+
+            <!-- tabs -->
+            <div class="tabs">
+              <button class="tab on" onclick="setTab(this,'feed')">Activity</button>
+              <button class="tab" onclick="setTab(this,'packets')">Packets</button>
+              <button class="tab" onclick="setTab(this,'agents')">Agents</button>
+            </div>
+
+            <!-- ═══ ACTIVITY ═══ -->
+            <div id="tab-feed">
+              <div class="tb">
+                <div class="rhdr">
+                  <span class="rlbl">Agent activity — today</span>
+                  <span class="clock" id="clock">—</span>
+                </div>
+                <div class="alist" id="alist"></div>
+                <div class="log">
+                  <div class="logline">
+                    <span class="lts" id="lts">—</span><span id="ltxt">Initialising agents…</span><span class="lcur"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="srow">
+                <div class="scard"><div class="sval" id="s1">0<em>%</em></div><div class="slbl">Auto-handled</div></div>
+                <div class="scard"><div class="sval" id="s2">0<em>h</em></div><div class="slbl">Hrs saved</div></div>
+                <div class="scard"><div class="sval" id="s3">0</div><div class="slbl">Running</div></div>
+              </div>
+              <div class="wfoot">
+                <span class="ftag">Review-ready</span>
+                <span class="fcnt">6 / 9 PACKETS</span>
+              </div>
+            </div>
+
+            <!-- ═══ PACKETS ═══ -->
+            <div id="tab-packets" style="display:none">
+              <div class="tb">
+                <div class="rhdr">
+                  <span class="rlbl">Open packets — today</span>
+                  <span class="pill p-rev" style="margin:0">5 active</span>
+                </div>
+                <div class="pkt-list" id="pktlist"></div>
+              </div>
+              <div class="wfoot">
+                <span class="ftag">3 review-ready · 2 in progress</span>
+                <span class="fcnt">5 / 9 PACKETS</span>
+              </div>
+            </div>
+
+            <!-- ═══ AGENTS ═══ -->
+            <div id="tab-agents" style="display:none">
+              <div class="tb">
+                <div class="rhdr">
+                  <span class="rlbl">Active agents</span>
+                  <span class="pill p-run" style="margin:0">6 live</span>
+                </div>
+                <div class="ag-grid" id="aggrid"></div>
+              </div>
+              <div class="wfoot">
+                <span class="ftag">All agents healthy</span>
+                <span class="fcnt" id="tpslbl">↑ 3 TASKS/MIN</span>
+              </div>
+            </div>
+
+    </div>
+
+  </div>
+
+
+    
+  <div class="stats-bar" id="statsBar">
+
+    <div class="stat" id="s0">
+      <div class="stat-icon ico-gold" id="si0"><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 64 64"
+     width="64"
+     height="64"
+     fill="none">
+
+    <!-- Top Button -->
+    <rect x="28" y="2" width="8" height="8" rx="2" fill="#B8952A"/>
+
+    <!-- Crown -->
+    <path d="M40 8 L48 16" stroke="#B8952A" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Outer Circle -->
+    <circle
+        cx="32"
+        cy="36"
+        r="24"
+        stroke="#B8952A"
+        stroke-width="4"/>
+
+    <!-- Hour Marks -->
+    <g stroke="#B8952A" stroke-width="2.5" stroke-linecap="round">
+        <line x1="32" y1="17" x2="32" y2="21"/>
+        <line x1="51" y1="36" x2="47" y2="36"/>
+        <line x1="32" y1="55" x2="32" y2="51"/>
+        <line x1="13" y1="36" x2="17" y2="36"/>
+    </g>
+
+    <!-- Minute Hand -->
+    <line
+        x1="32"
+        y1="36"
+        x2="32"
+        y2="22"
+        stroke="#B8952A"
+        stroke-width="4"
+        stroke-linecap="round"/>
+
+    <!-- Second Hand -->
+    <line
+        x1="32"
+        y1="36"
+        x2="43"
+        y2="43"
+        stroke="#B8952A"
+        stroke-width="3"
+        stroke-linecap="round"/>
+
+    <!-- Center Dot -->
+    <circle
+        cx="32"
+        cy="36"
+        r="2.8"
+        fill="#B8952A"/>
+
+</svg></div>
+      <div class="stat-number" id="sn0"><span class="val">10</span><span class="suffix">+ hrs</span></div>
+      <div class="stat-label" id="sl0">saved per team per week</div>
+    </div>
+
+    <div class="stat" id="s1">
+      <div class="stat-icon ico-green" id="si1"><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 64 64"
+     width="64"
+     height="64"
+     fill="none">
+
+    <!-- Box -->
+    <path
+        d="M12 20L32 10L52 20V44L32 54L12 44V20Z"
+        stroke="#B8952A"
+        stroke-width="3"
+        stroke-linejoin="round"/>
+
+    <!-- Top Flaps -->
+    <path
+        d="M12 20L32 30L52 20"
+        stroke="#B8952A"
+        stroke-width="3"
+        stroke-linejoin="round"/>
+
+    <!-- Center Fold -->
+    <path
+        d="M32 30V54"
+        stroke="#B8952A"
+        stroke-width="3"
+        stroke-linecap="round"/>
+
+    <!-- Top Edge -->
+    <path
+        d="M32 10V30"
+        stroke="#B8952A"
+        stroke-width="3"
+        stroke-linecap="round"/>
+
+</svg></div>
+      <div class="stat-number" id="sn1"><span class="val">8</span><span class="suffix">X</span></div>
+      
+      <div class="stat-label" id="sl1">faster processing</div>
+    </div>
+
+    <div class="stat" id="s2">
+      <div class="stat-icon ico-blue" id="si2"><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 64 64"
+     width="64"
+     height="64"
+     fill="none">
+
+    <!-- Antenna -->
+    <line x1="32" y1="6" x2="32" y2="14"
+          stroke="#B8952A"
+          stroke-width="3"
+          stroke-linecap="round"/>
+
+    <circle cx="32" cy="4"
+            r="2.5"
+            stroke="#B8952A"
+            stroke-width="3"/>
+
+    <!-- Head -->
+    <rect x="12"
+          y="14"
+          width="40"
+          height="34"
+          rx="8"
+          stroke="#B8952A"
+          stroke-width="3"/>
+
+    <!-- Ears -->
+    <line x1="12" y1="28" x2="8" y2="28"
+          stroke="#B8952A"
+          stroke-width="3"
+          stroke-linecap="round"/>
+
+    <line x1="52" y1="28" x2="56" y2="28"
+          stroke="#B8952A"
+          stroke-width="3"
+          stroke-linecap="round"/>
+
+    <!-- Eyes -->
+    <circle cx="24" cy="28"
+            r="2.5"
+            fill="#B8952A"/>
+
+    <circle cx="40" cy="28"
+            r="2.5"
+            fill="#B8952A"/>
+
+    <!-- Mouth -->
+    <line x1="26" y1="38" x2="38" y2="38"
+          stroke="#B8952A"
+          stroke-width="3"
+          stroke-linecap="round"/>
+
+    <!-- Neck -->
+    <line x1="28" y1="48" x2="28" y2="54"
+          stroke="#B8952A"
+          stroke-width="3"
+          stroke-linecap="round"/>
+
+    <line x1="36" y1="48" x2="36" y2="54"
+          stroke="#B8952A"
+          stroke-width="3"
+          stroke-linecap="round"/>
+
+    <!-- Base -->
+    <rect x="20"
+          y="54"
+          width="24"
+          height="6"
+          rx="2"
+          stroke="#B8952A"
+          stroke-width="3"/>
+
+</svg></div>
+      <div class="stat-number" id="sn2"><span class="val">95%</span><span class="suffix">+</span></div>
+      <div class="stat-label" id="sl2">data processing accuracy</div>
+    </div>
+
+    <div class="stat" id="s3">
+      <div class="stat-icon ico-red" id="si3"><svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 64 64"
+     width="64"
+     height="64"
+     fill="none">
+
+    <!-- Document -->
+    <path
+        d="M20 8H36L48 20V52C48 54.2 46.2 56 44 56H20C17.8 56 16 54.2 16 52V12C16 9.8 17.8 8 20 8Z"
+        stroke="#B8952A"
+        stroke-width="3"
+        stroke-linejoin="round"/>
+
+    <!-- Folded Corner -->
+    <path
+        d="M36 8V20H48"
+        stroke="#B8952A"
+        stroke-width="3"
+        stroke-linejoin="round"/>
+
+    <!-- Text Lines -->
+    <line
+        x1="24"
+        y1="28"
+        x2="40"
+        y2="28"
+        stroke="#B8952A"
+        stroke-width="3"
+        stroke-linecap="round"/>
+
+    <line
+        x1="24"
+        y1="36"
+        x2="40"
+        y2="36"
+        stroke="#B8952A"
+        stroke-width="3"
+        stroke-linecap="round"/>
+
+    <line
+        x1="24"
+        y1="44"
+        x2="36"
+        y2="44"
+        stroke="#B8952A"
+        stroke-width="3"
+        stroke-linecap="round"/>
+
+</svg></div>
+      <div class="stat-number" id="sn3"><span class="prefix"></span><span class="val">60%</span><span class="suffix"></span></div>
+      <div class="stat-label" id="sl3"> lower processing cost
+</div>
+    </div>
+
+   </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section bg-muted">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">The Problem</div>
+      <h2 style="max-width: 35rem;"class="display-md" >Manual Finance Processes Are Slowing Down Your Business</h2>
+    </div>
+    <p class="problem-lead-muted "  >Disconnected systems and manual finance processes create bottlenecks, increase reconciliation effort and compliance risk, delay financial close, and drive up operating costs as transaction volumes grow. </p>
+<div class="compare">
+  <div class="compare-col bad">
+    <div class="compare-head">
+      <span class="compare-badge bad">✕</span>
+      <div>
+        <div class="eyebrow compare-eyebrow">MANUAL FINANCE TODAY</div>
+        <h3>Expensive · Slow · Risky</h3>
+      </div>
+    </div>
+    <ul class="compare-list bad">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 3h9l3 3v15H6z"/>
+          <path d="M15 3v3h3"/>
+          <line x1="9" y1="10" x2="15" y2="10"/>
+          <line x1="9" y1="13" x2="15" y2="13"/>
+          <line x1="9" y1="16" x2="12" y2="16"/>
+          <path d="M16.5 17.5c.6-.6 1.6-.6 2.1 0 .6.6.6 1.6 0 2.1l-2.6 2.6-2.6-.5.5-2.6z"/>
+        </svg>
+        High Manual Data Entry
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M9 8l3 4 3-2"/>
+        </svg>
+        Delayed Approvals
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3l7 3v5c0 4.5-2.9 7.7-7 9-4.1-1.3-7-4.5-7-9V6z"/>
+          <line x1="12" y1="8" x2="12" y2="13"/>
+          <circle cx="12" cy="16.3" r=".6" fill="currentColor" stroke="none"/>
+        </svg>
+        Compliance &amp; Audit Risk
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="14" height="15" rx="1.5"/>
+          <line x1="3" y1="9" x2="17" y2="9"/>
+          <line x1="7" y1="2.5" x2="7" y2="5.5"/>
+          <line x1="13" y1="2.5" x2="13" y2="5.5"/>
+          <line x1="6" y1="12" x2="9" y2="12"/>
+          <line x1="6" y1="15" x2="9" y2="15"/>
+          <circle cx="17" cy="17" r="4.2"/>
+          <path d="M17 15.2V17l1.1 1.1"/>
+        </svg>
+        Month-end Close Delays
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a9 9 0 1 0 9 9h-9z"/>
+          <path d="M12 3a9 9 0 0 1 9 9h-9z" opacity=".5"/>
+          <line x1="15" y1="15" x2="19.5" y2="19.5"/>
+          <circle cx="16" cy="16" r="3.2"/>
+        </svg>
+        Limited Visibility
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="8" cy="8" r="3"/>
+          <path d="M3 20c0-3 2.2-5.5 5-5.5s5 2.5 5 5.5"/>
+          <circle cx="18" cy="7" r="3"/>
+          <path d="M17.2 10.5c-.4.6-.6 1.3-.6 2"/>
+        </svg>
+        Reactive Decision Making
+      </li>
+    </ul>
+  </div>
+
+  <div class="compare-col good">
+    <div class="compare-head">
+      <span class="compare-badge good">✓</span>
+      <div>
+        <div class="eyebrow gold compare-eyebrow">FINANCE WITH PRODUC8IVE</div>
+        <h3>Automated · Controlled · Accelerated</h3>
+      </div>
+    </div>
+    <ul class="compare-list good">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 3h9l3 3v15H6z"/>
+          <path d="M15 3v3h3"/>
+          <line x1="12" y1="10" x2="12" y2="16"/>
+          <polyline points="9.5 13.5 12 16 14.5 13.5"/>
+        </svg>
+        Automated Data Capture
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="6" cy="7" r="2.3"/>
+          <circle cx="18" cy="7" r="2.3"/>
+          <path d="M9.5 9.5l5-1.5"/>
+          <path d="M3 18c0-2.8 1.8-4.5 3.5-4.5"/>
+          <circle cx="18" cy="17" r="4"/>
+          <polyline points="16.2 17 17.4 18.2 19.9 15.7"/>
+        </svg>
+        Intelligent Workflow Automation
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3l7 3v5c0 4.5-2.9 7.7-7 9-4.1-1.3-7-4.5-7-9V6z"/>
+          <polyline points="8.7 12 10.8 14 15.3 9.5"/>
+        </svg>
+        Built-in Controls &amp; Audit Trail
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="21" x2="5" y2="14"/>
+          <line x1="11" y1="21" x2="11" y2="10"/>
+          <line x1="17" y1="21" x2="17" y2="6"/>
+          <polyline points="13 6 17 2 21 6"/>
+          <line x1="17" y1="2" x2="17" y2="8"/>
+        </svg>
+        Accelerated Financial Close
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="14" rx="1.5"/>
+          <path d="M8 8v6"/>
+          <path d="M8 8a3.5 3.5 0 1 1 0 7"/>
+          <line x1="13" y1="14" x2="13" y2="17"/>
+          <line x1="16" y1="12" x2="16" y2="17"/>
+          <line x1="19" y1="9.5" x2="19" y2="17"/>
+        </svg>
+        AI-Powered Dashboards
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18h6"/>
+          <path d="M10 21h4"/>
+          <path d="M12 3a6 6 0 0 0-3.5 10.9c.6.4.9 1 .9 1.6v.5h5.2v-.5c0-.6.3-1.2.9-1.6A6 6 0 0 0 12 3z"/>
+          <line x1="12" y1="1" x2="12" y2="2.3"/>
+          <line x1="19" y1="4" x2="18.2" y2="4.8"/>
+          <line x1="5" y1="4" x2="5.8" y2="4.8"/>
+          <line x1="3" y1="10" x2="4.3" y2="10"/>
+          <line x1="21" y1="10" x2="19.7" y2="10"/>
+        </svg>
+        Actionable AI Insights
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="workflow-section">
+        <div class="process-grid">
+            
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">01</span>
+                    <span class="step-title">Fragmented Finance Inputs</span>
+                </div>
+                
+                <div class="graphic-viewport">
+                    <svg viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M40 50 L100 85 M200 50 L140 85 M30 110 L90 110 M210 110 L150 110 M40 170 L100 135 M200 170 L140 135" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 4"/>
+                        
+                        <rect x="90" y="85" width="60" height="42" rx="4" fill="#0d1e33"/>
+                        <path d="M90 87 L120 105 L150 87" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="146" cy="84" r="11" fill="#c8933e"/>
+                        <text x="146" y="87" fill="white" font-size="8" font-weight="bold" text-anchor="middle">99+</text>
+
+                        <g transform="translate(25, 25)">
+                            <rect width="24" height="30" rx="3" fill="white" stroke="#0d1e33" stroke-width="1.5"/>
+                            <text x="12" y="20" fill="#0d1e33" font-size="14" font-weight="bold" text-anchor="middle">$</text>
+                        </g>
+                        <g transform="translate(190, 20)">
+                            <rect width="24" height="32" rx="2" fill="white" stroke="#0d1e33" stroke-width="1.5"/>
+                            <path d="M4 28 L8 25 L12 28 L16 25 L20 28" stroke="#0d1e33" stroke-width="1.5" fill="none"/>
+                            <line x1="5" y1="8" x2="19" y2="8" stroke="#0d1e33" stroke-width="1.5"/>
+                            <line x1="5" y1="14" x2="15" y2="14" stroke="#0d1e33" stroke-width="1.5"/>
+                        </g>
+                        <g transform="translate(15, 95)">
+                            <rect width="28" height="20" rx="3" fill="white" stroke="#0d1e33" stroke-width="1.5"/>
+                            <circle cx="8" cy="10" r="3" stroke="#0d1e33" stroke-width="1.5"/>
+                            <line x1="15" y1="8" x2="23" y2="8" stroke="#0d1e33" stroke-width="1.5"/>
+                            <line x1="15" y1="12" x2="21" y2="12" stroke="#0d1e33" stroke-width="1.5"/>
+                        </g>
+                        <g transform="translate(195, 92)">
+                            <rect width="30" height="34" rx="3" fill="white" stroke="#0d1e33" stroke-width="1.5"/>
+                            <text x="15" y="22" fill="#0d1e33" font-size="9" font-weight="800" text-anchor="middle">KYC</text>
+                        </g>
+                        <g transform="translate(25, 155)">
+                            <rect width="26" height="18" rx="2" fill="white" stroke="#0d1e33" stroke-width="1.5"/>
+                            <path d="M0 0 L13 10 L26 0" transform="translate(0,2)" stroke="#0d1e33" stroke-width="1.5" fill="none"/>
+                        </g>
+                        <g transform="translate(195, 152)">
+                            <rect width="24" height="30" rx="3" fill="white" stroke="#0d1e33" stroke-width="1.5"/>
+                            <circle cx="7" cy="22" r="1.5" fill="#0d1e33"/>
+                            <circle cx="12" cy="22" r="1.5" fill="#0d1e33"/>
+                            <circle cx="17" cy="22" r="1.5" fill="#0d1e33"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="flow-arrow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">02</span>
+                    <span class="step-title">Manual Operational Work</span>
+                </div>
+                
+                <div class="graphic-viewport">
+                    <svg viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M40 100 A 85 85 0 0 1 200 100" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+                        <g transform="translate(85, 80)">
+                            <circle cx="35" cy="20" r="14" fill="none" stroke="#0d1e33" stroke-width="2.5"/>
+                            <path d="M10 52 C10 40 20 36 35 36 C50 36 60 40 60 52" fill="#0d1e33"/>
+                            <path d="M5 52 L65 52 L60 80 L10 80 Z" fill="white" stroke="#0d1e33" stroke-width="2"/>
+                            <circle cx="35" cy="66" r="3" stroke="#0d1e33" stroke-width="1.5"/>
+                            <line x1="0" y1="82" x2="70" y2="82" stroke="#0d1e33" stroke-width="2"/>
+                        </g>
+
+                        <g transform="translate(180, 130)">
+                            <rect x="0" y="0" width="30" height="6" rx="1" fill="white" stroke="#0d1e33" stroke-width="1.5"/>
+                            <rect x="2" y="6" width="30" height="6" rx="1" fill="white" stroke="#0d1e33" stroke-width="1.5"/>
+                            <rect x="0" y="12" width="30" height="6" rx="1" fill="white" stroke="#0d1e33" stroke-width="1.5"/>
+                            <rect x="4" y="18" width="30" height="6" rx="1" fill="white" stroke="#0d1e33" stroke-width="1.5"/>
+                            <rect x="1" y="24" width="30" height="6" rx="1" fill="white" stroke="#0d1e33" stroke-width="1.5"/>
+                        </g>
+
+                        <circle cx="35" cy="110" r="14" fill="white" stroke="#cbd5e1" stroke-width="1.5"/>
+                        <path d="M27 106 L31 106 L33 109 L43 109 L43 116 L27 116 Z" fill="none" stroke="#c8933e" stroke-width="1.5"/>
+                        
+                        <circle cx="70" cy="55" r="14" fill="white" stroke="#cbd5e1" stroke-width="1.5"/>
+                        <rect x="63" y="48" width="14" height="14" rx="1" stroke="#c8933e" stroke-width="1.5"/>
+                        <line x1="70" y1="48" x2="70" y2="62" stroke="#c8933e" stroke-width="1"/>
+                        <line x1="63" y1="55" x2="77" y2="55" stroke="#c8933e" stroke-width="1"/>
+
+                        <circle cx="170" cy="55" r="14" fill="white" stroke="#cbd5e1" stroke-width="1.5"/>
+                        <rect x="167" y="45" width="6" height="4" rx="0.5" stroke="#c8933e" stroke-width="1.2"/>
+                        <rect x="160" y="55" width="6" height="4" rx="0.5" stroke="#c8933e" stroke-width="1.2"/>
+                        <rect x="174" y="55" width="6" height="4" rx="0.5" stroke="#c8933e" stroke-width="1.2"/>
+                        <path d="M170 49 L170 52 M163 52 L177 52 M163 52 L163 55 M177 52 L177 55" stroke="#c8933e" stroke-width="1"/>
+
+                        <circle cx="205" cy="110" r="14" fill="white" stroke="#cbd5e1" stroke-width="1.5"/>
+                        <circle cx="202" cy="107" r="4" stroke="#c8933e" stroke-width="1.5"/>
+                        <line x1="205" y1="110" x2="211" y2="116" stroke="#c8933e" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <div class="flow-arrow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-number">03</span>
+                    <span class="step-title">Delayed Financial Close</span>
+                </div>
+                
+                <div class="graphic-viewport">
+                    <svg viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(30, 20)">
+                            <rect x="0" y="0" width="130" height="110" rx="8" fill="white" stroke="#0d1e33" stroke-width="2"/>
+                            <path d="M0 25 L130 25" stroke="#0d1e33" stroke-width="2"/>
+                            
+                            <rect x="20" y="-8" width="8" height="14" rx="2" fill="#0d1e33"/>
+                            <rect x="102" y="-8" width="8" height="14" rx="2" fill="#0d1e33"/>
+
+                            <rect x="15" y="40" width="14" height="12" rx="2" fill="#e2e8f0"/>
+                            <rect x="37" y="40" width="14" height="12" rx="2" fill="#e2e8f0"/>
+                            <rect x="59" y="40" width="14" height="12" rx="2" fill="#e2e8f0"/>
+                            <rect x="81" y="40" width="14" height="12" rx="2" fill="#e2e8f0"/>
+                            <rect x="103" y="40" width="14" height="12" rx="2" fill="#e2e8f0"/>
+                            <rect x="15" y="60" width="14" height="12" rx="2" fill="#e2e8f0"/>
+                            <rect x="37" y="60" width="14" height="12" rx="2" fill="#e2e8f0"/>
+                            <rect x="59" y="60" width="14" height="12" rx="2" fill="#e2e8f0"/>
+                            <rect x="81" y="60" width="14" height="12" rx="2" fill="#c8933e" fill-opacity="0.6"/>
+                            <rect x="103" y="60" width="14" height="12" rx="2" fill="#e2e8f0"/>
+                            <rect x="15" y="80" width="14" height="12" rx="2" fill="#e2e8f0"/>
+                            <rect x="37" y="80" width="14" height="12" rx="2" fill="#c8933e" fill-opacity="0.6"/>
+                            <rect x="59" y="80" width="14" height="12" rx="2" fill="#e2e8f0"/>
+                            <rect x="81" y="80" width="14" height="12" rx="2" fill="#e2e8f0"/>
+                            <rect x="103" y="80" width="14" height="12" rx="2" fill="#e2e8f0"/>
+                        </g>
+
+                        <g transform="translate(150, 45)">
+                            <circle cx="22" cy="22" r="22" fill="white" stroke="#0d1e33" stroke-width="1.5"/>
+                            <path d="M14 12 L30 12 L24 22 L30 32 L14 32 L20 22 Z" fill="none" stroke="#c8933e" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M17 15 L27 15 L22 22 Z" fill="#c8933e"/>
+                        </g>
+
+                        <g transform="translate(115, 110)">
+                            <rect x="0" y="0" width="105" height="60" rx="6" fill="white" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <rect x="12" y="24" width="8" height="26" fill="#94a3b8" rx="1"/>
+                            <rect x="28" y="16" width="8" height="34" fill="#94a3b8" rx="1"/>
+                            <rect x="44" y="28" width="8" height="22" fill="#94a3b8" rx="1"/>
+                            <rect x="60" y="34" width="8" height="16" fill="#c8933e" rx="1"/>
+                            <rect x="76" y="42" width="8" height="8" fill="#c8933e" rx="1"/>
+                            <path d="M15 12 L50 22 L85 40" stroke="#c8933e" stroke-width="2" stroke-dasharray="3 3" fill="none"/>
+                            <path d="M80 40 L86 41 L84 35" stroke="#c8933e" stroke-width="2" fill="none"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="drag-banner">
+            <div class="alert-icon-circle">
+                <span>!</span>
+            </div>
+            <p class="banner-text">
+                <span class="text-navy">That is not expert finance work.</span>
+                <span class="text-gold">That is operational drag.</span>
+            </p>
+        </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- THE SHIFT -->
+<section class="section shift">
+  <div class="container">
+    <div class="eyebrow gold">The Shift</div>
+    <blockquote class="shift-quote" >
+      "Finance Should Focus on Decisions.  <span class="gold">Not Data Preparation."</span>
+    </blockquote>
+    <div class="shift-grid"style="border-top: 1px solid #000000; padding-top: 2rem">
+      <p class="eyebrow muted">The modern finance team needs a system that can —</p>
+      <ul class="check-grid">
+        <li>Capture finance data automatically</li>
+        <li>Validate documents and transactions</li>
+        <li>Identify exceptions before review</li>
+        <li>Prepare review-ready workpapers</li>
+        <li>Coordinate approvals and follow-ups</li>
+        <li>Maintain complete audit visibility</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section class="why-section">
+  <p class="why-title">WHY PRODUC8IVE</p>
+  <div class="why-grid">
+
+    <div class="why-item">
+      <span class="why-icon">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="4"/>
+          <circle cx="20" cy="8" r="3.5"/>
+          <circle cx="9" cy="26" r="3.5"/>
+          <circle cx="31" cy="26" r="3.5"/>
+          <line x1="20" y1="11.5" x2="20" y2="16.5"/>
+          <line x1="17" y1="22.5" x2="11.5" y2="24"/>
+          <line x1="23" y1="22.5" x2="28.5" y2="24"/>
+        </svg>
+      </span>
+      <div class="why-text">
+        <h3>Multi-Agent Architecture</h3>
+        <p>Specialised AI agents working together across your finance workflows.</p>
+      </div>
+    </div>
+
+    <div class="why-item">
+      <span class="why-icon">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="10" r="5.5"/>
+          <path d="M6 33c0-8 4.5-13 10-13s10 5 10 13"/>
+          <circle cx="29" cy="27" r="6" fill="#0f1740"/>
+          <path d="M26 27l2 2 4-4"/>
+        </svg>
+      </span>
+      <div class="why-text">
+        <h3>Human-in-the-Loop</h3>
+        <p>AI prepares and recommends. Your team reviews and approves.</p>
+      </div>
+    </div>
+
+    <div class="why-item">
+      <span class="why-icon">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <line x1="4" y1="10" x2="36" y2="10"/>
+          <circle cx="14" cy="10" r="3"/>
+          <line x1="4" y1="20" x2="36" y2="20"/>
+          <circle cx="26" cy="20" r="3"/>
+          <line x1="4" y1="30" x2="26" y2="30"/>
+          <circle cx="32" cy="30" r="3"/>
+        </svg>
+      </span>
+      <div class="why-text">
+        <h3>Custom Workflows</h3>
+        <p>Configured around your processes, controls and approval structure.</p>
+      </div>
+    </div>
+
+    <div class="why-item">
+      <span class="why-icon">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 6h11v9h-2a3 3 0 100 6h2v11H6V21H4a2.5 2.5 0 010-5h2z"/>
+          <path d="M17 6h11v9h2a2.5 2.5 0 010 5h-2v12H17"/>
+        </svg>
+      </span>
+      <div class="why-text">
+        <h3>ERP Agnostic</h3>
+        <p>Works with your existing systems. No ERP replacement required.</p>
+      </div>
+    </div>
+
+    <div class="why-item">
+      <span class="why-icon">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 5c-6 0-9 4-9 8 0 3 1.5 4.5 1.5 7 0 3-2 4-2 8 0 4 3 7 7 7"/>
+          <path d="M20 5c6 0 9 4 9 8 0 3-1.5 4.5-1.5 7 0 3 2 4 2 8 0 4-3 7-7 7"/>
+          <line x1="20" y1="5" x2="20" y2="35"/>
+          <path d="M14 16h4M22 16h4M15 23h3M22 23h3"/>
+        </svg>
+      </span>
+      <div class="why-text">
+        <h3>Proprietary AI Orchestration</h3>
+        <p>Our orchestration layer optimises models, rules, and human decisions.</p>
+      </div>
+    </div>
+
+    <div class="why-item">
+      <span class="why-icon">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <line x1="14" y1="4" x2="14" y2="14"/>
+          <line x1="26" y1="4" x2="26" y2="14"/>
+          <path d="M9 14h22v6a11 11 0 01-22 0z"/>
+          <line x1="20" y1="31" x2="20" y2="36"/>
+        </svg>
+      </span>
+      <div class="why-text">
+        <h3>Plug &amp; Play Integrations</h3>
+        <p>Connect email, ERPs, portals, banks and documents seamlessly.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Use Cases</div>
+      <h2 style="max-width: 35rem;" class="display-md">Real finance workflows Produc8ive can support</h2>
+    </div>
+  </div>
+   <div class="uc-wrap reveal">
+    <button class="uc-nav prev" id="uc-prev" aria-label="Previous use cases" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="uc-nav next" id="uc-next" aria-label="Next use cases" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  <div class="uc-marquee reveal" id="uc-marquee">
+    <div class="uc-track" id="uc-track"></div>
+  </div>
+</div>
+</section>
+
+ <!-- PRINCIPLES -->
+<!-- <section class="section bg-muted">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">The New Rule</div>
+      <h2 class="display-md">Don't automate finance judgment. Automate the mess around it.</h2>
+    </div>
+    <div class="principles">
+      <div class="principle"><span class="rule"></span><h3>Intake should be structured</h3><p>Documents should not live as random inbox attachments. They should enter a workflow.</p></div>
+      <div class="principle"><span class="rule"></span><h3>Gaps should surface early</h3><p>Missing files and unclear context should be caught before senior review starts.</p></div>
+      <div class="principle"><span class="rule"></span><h3>Drafts should speed up humans</h3><p>Produc8ive prepares summaries, checklists, reports and follow-ups. Your team still approves.</p></div>
+      <div class="principle"><span class="rule"></span><h3>Every action should be traceable</h3><p>Inputs, outputs, reviewers, decisions and handoffs need a visible audit trail.</p></div>
+    </div>
+  </div>
+</section>  -->
+
+<!-- MODULES -->
+<section class="section"  style="  background-color:#f2f2f2;">
+  <!-- {% comment %} <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">The Offer</div>
+      <h2 class="display-md">A finance brain for repeatable operations</h2>
+    </div>
+    <p class="problem-lead-muted">Not another chatbot. A finance operations layer that learns your SOPs, works across your systems and produces traceable outputs.</p>
+    <div class="modules">
+      <div class="module"><h3>Intake Assistants</h3><p>Turn messy documents and emails into structured packets.</p><ul><li>Bookkeeping Operations</li><li>Client onboarding</li><li>AP invoice intake</li><li>Documentation-heavy workflows</li></ul></div>
+      <div class="module"><h3>Review Assistants</h3><p>Flag gaps before the human review starts.</p><ul><li>Missing documents</li><li>Mismatch checks</li><li>Uncategorised transactions</li><li>Incomplete reports</li><li>Exception handling</li></ul></div>
+      <div class="module"><h3>Status Assistants</h3><p>Keep every open workflow moving.</p><ul><li>Month-end close</li><li>AP approvals</li><li>AR collections</li><li>Documentation cases</li><li>Client follow-ups</li></ul></div>
+      <div class="module"><h3>Reporting Assistants</h3><p>Prepare the first draft before senior review.</p><ul><li>Investor updates</li><li>CFO reporting</li><li>KPI summaries</li><li>Cash-flow commentary</li><li>Management packs</li></ul></div>
+    </div>
+  </div> {% endcomment %} -->
+ <div class="container">
+        
+        <header class="header-section">
+            <h1 class="header-title">A Finance Brain for <span>Repeatable Operations</span></h1>
+            <p class="header-subtitle">A finance operations layer that learns your SOPs, works across your systems and produces traceable outputs.</p>
+           
+        </header>
+
+        <main class="assistants-grid">
+            
+            <div class="assistant-card card-blue">
+                <div class="badge-icon badge-blue">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path><path d="M2 10h20"></path></svg>
+                </div>
+                <h2 class="card-title">Intake<br>Assistants</h2>
+             <div class="card-illustration">     
+              <svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M40 36 C 40 68, 92 68, 92 84 M76 36 C 76 68, 97 68, 97 84 M124 36 C 124 68, 103 68, 103 84 M160 36 C 160 68, 108 68, 108 84" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="3 3"/>
+                        
+                        <g transform="translate(28, 16)">
+                            <rect width="24" height="20" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+                            <path d="M2 4 L12 11 L22 4" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        <g transform="translate(64, 16)">
+                            <rect width="24" height="20" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+                            <text x="12" y="13" fill="#94a3b8" font-size="7" font-weight="800" text-anchor="middle">PDF</text>
+                        </g>
+                        <g transform="translate(112, 16)">
+                            <rect width="24" height="20" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+                            <text x="12" y="13" fill="#94a3b8" font-size="7" font-weight="800" text-anchor="middle">XLS</text>
+                        </g>
+                        <g transform="translate(148, 16)">
+                            <rect width="24" height="20" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+                            <path d="M6 6 h12 M6 10 h12 M6 14 h8" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"/>
+                        </g>
+
+                        <path d="M66 86 h68 v20 a5 5 0 01-5 5 H71 a5 5 0 01-5-5 Z" fill="#c8933e" fill-opacity="0.08"/>
+                        <path d="M62 86 h20 l3 6 h30 l3-6 h20 v26" rx="2" stroke="#c8933e" stroke-width="2" stroke-linejoin="round" fill="none"/>
+                        <rect x="78" y="72" width="44" height="26" rx="3" fill="#ffffff" stroke="#c8933e" stroke-width="1.5"/>
+                        <line x1="85" y1="80" x2="115" y2="80" stroke="#c8933e" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="85" y1="87" x2="105" y2="87" stroke="#c8933e" stroke-width="1.5" stroke-linecap="round"/>
+
+                        <circle cx="100" cy="115" r="7.5" fill="#c8933e"/>
+                        <path d="M96.5 115 l2.5 2.5 4.5-4.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+
+                <ul class="workflow-list">
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div>Accounting Operations</li>
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg></div>Client onboarding</li>
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>AP invoice intake</li>
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8"/></svg></div>Documentation-heavy workflows</li>
+                </ul>
+            </div>
+
+            <div class="assistant-card card-green">
+                <div class="badge-icon badge-green">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+                <h2 class="card-title">Review<br>Assistants</h2>
+                
+                <div class="card-illustration">
+                   <svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="25" y="20" width="150" height="92" rx="8" fill="#ffffff" stroke="#c8933e" stroke-width="1.8"/>
+                        <path d="M25 38 h150" stroke="#c8933e" stroke-width="1.2"/>
+                        <circle cx="36" cy="29" r="2.5" fill="#c8933e"/>
+                        <circle cx="44" cy="29" r="2.5" fill="#c8933e"/>
+                        <circle cx="52" cy="29" r="2.5" fill="#c8933e"/>
+
+                        <g transform="translate(38, 48)">
+                            <circle cx="6" cy="6" r="6" fill="#ef4444" fill-opacity="0.15"/>
+                            <path d="M6 3 L9 8.5 H3 Z" fill="#ef4444"/>
+                            <line x1="20" y1="6" x2="85" y2="6" stroke="#e2e8f0" stroke-width="3.5" stroke-linecap="round"/>
+                        </g>
+                        
+                        <g transform="translate(38, 64)">
+                            <circle cx="6" cy="6" r="6" fill="#f59e0b" fill-opacity="0.15"/>
+                            <line x1="3.5" y1="6" x2="8.5" y2="6" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round"/>
+                            <line x1="20" y1="6" x2="105" y2="6" stroke="#e2e8f0" stroke-width="3.5" stroke-linecap="round"/>
+                        </g>
+
+                        <g transform="translate(38, 80)">
+                            <circle cx="6" cy="6" r="6" fill="#c8933e" fill-opacity="0.15"/>
+                            <path d="M3.5 6 l1.8 1.8 3.5-3.5" stroke="#c8933e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <line x1="20" y1="6" x2="75" y2="6" stroke="#e2e8f0" stroke-width="3.5" stroke-linecap="round"/>
+                        </g>
+
+                        <g transform="translate(38, 96)">
+                            <circle cx="6" cy="5" r="5" stroke="#cbd5e1" stroke-width="1.2" fill="none"/>
+                            <line x1="20" y1="6" x2="95" y2="6" stroke="#e2e8f0" stroke-width="3.5" stroke-linecap="round"/>
+                        </g>
+
+                        <g transform="translate(132, 68)">
+                            <circle cx="18" cy="18" r="14" fill="#ffffff" stroke="#c8933e" stroke-width="3"/>
+                            <line x1="28" y1="28" x2="40" y2="40" stroke="#c8933e" stroke-width="3.5" stroke-linecap="round"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <ul class="workflow-list">
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></div>Missing documents</li>
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg></div>Mismatch checks</li>
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg></div>Uncategorised transactions</li>
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>Incomplete reports</li>
+                </ul>
+            </div>
+
+            <div class="assistant-card card-gold">
+                <div class="badge-icon badge-gold">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <h2 class="card-title">Status<br>Assistants</h2>
+                
+                <div class="card-illustration">
+                    <svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="30" y1="46" x2="170" y2="46" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="30" y1="46" x2="130" y2="46" stroke="#c8933e" stroke-width="3" stroke-linecap="round"/>
+
+                        <path d="M42 46 v32 M82 46 v32 M122 46 v32 M162 46 v32" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="3 3"/>
+
+                        <circle cx="42" cy="46" r="9.5" fill="#c8933e"/>
+                        <path d="M39 46.5 l2 2 3.5-3.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+
+                        <circle cx="82" cy="46" r="9.5" fill="#c8933e"/>
+                        <circle cx="82" cy="46" r="3" fill="#ffffff"/>
+
+                        <circle cx="122" cy="46" r="9.5" fill="#c8933e"/>
+                        <line x1="117" y1="46" x2="127" y2="46" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+
+                        <circle cx="162" cy="46" r="9.5" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+
+                        <g transform="translate(32, 78)">
+                            <rect width="20" height="20" rx="4" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2"/>
+                            <line x1="4" y1="8" x2="16" y2="8" stroke="#94a3b8" stroke-width="1.2"/>
+                        </g>
+                        <g transform="translate(72, 78)">
+                            <rect width="20" height="20" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2"/>
+                            <circle cx="10" cy="8" r="3" stroke="#94a3b8" stroke-width="1.2"/>
+                            <path d="M4 16 c0-3 3-4 6-4s6 1 6 4" stroke="#94a3b8" stroke-width="1.2" fill="none"/>
+                        </g>
+                        <g transform="translate(112, 78)">
+                            <rect width="20" height="20" rx="4" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2"/>
+                            <path d="M6 10 l3 3 5-5" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+                        </g>
+                        <g transform="translate(152, 78)">
+                            <rect width="20" height="20" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <ul class="workflow-list">
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>Month-end close</li>
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>AP approvals</li>
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>AR collections</li>
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5M5 19v-4m14 4v-4m0-7v1m0 3v2m-4-6h4"/></svg></div>Documentation cases</li>
+                </ul>
+            </div>
+
+            <div class="assistant-card card-purple">
+                <div class="badge-icon badge-purple">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                </div>
+                <h2 class="card-title">Reporting<br>Assistants</h2>
+                
+                <div class="card-illustration">
+                  <svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="25" y="20" width="150" height="92" rx="8" fill="#ffffff" stroke="#c8933e" stroke-width="1.8"/>
+                        <circle cx="34" cy="28" r="1.5" fill="#c8933e"/>
+                        <circle cx="39" cy="28" r="1.5" fill="#c8933e"/>
+                        <circle cx="44" cy="28" r="1.5" fill="#c8933e"/>
+
+                        <circle cx="56" cy="58" r="17" stroke="#e2e8f0" stroke-width="5" fill="none"/>
+                        <path d="M56 41 A 17 17 0 0 1 73 58" stroke="#c8933e" stroke-width="5" fill="none"/>
+
+                        <g transform="translate(100, 42)">
+                            <rect x="0" y="8" width="6" height="22" rx="1" fill="#e2e8f0"/>
+                            <rect x="10" y="0" width="6" height="30" rx="1" fill="#c8933e"/>
+                            <rect x="20" y="14" width="6" height="16" rx="1" fill="#e2e8f0"/>
+                            <rect x="30" y="10" width="6" height="20" rx="1" fill="#cbd5e1"/>
+                        </g>
+
+                        <rect x="36" y="86" width="66" height="18" rx="4" stroke="#e2e8f0" stroke-width="1"/>
+                        <path d="M40 98 l12-9 l15 6 l16-8 l18 4" stroke="#c8933e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+                        <g transform="translate(114, 86)">
+                            <rect x="0" y="0" width="46" height="4" rx="2" fill="#e2e8f0"/>
+                            <rect x="0" y="8" width="46" height="4" rx="2" fill="#e2e8f0"/>
+                            <rect x="0" y="14" width="30" height="4" rx="2" fill="#cbd5e1"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <ul class="workflow-list">
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.003 9.003 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg></div>Investor updates</li>
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>CFO reporting</li>
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>KPI summaries</li>
+                    <li class="workflow-item"><div class="item-icon"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>Cash-flow commentary</li>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+</section>
+
+<section class="journey">
+  <div class="container">
+    <div class="eyebrow">Implementation Journey</div>
+
+    <h2 class="display-md">
+      From kickoff to <em>autonomy</em> in weeks
+    </h2>
+
+    <p class="problem-lead-muted">
+      A guided, five-stage rollout that plugs Produc8ive into your ERP, trains it on your
+      data, and hands your finance team a review-ready workflow — with no rip-and-replace.
+    </p>
+
+    <div class="rail">
+      <div class="cards">
+
+        <!-- 01 Discovery -->
+        <div class="card">
+          <div class="card-head">
+            <span class="num">01</span>
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            </span>
+          </div>
+          <h3 class="card-title">Discovery</h3>
+          <p>Map workflows, systems, and success metrics with your finance leaders.</p>
+          <div class="week">Week 1</div>
+        </div>
+
+        <!-- 02 Workflow Configuration -->
+        <div class="card">
+          <div class="card-head">
+            <span class="num">02</span>
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+            </span>
+          </div>
+          <h3 class="card-title">Workflow Configuration</h3>
+          <p>Rules, approval chains, and mappings tuned to your finance operations.</p>
+          <div class="week">Week 1 – 2</div>
+        </div>
+
+        <!-- 03 ERP Integration -->
+        <div class="card">
+          <div class="card-head">
+            <span class="num">03</span>
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1.5-1.5"/></svg>
+            </span>
+          </div>
+          <h3 class="card-title">ERP Integration</h3>
+          <p>Secure connections to Tally, SAP, NetSuite, Acumatica, and 500+ more.</p>
+          <div class="week">Week 2</div>
+        </div>
+
+        <!-- 04 Data Training -->
+        <div class="card">
+          <div class="card-head">
+            <span class="num">04</span>
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>
+            </span>
+          </div>
+          <h3 class="card-title">Data Training</h3>
+          <p>Models learn your ledgers, vendors, and formats — validated in a sandbox.</p>
+          <div class="week">Week 2 – 3</div>
+        </div>
+
+        <!-- 05 Go Live -->
+        <div class="card">
+          <div class="card-head">
+            <span class="num">05</span>
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 15c0-4 3-9 7-11 4 2 7 7 7 11l-3 3-3-2-2 3-3-1-3-3z"/><circle cx="12" cy="10" r="1.6"/></svg>
+            </span>
+          </div>
+          <h3 class="card-title">Go Live</h3>
+          <p>Live processing with monitoring, alerts, and continuous accuracy checks.</p>
+          <div class="week">Week 3 – 4</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="foot">
+      <div class="timeline-note">Typical timeline <b>3 – 4 weeks</b> · Dedicated success partner throughout</div>
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- WORKFLOW DIAGRAM -->
+<!-- WORKFLOW DIAGRAM -->
+<section class="section bg-muted">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">See It In Action</div>
+      <h2 class="display-md">One workflow, fully mapped — AP invoice processing</h2>
+    </div>
+  </div>
+
+  <div class="flow-wrap reveal">
+
+    <button class="flow-nav prev" id="flow-prev" aria-label="Previous workflow steps" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+
+    <button class="flow-nav next" id="flow-next" aria-label="Next workflow steps" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </button>
+
+    <div class="flow-marquee" id="flow-marquee">
+      <div class="flow-track" id="flow-track"></div>
+    </div>
+
+  </div>
+
+  <div class="container">
+    <p class="lead-muted result-line" style="    margin: 27px 0px;
+    font-size: 14px;">
+      <span class="result-label">Result —</span>
+      AP work reaches the finance team cleaner, faster, and with fewer hidden gaps.
+    </p>
+  </div>
+</section>
+
+<!------intrgration----> 
+<section class="integrations">
+  <div class="container">
+    <div class="eyebrow"></span>Integrations</div>
+
+    <h2 class="display-md light" style="color:rgb(255 255 255 / 72%)">
+      Connects to your <em style="color:#b88c2e">existing stack</em>
+    </h2>
+
+    <!-- {% comment %} <p class="lead-light">
+    Works with your existing ERP. Custom integrations available. No replacement required. 
+
+    </p> {% endcomment %} -->
+
+    <div class="logos">
+      <div class="logo-cell">
+        <div class="txt"><span style="font-family:'Playfair Display',serif;font-style:italic;font-weight:600">Tally</span><small>Power of Simplicity</small></div>
+      </div>
+      <div class="logo-cell">
+        <div class="txt" style="background:#8a8a8a;color:#0e1116;padding:8px 18px;font-size:30px;font-weight:800;letter-spacing:0.05em">SAP</div>
+      </div>
+      <div class="logo-cell">
+        <div class="txt" style="font-size:20px"><span class="accent" style="font-weight:800;letter-spacing:0.12em">ORACLE</span><small style="letter-spacing:0.05em;font-size:16px;color:#e6e4dd;font-weight:600;margin-top:4px">NetSuite</small></div>
+      </div>
+      <div class="logo-cell">
+        <div class="txt" style="font-size:22px">◈ Acumatica<small>The Cloud ERP</small></div>
+      </div>
+    </div>
+
+    <div class="foot" >
+      <div class="lead-light"style="font-size: 16px;"> Works with your existing ERP. Custom integrations available. No replacement required. 
+</div>
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- OUTCOMES -->
+<!-- {% comment %} <section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">What Changes</div>
+      <h2 class="display-md">What changes for the finance team</h2>
+    </div>
+    <div class="outcomes">
+      <div class="outcome"><span class="eyebrow gold">01 / 05</span><h3>Less time cleaning inputs</h3><p>The team starts from a structured packet, not a messy inbox.</p></div>
+      <div class="outcome"><span class="eyebrow gold">02 / 05</span><h3>Fewer repeated follow-ups</h3><p>Missing items are listed clearly before the next email goes out.</p></div>
+      <div class="outcome"><span class="eyebrow gold">03 / 05</span><h3>Faster handoffs</h3><p>Bookkeeping, AP, AR, reporting and documentation move with context.</p></div>
+      <div class="outcome"><span class="eyebrow gold">04 / 05</span><h3>Better manager visibility</h3><p>Leads see blockers, owners and next actions without chasing updates.</p></div>
+      <div class="outcome"><span class="eyebrow gold">05 / 05</span><h3>Stronger auditability</h3><p>Every output connects back to its source, reviewer and decision trail.</p></div>
+    </div>
+  </div>
+</section> {% endcomment %} -->
+
+<!-- HONEST SCOPE -->
+<section class="section bg-muted">
+  <div class="container scope-grid">
+    <div>
+      <div class="eyebrow">Honest Scope</div>
+      <h2 class="display-md">What Produc8ive does <em class="gold not-italic">not</em> do</h2>
+       <p style="font-size: 16px; max-width: 540px;">Produc8ive does not replace finance judgment. It does not make final accounting, tax, compliance, banking or investment decisions.</p>
+       <p style="font-size: 16px; max-width: 540px;">Produc8ive Prepares. <em class="gold not-italic">Your Team Decides.</em></p>
+    </div>
+    <div class="scope-body">
+     
+<div class="scope-panel">
+  <div class="scope-grid">
+    <!-- LEFT COLUMN -->
+    <div class="scope-col scope-col-left">
+      <div class="scope-header">
+       <svg class="scope-hero"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="1.8"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <!-- Person -->
+    <circle cx="7" cy="7" r="3"/>
+    <path d="M2.5 20c0-3.2 2.3-5.5 4.5-5.5S11.5 16.8 11.5 20"/>
+
+    <!-- Document -->
+    <rect x="13" y="3" width="8" height="9" rx="1"/>
+    <polyline points="15.2 7.3 16.8 9 19.2 5.8"/>
+
+</svg>
+        <h3>PRODUC8IVE PREPARES</h3>
+      </div>
+      <ul class="scope-list">
+        <li>
+          <span class="scope-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 3h9l3 3v15H6z"/>
+              <path d="M15 3v3h3"/>
+              <polyline points="9 12.5 10.5 14 14 10"/>
+            </svg>
+          </span>
+          <span class="scope-text">Document Checks</span>
+        </li>
+        <li>
+          <span class="scope-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 7a1 1 0 0 1 1-1h4l2 2h10a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>
+            </svg>
+          </span>
+          <span class="scope-text">Review Packets</span>
+        </li>
+        <li>
+          <span class="scope-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l7 3v5c0 4.5-2.9 7.7-7 9-4.1-1.3-7-4.5-7-9V6z"/>
+              <polyline points="8.7 12 10.8 14 15.3 9.5"/>
+            </svg>
+          </span>
+          <span class="scope-text">Audit Packs</span>
+        </li>
+        <li>
+          <span class="scope-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="1.5"/>
+              <line x1="8" y1="16" x2="8" y2="12"/>
+              <line x1="12" y1="16" x2="12" y2="9"/>
+              <line x1="16" y1="16" x2="16" y2="12.5"/>
+            </svg>
+          </span>
+          <span class="scope-text">Reporting Drafts</span>
+        </li>
+        <li>
+          <span class="scope-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 6h18v12H3z"/>
+              <path d="M3 6l9 7 9-7"/>
+            </svg>
+          </span>
+          <span class="scope-text">Follow-up Drafts</span>
+        </li>
+        <li>
+          <span class="scope-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 15l5-5 4 4 9-9"/>
+              <polyline points="15 5 21 5 21 11"/>
+            </svg>
+          </span>
+          <span class="scope-text">Status Tracking</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="scope-col scope-col-right">
+      <div class="scope-header">
+       <svg class="scope-hero"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="1.8"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <!-- People -->
+    <circle cx="7" cy="7" r="3"/>
+    <circle cx="17" cy="7" r="3"/>
+
+    <!-- Left Person -->
+    <path d="M2.5 20c0-3.2 2.1-5.5 4.5-5.5"/>
+
+    <!-- Middle Person -->
+    <path d="M7 20c0-3.2 2.3-5.5 5-5.5s5 2.3 5 5.5"/>
+
+    <!-- Right Person -->
+    <path d="M16.5 14.5c2.4 0 4.5 2.3 4.5 5.5"/>
+
+</svg>
+        <h3>FINANCE DECIDES</h3>
+      </div>
+      <ul class="scope-list">
+        <li>
+          <span class="scope-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="3" width="16" height="18" rx="1.5"/>
+              <line x1="7" y1="7" x2="17" y2="7"/>
+              <line x1="7.5" y1="11.5" x2="7.5" y2="11.5"/>
+              <line x1="11.5" y1="11.5" x2="11.5" y2="11.5"/>
+              <line x1="15.5" y1="11.5" x2="15.5" y2="11.5"/>
+              <line x1="7.5" y1="15" x2="7.5" y2="15"/>
+              <line x1="11.5" y1="15" x2="11.5" y2="15"/>
+              <line x1="15.5" y1="15" x2="15.5" y2="15"/>
+              <line x1="7.5" y1="18.5" x2="7.5" y2="18.5"/>
+              <line x1="11.5" y1="18.5" x2="11.5" y2="18.5"/>
+            </svg>
+          </span>
+          <span class="scope-text">Accounting</span>
+        </li>
+        <li>
+          <span class="scope-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 3h9l3 3v15H6z"/>
+              <path d="M15 3v3h3"/>
+              <line x1="9" y1="16" x2="14" y2="11"/>
+              <circle cx="9.6" cy="11.6" r="1"/>
+              <circle cx="13.4" cy="15.4" r="1"/>
+            </svg>
+          </span>
+          <span class="scope-text">Tax Positions</span>
+        </li>
+        <li>
+          <span class="scope-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="6" width="18" height="13" rx="1.5"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+              <line x1="6" y1="14.5" x2="10" y2="14.5"/>
+            </svg>
+          </span>
+          <span class="scope-text">Payments</span>
+        </li>
+        <li>
+          <span class="scope-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l7 3v5c0 4.5-2.9 7.7-7 9-4.1-1.3-7-4.5-7-9V6z"/>
+              <polyline points="8.7 12 10.8 14 15.3 9.5"/>
+            </svg>
+          </span>
+          <span class="scope-text">Compliance</span>
+        </li>
+        <li>
+          <span class="scope-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" y1="20" x2="4" y2="14"/>
+              <line x1="9" y1="20" x2="9" y2="10"/>
+              <line x1="14" y1="20" x2="14" y2="6"/>
+              <line x1="19" y1="20" x2="19" y2="12"/>
+              <polyline points="4 14 9 10 14 6 19 12"/>
+            </svg>
+          </span>
+          <span class="scope-text">Investments</span>
+        </li>
+        <li>
+          <span class="scope-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="3.5"/>
+              <path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/>
+            </svg>
+          </span>
+          <span class="scope-text">Final Approval</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="scope-footer">
+    <span class="scope-footer-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3l7 3v5c0 4.5-2.9 7.7-7 9-4.1-1.3-7-4.5-7-9V6z"/>
+        <polyline points="8.7 12 10.8 14 15.3 9.5"/>
+      </svg>
+    </span>
+    <span style="
+    font-size: 16px;
+">Every finance decision remains under your team's control.</span>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<section class="team-section">
+
+    <div class="team-title">
+        <h2>Leadership Team</h2>
+    </div>
+
+    <!-- Member 1 -->
+
+    <div class="team-card">
+
+        <div class="team-image">
+          <img src="images/ceo.jpg" alt="Ameya Kunte">
+        </div>
+
+        <div class="team-content">
+
+            <h3>Ameya Kunte</h3>
+
+            <h4>Co-founder & Experienced Finance Professional</h4>
+
+            <p>
+                Ameya Kunte is a Chartered Accountant, tax expert, and entrepreneur with over
+                two decades of experience in restructuring advisory, corporate tax, and
+                M&A. He is the Founder of Globeview Advisors LLP, a boutique consulting firm
+                delivering tax-centric business advisory services to leading businesses and
+                promoters.
+
+                Previously with Ernst & Young and PwC, Ameya also co-founded Taxsutra,
+                India's premier B2B tax news platform. Beyond consulting, he contributes to
+                academia, professional bodies, and community initiatives in education.
+            </p>
+
+            <a href="https://www.linkedin.com/in/ameya-kunte-01606010/" target="_blank">
+                <svg viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5S1.11 1 2.49 1S4.98 2.12 4.98 3.5zM0.5 8h4V24h-4zm7 0h3.8v2.2h.1c.5-1 1.9-2.2 4-2.2c4.3 0 5.1 2.8 5.1 6.5V24h-4v-7.2c0-1.7 0-3.9-2.4-3.9s-2.7 1.9-2.7 3.8V24h-4z"/>
+                </svg>
+
+                LinkedIn Profile
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Member 2 -->
+
+    <div class="team-card reverse">
+
+        <div class="team-content">
+
+            <h3>Saurav Mishra</h3>
+
+            <h4>Co-Founder & AI Advocate</h4>
+
+            <p>
+
+                Saurav is a growth strategist and entrepreneur who enables T-Shaped Growth
+                for businesses by combining deep expertise in marketing and sales with a
+                broad understanding of HR, finance, operations, and supply chains.
+
+                He helps organizations deploy AI-driven automation and scalable growth
+                playbooks that integrate both organic and paid strategies. Previously, he
+                founded and scaled a 300+ member technology company, later acquired by a New
+                York private equity firm, gaining hands-on experience in transforming
+                businesses for exponential growth.
+
+            </p>
+
+            <a href="https://www.linkedin.com/in/saurav-mishra/" target="_blank">
+                <svg viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5S1.11 1 2.49 1S4.98 2.12 4.98 3.5zM0.5 8h4V24h-4zm7 0h3.8v2.2h.1c.5-1 1.9-2.2 4-2.2c4.3 0 5.1 2.8 5.1 6.5V24h-4v-7.2c0-1.7 0-3.9-2.4-3.9s-2.7 1.9-2.7 3.8V24h-4z"/>
+                </svg>
+
+                LinkedIn Profile
+            </a>
+
+        </div>
+
+        <div class="team-image">
+           <img src="images/cto.jpg" alt="Saurav Mishra">
+        </div>
+
+    </div>
+
+      <div class="team-card">
+
+        <div class="team-image">
+           <img src="images/sawan.jpg" alt="Sawan Jain">
+        </div>
+
+        <div class="team-content">
+
+            <h3>Sawan Jain</h3>
+
+            <h4>Co-Founder & Tech Arch</h4>
+
+            <p>
+               Sawan is the Co-founder of Varseno with over 20 years of experience in enterprise software strategy, design, and delivery. He is passionate about solving complex problems through innovative and scalable technology solutions that drive sustainable growth. Known for his pragmatic leadership style, Sawan brings together strategy, creativity, and execution to build high-performing teams and deliver meaningful business impact.
+            </p>
+
+            <a href="https://www.linkedin.com/in/sawanjain/" target="_blank">
+                <svg viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5S1.11 1 2.49 1S4.98 2.12 4.98 3.5zM0.5 8h4V24h-4zm7 0h3.8v2.2h.1c.5-1 1.9-2.2 4-2.2c4.3 0 5.1 2.8 5.1 6.5V24h-4v-7.2c0-1.7 0-3.9-2.4-3.9s-2.7 1.9-2.7 3.8V24h-4z"/>
+                </svg>
+
+                LinkedIn Profile
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Member 2 -->
+
+    <div class="team-card reverse">
+
+        <div class="team-content">
+
+            <h3>Akash Hande</h3>
+
+            <h4>Co-Founder & Product</h4>
+
+            <p>
+
+               Akash Hande is the Co-founder and Product Manager at Produc8ive, where he drives the vision and execution of AI-powered products. With a strong focus on blending technology, automation, and business strategy, Akash specializes in building scalable solutions for finance, e-commerce, and sport domain. He thrives on turning complex workflows into simple, outcome-driven products that empower teams to work smarter and achieve measurable impact.
+
+            </p>
+
+            <a href="https://www.linkedin.com/in/akashhande/" target="_blank">
+                <svg viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5S1.11 1 2.49 1S4.98 2.12 4.98 3.5zM0.5 8h4V24h-4zm7 0h3.8v2.2h.1c.5-1 1.9-2.2 4-2.2c4.3 0 5.1 2.8 5.1 6.5V24h-4v-7.2c0-1.7 0-3.9-2.4-3.9s-2.7 1.9-2.7 3.8V24h-4z"/>
+                </svg>
+
+                LinkedIn Profile
+            </a>
+
+        </div>
+
+        <div class="team-image">
+           <img src="images/akash.jpg" alt="Akash Hande">
+        </div>
+
+    </div>
+
+</section>
+
+<section class="trusted-section">
+    <div class="container">
+
+        <div class="section-header">
+          
+            <h2>Trusted by Finance Teams</h2>
+        </div>
+
+        <div class="trusted-logos">
+
+            <div class="logo-card">
+               <img src="images/serum-logo.png" alt="Serum Institute">
+            </div>
+
+            <div class="logo-card">
+                <img src="images/Kale-New-Logofo.png" alt="Kale logo">
+            </div>
+
+            <div class="logo-card">
+                <img src="images/Suma-Logo-BlackText%20(1).svg" alt="Suma logo">
+            </div>
+
+            <div class="logo-card">
+                <img src="images/globalview.png" alt="GlobalView logo">
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- MID CTA -->
+<section class="section dark center">
+  <div class="container narrow">
+    <div class="eyebrow gold">Start Here</div>
+    <h2 class="display-md light" style="color:rgb(255 255 255 / 72%)">Start with one finance workflow</h2>
+    <p class="lead-light" style="font-size: 16px;">Accounting Preparation. AP Invoice Processing. Month-End Close Tracking. Investor Reporting. AR Follow-ups. Documentation Pre-checks. We map the workflow, build the first AI assistant, demonstrate the results, and then scale.</p>
+    <a href="#contact" class="btn btn-outline mt">Map One Workflow</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container narrow-md">
+    <div class="section-head">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="display-md ">What finance teams usually ask</h2>
+    </div>
+    <div class="faq" id="faq"></div>
+  </div>
+</section>
+
+<!-- {% comment %}  COST OF WAITING -->
+<!-- <section class="section dark">
+  <div class="container">
+    <div class="eyebrow gold">Cost of Waiting</div>
+    <h2 class="display-lg light">Every new client adds more <span class="gold">manual drag.</span></h2>
+    <p class="lead-light max-md">Systemise the repeatable parts now — before growth keeps demanding more operators.</p>
+    <a href="#contact" class="btn btn-outline mt">Map One Finance Workflow</a>
+  </div>
+</section> {% endcomment %}  -->
+
+<!-- {% comment %} 
+<section class="section">
+  <div class="container proof-grid">
+    <div>
+      <div class="eyebrow">Proof of Work</div>
+      <h2 class="display-md">No fake logos. No inflated claims.</h2>
+      <p class="lead-muted">The first proof should be a real workflow sample built around your own operation. Show the work first. Then expand.</p>
+    </div>
+    <ul class="proof-list">
+      <li><span class="num">01</span><b>AP invoice review packet</b><small>Sample deliverable</small></li>
+      <li><span class="num">02</span><b>Bookkeeping handoff checklist</b><small>Sample deliverable</small></li>
+      <li><span class="num">03</span><b>Month-end close blocker report</b><small>Sample deliverable</small></li>
+      <li><span class="num">04</span><b>AR follow-up draft set</b><small>Sample deliverable</small></li>
+      <li><span class="num">05</span><b>Documentation readiness checklist</b><small>Sample deliverable</small></li>
+      <li><span class="num">06</span><b>Investor reporting prep pack</b><small>Sample deliverable</small></li>
+      <li><span class="num">07</span><b>Audit trail export</b><small>Sample deliverable</small></li>
+    </ul>
+  </div>
+</section> {% endcomment %} -->
+
+ <!-- RISK REVERSAL -->
+<!-- <section class="risk-wrap">
+  <div class="container">
+    <div class="risk-band">
+      <div class="eyebrow gold">Risk Reversal</div>
+      <h2 class="display-sm">One workflow before any rollout.</h2>
+      <p class="lead-muted">If the mapped output does not clearly reduce manual prep, follow-up, review or status-tracking effort — do not expand. No full rollout before the workflow proves itself.</p>
+    </div>
+  </div>
+</section> {% endcomment %} -->
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container contact-grid">
+    <div>
+      <div class="eyebrow">Final Step</div>
+      <h2 class="display-md c1">Turn one repetitive finance workflow into a review-ready system</h2>
+      <p class="lead-muted">Start with the finance workflow your team already hates doing manually. We map it, structure the inputs, define the outputs and build the first Produc8ive assistant around it.</p>
+      <ul class="bullets">
+        <li><span class="rule"></span>One workflow before any rollout</li>
+        <li><span class="rule"></span>Humans stay in approval</li>
+        <li><span class="rule"></span>Expand only when proven</li>
+      </ul>
+    </div><form class="form" id="contact-form" novalidate>
+  <div class="form-head">
+    <span class="dot"></span>
+    <span class="ft">Start with one workflow</span>
+  </div>
+  
+  <div class="field">
+    <input type="text" id="f-name" name="name" placeholder=" " required />
+    <label for="f-name">Name</label>
+  </div>
+  
+  <div class="field">
+    <input type="email" id="f-email" name="email" placeholder=" " required />
+    <label for="f-email">Work Email</label>
+  </div>
+  
+  <div class="field">
+    <input type="text" id="f-company" name="company" placeholder=" " />
+    <label for="f-company">Company</label>
+  </div>
+  
+  <div class="field">
+    <textarea id="f-workflow" name="workflow" rows="3" placeholder=" "></textarea>
+    <label for="f-workflow">Which workflow hurts most?</label>
+  </div>
+  
+  <button type="submit" class="btn btn-solid full">Map One Workflow →</button>
+
+  <p class="contact-note">
+  For more details, get in touch with us at
+  <a href="mailto:smishra@produc8ive.com">smishra@produc8ive.com</a>
+</p>
+
+  <p class="form-status" id="form-status"></p>
+</form>
+</form>
+
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="brand"><span class="brand-mark sm">8</span> Produc8ive</div>
+    <div class="micro">© <span id="year"></span> Produc8ive. Finance ops, review-ready.</div>
+  </div>
+</footer>
+
+<script>const useCases = [
+  { n: "01", t: "Bookkeeping Handoff Assistant", input: "Client emails, bank statements, invoices, receipts, spreadsheets.", output: "Clean bookkeeping packet with missing items, entity mapping, transaction notes and review flags.", review: "Bookkeeper approves before entry or reconciliation." },
+  { n: "02", t: "AP Invoice Processing Assistant", input: "Vendor invoices, PO details, approval emails, due dates, ERP records.", output: "Extracted invoice data, approval status, exception flags and a posting-ready packet.", review: "Finance team approves low-confidence or exception cases." },
+  { n: "03", t: "Variance Analysis ", input: "Management estimates, approved budgets, actual vendor invoices and expense records.", output: "Budget vs. actual variance analysis with under-budget, over-budget and exception flagging.", review: "Finance team reviews significant variances, reconciles estimates against actuals and approves corrective actions." },
+  { n: "04", t: "AR Collections Follow-Up", input: "Invoice ageing, payment history, previous emails, open disputes.", output: "Draft reminders by invoice age, tone and customer context.", review: "Team edits and sends." },
+  { n: "05", t: "Month-End Close Tracker", input: "Reconciliation files, open AP/AR items, uncategorised transactions, pending approvals.", output: "Daily close summary with blockers, owners and next actions.", review: "Finance lead assigns and clears blockers." },
+  { n: "06", t: "Investor Reporting Prep", input: "Monthly financials, KPIs, budget files, commentary notes, cash-flow data.", output: "First-pass investor reporting pack with gaps, highlights and review notes.", review: "CFO or controller signs off." },
+  { n: "07", t: "Documentation Pre-Check", input: "KYC, PAN, entity, investor and bank/broker requirement documents.", output: "Readiness checklist showing missing, mismatched or unclear documents.", review: "Account manager confirms before external submission." },
+  { n: "08", t: "Case Status Tracker", input: "Client emails, internal notes, bank/broker/vendor updates, pending documents.", output: "Status view with current stage, blocker, owner, next action and update draft.", review: "Owner reviews and sends the client update." },
+  { n: "09", t: "Audit-Ready Books QA", input: "Books, reports, support files, uncategorised expenses, inconsistent entries.", output: "QA flags for missing support, mismatches, anomalies and unresolved questions.", review: "Accountant decides final treatment." },
+];
+
+const flow = [
+  { t: "Invoice In", d: "Vendor invoice enters email or shared folder." },
+  { t: "Extract", d: "Vendor, line items, amount, tax and due date pulled out." },
+  { t: "Check", d: "PO, approval status and missing fields validated." },
+  { t: "Route", d: "Low-confidence items routed to a human reviewer." },
+  { t: "Post-Ready", d: "Approved packet prepared for ERP posting." },
+  { t: "Audit Log", d: "Every action logged for audit." },
+];
+
+const faqs = [
+  { q: "Is this replacing our finance team?", a: "No. It removes repetitive prep, classification, follow-up and tracking work. Final review stays with your team." },
+  { q: "Which workflow should we start with?", a: "Start where the pain is most visible: AP invoice processing, bookkeeping Operations, month-end close, documentation checks or AR follow-ups." },
+  { q: "Do we need to change our ERP or finance stack?", a: "No. The first workflow can sit around your current email, documents, spreadsheets, ERP exports and operating process." },
+  { q: "Can it handle sensitive finance workflows?", a: "It supports document checks, summaries, missing-item detection, status tracking and audit packs. Final judgment stays human." },
+  { q: "What does the first pilot produce?", a: "A mapped workflow, sample input structure, output checklist, and one working assistant for a selected use case." },
+  { q: "Can it work across multiple finance processes?", a: "Yes, but not on day one. Start with one workflow. Expand after the first workflow proves useful." },
+];
+
+/* ── DATA ── */
+const FEED=[
+  {ag:'Inbound',   ico:'📥',t:'ap', title:'Acme Corp · Bank Statement',  det:'Missing Mar invoices — flagged.',        s:'flag',sl:'Flagged',   p:null},
+  {ag:'AP Queue',  ico:'🧾',t:'ap', title:'Vendor · Stark LLC',          det:'PO mismatch · review.',                  s:'flag',sl:'Review',    p:null},
+  {ag:'Close',     ico:'📊',t:'gl', title:'Month-end · Mar 26',          det:'3 blockers · 2 owners.',                 s:'run', sl:'Running',    p:62},
+  {ag:'DEMAT',     ico:'🔍',t:'kyc',title:'KYC Pack · Investor 04',      det:'PAN unclear — queued for review.',       s:'flag',sl:'Flagged',   p:null},
+  {ag:'AR',        ico:'💰',t:'ar', title:'Invoice #1042 · 31d',         det:'Draft ready — Acme Corp.',               s:'rev', sl:'Draft ready',p:null},
+  {ag:'Reviewer',  ico:'👤',t:'bd', title:'S. Patel commented',          det:'Approve packet.',                        s:'rev', sl:'Action',     p:null},
+  {ag:'Payroll JV',ico:'📋',t:'pay',title:'April Payroll JV · Posted',  det:'JV posted to ERP successfully.',         s:'ok',  sl:'Done',       p:null},
+  {ag:'Board Deck',ico:'📈',t:'bd', title:'Q1 Board Pack · Building',    det:'Slide 5 of 12 generating.',              s:'run', sl:'Running',    p:38},
+];
+
+const PKTS=[
+  {ico:'📥',name:'Acme Corp · Bank Statement', meta:'Inbound · Missing Mar invoices', pct:45,col:'#C07A1A'},
+  {ico:'🧾',name:'Stark LLC · AP Invoice',     meta:'AP Queue · PO mismatch review',  pct:70,col:'#C24040'},
+  {ico:'📊',name:'Month-end Close · Mar 26',   meta:'Close · 3 blockers · 2 owners',  pct:62,col:'#B8952A'},
+  {ico:'🔍',name:'KYC Pack · Investor 04',     meta:'DEMAT · PAN unclear',            pct:55,col:'#C24040'},
+  {ico:'💰',name:'Invoice #1042 · AR',         meta:'AR · 31d overdue · draft ready', pct:90,col:'#2DA85A'},
+];
+
+const AGENTS=[
+  {ico:'📥',name:'Inbound',    tasks:8, run:true},
+  {ico:'🧾',name:'AP Queue',   tasks:14,run:true},
+  {ico:'📊',name:'GL Variance',tasks:7, run:true},
+  {ico:'🔍',name:'KYC Agent',  tasks:3, run:true},
+  {ico:'💰',name:'AR Agent',   tasks:9, run:true},
+  {ico:'📈',name:'Board Deck', tasks:2, run:true},
+  {ico:'📋',name:'Payroll JV', tasks:5, run:false},
+  {ico:'👤',name:'Reviewer',   tasks:4, run:false},
+];
+
+const LOGS=[
+  'Inbound · Acme Corp bank statement received',
+  'AP Queue · Stark LLC PO mismatch detected',
+  'GL Variance · Cost centre 07 delta ₹12,400',
+  'KYC Agent · PAN OCR confidence low, flagging',
+  'AR Agent · Draft follow-up ready for #1042',
+  'Board Deck · Fetching MIS data for slide 5',
+  'Payroll JV · JV posted → ERP sync complete',
+  'Reviewer · S. Patel approved packet #08',
+  'GL Variance · 14 centres done, 2 flagged',
+  'AP Queue · 7 invoices auto-approved today',
+];
+
+/* ── CLOCK ── */
+const clkEl=document.getElementById('clock');
+function tick(){clkEl.textContent=new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',second:'2-digit'})}
+setInterval(tick,1000);tick();
+
+/* ── TABS ── */
+function setTab(btn,name){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  ['feed','packets','agents'].forEach(t=>document.getElementById('tab-'+t).style.display=t===name?'':'none');
+  if(name==='packets')startPktAnim(); else stopPktAnim();
+}
+
+/* ── PILLS ── */
+const PC={run:'p-run',ok:'p-ok',flag:'p-flag',rev:'p-rev'};
+
+/* ── FEED ── */
+const alist=document.getElementById('alist');
+let cur=0;
+function buildItem(ev,hi){
+  const bar=ev.p!==null?`<div class="prow"><div class="ptr"><div class="pfil" style="width:${ev.p}%"></div></div><span class="ppct">${ev.p}%</span></div>`:'';
+  return`<div class="aitem si${hi?' hi sweep':''}">
+    <div class="aico ico-${ev.t}">${ev.ico}</div>
+    <div class="ac">
+      <div class="atop"><span class="aag">${ev.ag}</span><span class="pill ${PC[ev.s]}">${ev.sl}</span></div>
+      <div class="atit">${ev.title}</div>
+      <div class="adet">${ev.det}</div>${bar}
+    </div>
+  </div>`;
+}
+function renderFeed(){
+  const sub=[];for(let i=0;i<3;i++)sub.push(FEED[(cur+i)%FEED.length]);
+  alist.innerHTML=sub.map((e,i)=>buildItem(e,i===0)).join('');
+}
+renderFeed();
+setInterval(()=>{cur=(cur+1)%FEED.length;renderFeed();},3600);
+
+/* progress ticks */
+setInterval(()=>{
+  document.querySelectorAll('#alist .pfil').forEach(b=>{
+    let w=parseInt(b.style.width)||0;
+    w=w>=95?15:w+Math.floor(Math.random()*3+1);
+    b.style.width=w+'%';
+    const p=b.closest('.prow')?.querySelector('.ppct');
+    if(p)p.textContent=w+'%';
+  });
+},1800);
+
+/* ── TYPEWRITER LOG ── */
+let li=0,ci=0,lt=null;
+const ltxt=document.getElementById('ltxt'),lts=document.getElementById('lts');
+function type(){
+  const msg=LOGS[li];
+  if(ci<=msg.length){ltxt.textContent=msg.slice(0,ci);ci++;}
+  else{
+    clearInterval(lt);
+    setTimeout(()=>{
+      li=(li+1)%LOGS.length;ci=0;
+      lts.textContent=new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',second:'2-digit'})+' ';
+      lt=setInterval(type,26);
+    },1600);
+  }
+}
+lt=setInterval(type,26);
+
+/* ── STAT COUNTERS ── */
+function anim(id,end){
+  const el=document.getElementById(id);
+  const em=el.innerHTML.match(/<em>(.*?)<\/em>/);
+  const s=em?`<em>${em[1]}</em>`:'';
+  let v=0;const step=Math.ceil(end/36);
+  const t=setInterval(()=>{v=Math.min(v+step,end);el.innerHTML=v+s;if(v>=end)clearInterval(t);},28);
+}
+setTimeout(()=>{anim('s1',78);anim('s2',14);anim('s3',6);},500);
+
+/* ── PACKETS TAB ── */
+const pktlist=document.getElementById('pktlist');
+PKTS.forEach(p=>{
+  pktlist.innerHTML+=`<div class="pkt" data-pct="${p.pct}">
+    <div class="pkt-ico">${p.ico}</div>
+    <div class="pkt-body">
+      <div class="pkt-top">
+        <span class="pkt-name">${p.name}</span>
+        <span class="pill ${p.pct>=88?'p-ok':'p-rev'}">${p.pct}%</span>
+      </div>
+      <div class="pkt-meta">${p.meta}</div>
+      <div class="pkt-bar"><div class="pkt-fill" style="width:${p.pct}%;background:${p.col}"></div></div>
+    </div>
+  </div>`;
+});
+
+let pktTimer=null;
+function startPktAnim(){
+  if(pktTimer)return;
+  pktTimer=setInterval(()=>{
+    document.querySelectorAll('#pktlist .pkt-fill').forEach(f=>{
+      const pkt=f.closest('.pkt');if(!pkt)return;
+      let w=parseInt(f.style.width)||0;
+      if(w>=98)return;
+      w=Math.min(98,w+Math.floor(Math.random()*2+0.4));
+      f.style.width=w+'%';
+      const pill=pkt.querySelector('.pill');
+      if(pill){pill.textContent=w+'%';pill.className='pill '+(w>=88?'p-ok':'p-rev');}
+      pkt.classList.toggle('hi',w>40&&w<98);
+    });
+    const inprog=[...document.querySelectorAll('#pktlist .pkt')].filter(p=>{
+      const w=parseInt(p.querySelector('.pkt-fill')?.style.width)||0;
+      return w>0&&w<98;
+    });
+    if(inprog.length){
+      const pick=inprog[Math.floor(Math.random()*inprog.length)];
+      pick.classList.add('sweep');
+      setTimeout(()=>pick.classList.remove('sweep'),700);
+    }
+  },2200);
+}
+function stopPktAnim(){clearInterval(pktTimer);pktTimer=null;}
+
+/* ── AGENTS TAB ── */
+const aggrid=document.getElementById('aggrid');
+const agTasks=AGENTS.map(a=>a.tasks);
+AGENTS.forEach((a,i)=>{
+  aggrid.innerHTML+=`<div class="agc${a.run?' active':''}" id="agc-${i}">
+    <div class="ag-ico">${a.ico}</div>
+    <div class="ag-name">${a.name}</div>
+    <div class="ag-stat">
+      <div class="ag-dot" style="background:${a.run?'var(--grn)':'var(--dim)'}"></div>
+      <span>${a.run?'Running':'Idle'}</span>
+      <span id="agt-${i}"> · ${a.tasks} tasks</span>
+    </div>
+  </div>`;
+});
+
+let tpsVal=3;
+setInterval(()=>{
+  AGENTS.forEach((a,i)=>{
+    if(!a.run)return;
+    agTasks[i]+=Math.random()>.45?1:0;
+    const el=document.getElementById('agt-'+i);
+    if(el)el.textContent=' · '+agTasks[i]+' tasks';
+  });
+  tpsVal=Math.max(2,Math.min(8,tpsVal+(Math.random()>.5?1:-1)));
+  const el=document.getElementById('tpslbl');
+  if(el)el.textContent='↑ '+tpsVal+' TASKS/MIN';
+},2400);
+
+
+
+  /* ─────────────────────────────
+     CONFIG — what each stat counts to
+  ───────────────────────────────*/
+  const STATS = [
+    { id: 0, target: 10,  duration: 1600, delay: 0   },
+    { id: 1, target: 78,  duration: 1800, delay: 150 },
+    { id: 2, target: 14,  duration: 1400, delay: 300 },
+    { id: 3, target: 20,  duration: 2000, delay: 450 },
+  ];
+
+  /* ─────────────────────────────
+     EASING — ease-out cubic
+  ───────────────────────────────*/
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+  /* ─────────────────────────────
+     ANIMATE A SINGLE COUNTER
+  ───────────────────────────────*/
+  function countUp(valEl, numEl, target, duration, delay) {
+    setTimeout(() => {
+      const start = performance.now();
+      function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const value = Math.round(easeOut(progress) * target);
+        valEl.textContent = value;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          valEl.textContent = target;
+          /* tiny flash on complete */
+          numEl.classList.add('flash');
+          setTimeout(() => numEl.classList.remove('flash'), 600);
+          /* live tick every few seconds to feel "running" */
+          startLiveTick(valEl, numEl, target);
+        }
+      }
+      requestAnimationFrame(step);
+    }, delay);
+  }
+
+  /* ─────────────────────────────
+     LIVE TICK — nudges number +1
+     every random interval so it
+     feels like a live dashboard
+  ───────────────────────────────*/
+  function startLiveTick(valEl, numEl, base) {
+    // only tick stats that would realistically change
+    if (base < 20) return; // hrs saved & agents — stable
+    function tick() {
+      const delta = Math.random() > 0.5 ? 1 : 0;
+      if (delta) {
+        const cur = parseInt(valEl.textContent) || base;
+        const next = cur + delta > base + 5 ? base : cur + delta;
+        valEl.textContent = next;
+        numEl.classList.add('flash');
+        setTimeout(() => numEl.classList.remove('flash'), 500);
+      }
+      setTimeout(tick, 3000 + Math.random() * 4000);
+    }
+    setTimeout(tick, 3000 + Math.random() * 3000);
+  }
+
+  /* ─────────────────────────────
+     INTERSECTION OBSERVER —
+     trigger when bar scrolls into view
+  ───────────────────────────────*/
+  const bar = document.getElementById('statsBar');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect(); // run once
+
+      STATS.forEach((s, i) => {
+        const icon   = document.getElementById('si' + s.id);
+        const numEl  = document.getElementById('sn' + s.id);
+        const valEl  = document.getElementById('sv' + s.id);
+        const lbl    = document.getElementById('sl' + s.id);
+
+        /* stagger the reveal */
+        setTimeout(() => {
+          icon.classList.add('visible', 'pulse-ring');
+          numEl.classList.add('visible');
+          lbl.classList.add('visible');
+          countUp(valEl, numEl, s.target, s.duration, 0);
+        }, s.delay);
+      });
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(bar);
+
+
+/* ---- Use cases auto marquee ---- */
+const ucCard = (u) => `
+  <article class="uc-card">
+    <span class="num">${u.n}</span>
+    <h3>${u.t}</h3>
+    <dl>
+      <div><dt>Input</dt><dd>${u.input}</dd></div>
+      <div><dt>Output</dt><dd>${u.output}</dd></div>
+      <div><dt>Human Review</dt><dd>${u.review}</dd></div>
+    </dl>
+  </article>`;
+const ucTrack = document.getElementById("uc-track");
+
+// duplicate the list for a seamless loop
+ucTrack.innerHTML = useCases.map(ucCard).join("") + useCases.map(ucCard).join("");
+// pointer-driven glow on each card
+ucTrack.addEventListener("pointermove", (e) => {
+  const card = e.target.closest(".uc-card");
+  if (!card) return;
+  const r = card.getBoundingClientRect();
+  card.style.setProperty("--mx", ((e.clientX - r.left) / r.width * 100) + "%");
+  card.style.setProperty("--my", ((e.clientY - r.top) / r.height * 100) + "%");
+});
+
+/* ---- Use cases marquee engine: rAF-driven, smooth speed + direction control ---- */
+(() => {
+  const marquee = document.getElementById("uc-marquee");
+  const track = ucTrack;
+  const prevBtn = document.getElementById("uc-prev");
+  const nextBtn = document.getElementById("uc-next");
+  if (!marquee || !track) return;
+
+  const BASE_SPEED = 60;   // px/sec normal scroll speed
+  const BOOST_SPEED = 380; // px/sec briefly after a click
+  const EASE = 2.8;        // higher = quicker return to base speed
+
+  let direction = -1;      // -1 = scroll left (default), +1 = scroll right
+  let currentSpeed = BASE_SPEED;
+  let targetSpeed = BASE_SPEED;
+  let offset = 0;
+  let loopWidth = 0;
+  let paused = false;
+  let lastT = 0;
+
+  const measure = () => { loopWidth = track.scrollWidth / 2; };
+  measure();
+  window.addEventListener("resize", measure);
+  // re-measure after fonts/images settle
+  window.addEventListener("load", measure);
+  setTimeout(measure, 300);
+
+  marquee.addEventListener("mouseenter", () => { paused = true; });
+  marquee.addEventListener("mouseleave", () => { paused = false; });
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) lastT = 0;
+  });
+
+  const boost = (dir) => {
+    direction = dir;
+    currentSpeed = BOOST_SPEED;   // instant jump up — smooth ease back down
+    targetSpeed = BASE_SPEED;
+  };
+  prevBtn?.addEventListener("click", () => boost(+1));
+  nextBtn?.addEventListener("click", () => boost(-1));
+
+  const tick = (t) => {
+    if (!lastT) lastT = t;
+    let dt = (t - lastT) / 1000;
+    lastT = t;
+    if (dt > 0.1) dt = 0.1; // clamp big jumps (tab switch) to avoid jerk
+
+    if (!paused && loopWidth > 0) {
+      // Smoothly ease currentSpeed toward targetSpeed (exponential smoothing)
+      currentSpeed += (targetSpeed - currentSpeed) * (1 - Math.exp(-EASE * dt));
+      offset += direction * currentSpeed * dt;
+      // wrap seamlessly
+      if (offset <= -loopWidth) offset += loopWidth;
+      if (offset >= 0) offset -= loopWidth;
+      track.style.transform = `translate3d(${offset}px, 0, 0)`;
+    }
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+})();
+
+/* ---- Workflow auto marquee ---- */
+
+const flowArrow = `
+<div class="flow-arrow-i" aria-hidden="true">
+  <svg width="28" height="14" viewBox="0 0 28 14" fill="none">
+    <path d="M0 7H26M26 7L20 1M26 7L20 13"
+      stroke="currentColor"
+      stroke-width="1.5"/>
+  </svg>
+</div>`;
+
+const flowCard = (s, i) => `
+  <article class="flow-card">
+    <div class="head">
+      <span class="big-num">${String(i + 1).padStart(2, "0")}</span>
+      <span class="tag">Step</span>
+    </div>
+    <h3>${s.t}</h3>
+    <p>${s.d}</p>
+  </article>
+  ${flowArrow}
+`;
+
+const flowTrack = document.getElementById("flow-track");
+
+const flowHTML = flow.map(flowCard).join("");
+
+flowTrack.innerHTML = flowHTML + flowHTML;
+
+
+/* ---------- Workflow marquee engine ---------- */
+
+(() => {
+  const marquee = document.getElementById("flow-marquee");
+  const track = document.getElementById("flow-track");
+
+  const prevBtn = document.getElementById("flow-prev");
+  const nextBtn = document.getElementById("flow-next");
+
+  if (!marquee || !track) return;
+
+  const BASE_SPEED = 60;
+  const BOOST_SPEED = 380;
+  const EASE = 2.8;
+
+  let direction = -1;
+  let currentSpeed = BASE_SPEED;
+  let targetSpeed = BASE_SPEED;
+
+  let offset = 0;
+  let loopWidth = 0;
+
+  let paused = false;
+  let lastT = 0;
+
+  const measure = () => {
+    loopWidth = track.scrollWidth / 2;
+  };
+
+  measure();
+
+  window.addEventListener("resize", measure);
+  window.addEventListener("load", measure);
+
+  setTimeout(measure, 300);
+
+  marquee.addEventListener("mouseenter", () => {
+    paused = true;
+  });
+
+  marquee.addEventListener("mouseleave", () => {
+    paused = false;
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) lastT = 0;
+  });
+
+  const boost = (dir) => {
+    direction = dir;
+    currentSpeed = BOOST_SPEED;
+    targetSpeed = BASE_SPEED;
+  };
+
+  prevBtn?.addEventListener("click", () => boost(+1));
+  nextBtn?.addEventListener("click", () => boost(-1));
+
+  const tick = (t) => {
+    if (!lastT) lastT = t;
+
+    let dt = (t - lastT) / 1000;
+    lastT = t;
+
+    if (dt > 0.1) dt = 0.1;
+
+    if (!paused && loopWidth > 0) {
+
+      currentSpeed +=
+        (targetSpeed - currentSpeed) *
+        (1 - Math.exp(-EASE * dt));
+
+      offset += direction * currentSpeed * dt;
+
+      if (offset <= -loopWidth) {
+        offset += loopWidth;
+      }
+
+      if (offset >= 0) {
+        offset -= loopWidth;
+      }
+
+      track.style.transform =
+        `translate3d(${offset}px,0,0)`;
+    }
+
+    requestAnimationFrame(tick);
+  };
+
+  requestAnimationFrame(tick);
+})();
+
+/* ---- Scroll reveal ---- */
+document.querySelectorAll(".section-head, .two-col, .drag-row, .shift-grid, .principles, .modules, .outcomes, .scope-grid, .proof-grid, .risk-band, .contact-grid, .ops-card, .hero-copy")
+  .forEach((el, i) => { el.classList.add("reveal"); if (i % 4) el.classList.add("delay-" + (i % 4)); });
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+/* ---- FAQ accordion ---- */
+const faqEl = document.getElementById("faq");
+faqEl.innerHTML = faqs.map((f, i) => `
+  <div class="faq-item${i === 0 ? " open" : ""}">
+    <button class="faq-btn" aria-expanded="${i === 0}">
+      <h3>${f.q}</h3>
+      <span class="sign">${i === 0 ? "−" : "+"}</span>
+    </button>
+    <div class="faq-answer">${f.a}</div>
+  </div>
+`).join("");
+faqEl.addEventListener("click", (e) => {
+  const btn = e.target.closest(".faq-btn");
+  if (!btn) return;
+
+  const item = btn.parentElement;
+  const wasOpen = item.classList.contains("open");
+
+  // Close all FAQ items
+  document.querySelectorAll(".faq-item").forEach((faq) => {
+    faq.classList.remove("open");
+    faq.querySelector(".faq-btn").setAttribute("aria-expanded", "false");
+    faq.querySelector(".sign").textContent = "+";
+  });
+
+  // Open the clicked item only if it wasn't already open
+  if (!wasOpen) {
+    item.classList.add("open");
+    btn.setAttribute("aria-expanded", "true");
+    btn.querySelector(".sign").textContent = "−";
+  }
+});
+
+/* ---- Year ---- */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* ---- Contact form (no backend) ---- */
+const form = document.getElementById("contact-form");
+const status = document.getElementById("form-status");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  status.textContent = "Thanks — we'll reach out within one business day.";
+  form.reset();
+});
+
+/* ---- Nav scroll effect ---- */
+const nav = document.querySelector(".nav");
+window.addEventListener("scroll", () => {
+  nav.style.boxShadow = window.scrollY > 8 ? "0 1px 0 rgba(0,0,0,.04)" : "none";
+});
+</script>
+</body>
+</html>
