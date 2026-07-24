@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/pages/assets/:file", "destination": "/react-build/assets/:file" },
+    { "source": "/pages/:file.:ext", "destination": "/react-build/:file.:ext" },
+    { "source": "/pages/**", "destination": "/react-build/index.html" }
+  ]
+}

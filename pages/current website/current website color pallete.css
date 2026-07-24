@@ -1,0 +1,124 @@
+:root {
+/* white */
+--white-100: #fff;
+--white-200: #ffffff;
+--white-300: rgba(255,255,255,0.5);
+/* black */
+--black-100: #10111c;
+--black-200: #0b0d1f;
+--black-300: #1c1d23;
+--black-400: #070815;
+--black-500: #1b1c29;
+--black-600: #000;
+--black-700: #161b3f;
+--black-800: #1c1f3e;
+--black-900: rgba(6,7,23,0.75);
+--black-1000: rgba(23,24,49,0.75);
+/* gold */
+--gold-100: #ffcb38;
+/* darkslateblue */
+--darkslateblue-100: #2b3168;
+--darkslateblue-200: #444973;
+--darkslateblue-300: #3b469b;
+--darkslateblue-400: #15295a;
+--darkslateblue-500: rgba(85,93,165,.75);
+/* lightsteelblue */
+--lightsteelblue-100: #c3c6e4;
+/* steelblue */
+--steelblue-100: #656ea0;
+--steelblue-200: #3498db;
+--steelblue-300: rgba(52,152,219,0.1);
+/* lavender */
+--lavender-100: #dfe1ff;
+--lavender-200: #dfe2ff;
+--lavender-300: #edefff;
+--lavender-400: #e9ecfe;
+/* darkgray */
+--darkgray-100: #a09a96;
+--darkgray-200: #95a5a6;
+--darkgray-300: rgba(160,154,150,0.5);
+/* darkorange */
+--darkorange-100: #ff7e28;
+/* goldenrod */
+--goldenrod-100: #ffc038;
+--goldenrod-200: #d4af37;
+--goldenrod-300: rgba(255,192,56,0.05);
+--goldenrod-400: rgba(255,192,56,0.1);
+--goldenrod-500: rgba(255,192,56,0);
+--goldenrod-600: rgba(212,175,55,0.3);
+/* royalblue */
+--royalblue-100: #7c8aff;
+--royalblue-200: #5f7dff;
+/* cornflowerblue */
+--cornflowerblue-100: #8890d9;
+--cornflowerblue-200: #97a1ff;
+/* slateblue */
+--slateblue-100: #4b58cc;
+/* linen */
+--linen-100: #efeee6;
+/* slategray */
+--slategray-100: #6b767f;
+--slategray-200: #5d6d7e;
+--slategray-300: #6c757d;
+--slategray-400: rgba(127,117,162,0.40);
+/* mediumseagreen */
+--mediumseagreen-100: #0c8;
+/* mediumslateblue */
+--mediumslateblue-100: #6145d6;
+/* darkslategray */
+--darkslategray-100: #4a4a4a;
+--darkslategray-200: #2d2d2d;
+--darkslategray-300: #3d3d3d;
+--darkslategray-400: #34495e;
+--darkslategray-500: #2c3e50;
+/* dimgray */
+--dimgray-100: #5a5a5a;
+--dimgray-200: #6a6a6a;
+--dimgray-300: #4d4d4d;
+/* silver */
+--silver-100: #bdc3c7;
+/* gray */
+--gray-100: #7f8c8d;
+/* darkgoldenrod */
+--darkgoldenrod-100: #b8941f;
+--darkgoldenrod-200: #9a7a1a;
+--darkgoldenrod-300: #c39c3d;
+--darkgoldenrod-400: rgba(184,148,31,0.3);
+/* orange */
+--orange-100: #f39c12;
+/* whitesmoke */
+--whitesmoke-100: #ecf0f1;
+--whitesmoke-200: #f8f9fa;
+--whitesmoke-300: #e9ecef;
+/* lemonchiffon */
+--lemonchiffon-100: #fff3cd;
+/* palegoldenrod */
+--palegoldenrod-100: #ffeaa7;
+/* gainsboro */
+--gainsboro-100: #dee2e6;
+--gainsboro-200: #e1e8ed;
+/* burlywood */
+--burlywood-100: #c9a96e;
+/* thistle */
+--thistle-100: rgba(211,201,250,0.7);
+/* Logo Colors */
+--black: rgb(23, 23, 23);
+--snow: rgb(251, 244, 244);
+--gray: rgb(124, 124, 116);
+--darkgray: rgb(172, 164, 164);
+--darkgray: rgb(178, 178, 178);
+--silver: rgb(196, 196, 196);
+/* Homepage Colors */
+--darkslategray: rgb(71, 74, 72);
+--whitesmoke: rgb(242, 239, 236);
+--darkgray: rgb(150, 151, 149);
+--silver: rgb(194, 194, 191);
+--gray: rgb(124, 124, 116);
+--darkgray: rgb(181, 180, 171);
+--gray: rgb(124, 116, 118);
+--darkgray: rgb(180, 172, 169);
+--lightgray: rgb(212, 203, 198);
+--lightgray: rgb(214, 213, 194);
+--gray: rgb(116, 132, 124);
+--slategray: rgb(112, 124, 148);
+}

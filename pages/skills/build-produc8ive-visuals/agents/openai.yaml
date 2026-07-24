@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Produc8ive Visuals"
+  short_description: "Create branded JSX and CSS product visuals"
+  default_prompt: "Use $build-produc8ive-visuals to create a coded product visual for this finance section."

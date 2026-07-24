@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 600" role="img" aria-labelledby="title desc">
+  <title id="title">Agent workspace image placeholder</title>
+  <desc id="desc">A neutral placeholder that will later be replaced with a product image.</desc>
+  <rect width="1180" height="600" fill="#fffdf8"/>
+  <rect x="1" y="1" width="1178" height="598" fill="none" stroke="#ded8ce" stroke-width="2"/>
+  <path d="M70 70h1040v460H70z" fill="#f4f0e8" stroke="#ded8ce" stroke-dasharray="10 10"/>
+  <g fill="#625f58" text-anchor="middle" font-family="Inter,Arial,sans-serif">
+    <text x="590" y="284" font-size="20" font-weight="600">Agent workspace preview</text>
+    <text x="590" y="320" font-size="14">Placeholder image · replace later</text>
+  </g>
+</svg>
