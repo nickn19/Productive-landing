@@ -82,7 +82,7 @@ function HomeHero() {
     fetch(`${import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337'}/api/homepage`, { signal: controller.signal })
       .then(response => response.ok ? response.json() : Promise.reject())
       .then(({ data }) => data && setHero({ ...defaultHero, ...data }))
-      .catch(() => {})
+      .catch(() => { })
     return () => controller.abort()
   }, [])
   return <div className="site-home">
@@ -119,7 +119,7 @@ function Logo() {
 
 function Colors() {
   return <><PageHead eyebrow="Foundation / 03" title="Warmth, precision, restraint." intro="Ivory and ink carry the identity. Muted neutrals organize information; sage and signal are scarce functional accents." />
-    <section className="palette">{brand.colors.map(([name, hex, token], i) => <article key={name} style={{background: hex, color: i === 2 || i === 3 || i === 4 || i === 6 ? '#fffdf8' : '#171717'}}><div><h3>{name}</h3><Copy value={hex} /></div><p>{hex}<br /><span>{token}</span></p></article>)}</section>
+    <section className="palette">{brand.colors.map(([name, hex, token], i) => <article key={name} style={{ background: hex, color: i === 2 || i === 3 || i === 4 || i === 6 ? '#fffdf8' : '#171717' }}><div><h3>{name}</h3><Copy value={hex} /></div><p>{hex}<br /><span>{token}</span></p></article>)}</section>
     <section className="section"><div className="section-title"><p className="eyebrow">Usage ratio</p><h2>Neutral by default.<br />Accent with intent.</h2></div><div className="ratio"><span>60%<small>Ivory / paper</small></span><span>25%<small>Ink / graphite</small></span><span>10%<small>Stone</small></span><span>5%<small>Accent</small></span></div></section>
     <section className="section"><p className="eyebrow">Verified text pairings</p><div className="table"><div><b>Background</b><b>Text</b><b>Ratio</b><b>Use</b></div><div><span>Paper #fffdf8</span><span>Ink #171717</span><span>17.64:1</span><span>All text</span></div><div><span>Ivory #f4f0e8</span><span>Ink #171717</span><span>15.77:1</span><span>All text</span></div><div><span>Ink #171717</span><span>Paper #fffdf8</span><span>17.64:1</span><span>All inverse text</span></div><div><span>Ivory #f4f0e8</span><span>Stone #625f58</span><span>5.60:1</span><span>Body and metadata</span></div></div></section>
   </>
@@ -182,7 +182,7 @@ function Tokens() {
   return <><PageHead eyebrow="Handoff / 08" title="One source of truth." intro="Use semantic tokens in production work. Primitive values describe what a color is; semantic values describe what it does." />
     <section className="code-block large"><div><span>CSS · Core semantic tokens</span><Copy value={tokenSnippet} label="Copy tokens" /></div><pre>{tokenSnippet}</pre></section>
     <section className="section"><p className="eyebrow">Naming model</p><div className="token-model"><div><span>Primitive</span><code>--ink-900</code><p>Raw value. Do not use directly in components.</p></div><i>→</i><div><span>Semantic</span><code>--text-primary</code><p>Purpose. Preferred in layouts and prose.</p></div><i>→</i><div><span>Component</span><code>--button-bg</code><p>Local role. Maps back to a semantic token.</p></div></div></section>
-    <section className="section"><p className="eyebrow">Quick copy</p><div className="quick-copy">{[['Primary background', 'var(--surface-primary)'], ['Primary text', 'var(--text-primary)'], ['Inverse section', 'var(--surface-inverse)'], ['Primary action', 'var(--action-primary)']].map(([a,b]) => <div key={a}><span>{a}</span><code>{b}</code><Copy value={b} /></div>)}</div></section>
+    <section className="section"><p className="eyebrow">Quick copy</p><div className="quick-copy">{[['Primary background', 'var(--surface-primary)'], ['Primary text', 'var(--text-primary)'], ['Inverse section', 'var(--surface-inverse)'], ['Primary action', 'var(--action-primary)']].map(([a, b]) => <div key={a}><span>{a}</span><code>{b}</code><Copy value={b} /></div>)}</div></section>
     <section className="handoff"><p className="eyebrow light">Working rule</p><h2>If a value has no clear role,<br />it is not yet a token.</h2><p>Deprecate by aliasing the old semantic name for one release, documenting the replacement, then removing it.</p></section>
   </>
 }
@@ -204,8 +204,8 @@ function SectionLibrary() {
 
 function SplitHero() { return <section className="lab-split-hero"><div><p className="eyebrow">Enterprise AI workforce</p><h3>Put your knowledge<br /><em>to work.</em></h3><p>Governed agents that understand how your organization works and move specialist work forward.</p><div><button className="button primary">Get started ↗</button><button className="button secondary">See how it works</button></div></div><div className="lab-workflow"><span>WORKFLOW / 01</span><b>Research</b><i>→</i><b>Reason</b><i>→</i><b>Act</b><small>Every action stays traceable.</small></div></section> }
 function ProductHero() { return <section className="lab-product-hero"><p className="eyebrow">Built for work where judgment matters</p><h3>Close the work.<br />Keep the judgment.</h3><p>Connect knowledge, live context, and controlled execution in one operating layer.</p><button className="button primary">Explore agents ↗</button><div className="lab-dashboard"><span>Board Deck Agent</span><strong>24 sources checked</strong><div><i></i><i></i><i></i><i></i><i></i></div></div></section> }
-function SplitFeature() { return <section className="lab-feature-split"><div><p className="eyebrow light">Controlled execution</p><h3>Designed around<br />how work gets done.</h3><p>Agents work across approved systems, escalate exceptions, and keep evidence attached.</p></div><ol>{[['01','Learns your process','Approved SOPs, policies, and prior decisions.'],['02','Acts within boundaries','Defined permissions, review gates, and controls.'],['03','Explains every output','Sources and reasoning remain visible.']].map(([n,t,d]) => <li key={n}><b>{n}</b><span><strong>{t}</strong>{d}</span></li>)}</ol></section> }
-function FeatureGrid() { return <section className="lab-feature-grid"><header><p className="eyebrow">One operating layer</p><h3>From knowledge<br />to completed work.</h3></header><div>{[['01','Research','Find the right evidence.'],['02','Reason','Apply policy and context.'],['03','Act','Move work across systems.'],['04','Escalate','Bring judgment in on time.']].map(([n,t,d]) => <article key={n}><span>{n}</span><h4>{t}</h4><p>{d}</p></article>)}</div></section> }
+function SplitFeature() { return <section className="lab-feature-split"><div><p className="eyebrow light">Controlled execution</p><h3>Designed around<br />how work gets done.</h3><p>Agents work across approved systems, escalate exceptions, and keep evidence attached.</p></div><ol>{[['01', 'Learns your process', 'Approved SOPs, policies, and prior decisions.'], ['02', 'Acts within boundaries', 'Defined permissions, review gates, and controls.'], ['03', 'Explains every output', 'Sources and reasoning remain visible.']].map(([n, t, d]) => <li key={n}><b>{n}</b><span><strong>{t}</strong>{d}</span></li>)}</ol></section> }
+function FeatureGrid() { return <section className="lab-feature-grid"><header><p className="eyebrow">One operating layer</p><h3>From knowledge<br />to completed work.</h3></header><div>{[['01', 'Research', 'Find the right evidence.'], ['02', 'Reason', 'Apply policy and context.'], ['03', 'Act', 'Move work across systems.'], ['04', 'Escalate', 'Bring judgment in on time.']].map(([n, t, d]) => <article key={n}><span>{n}</span><h4>{t}</h4><p>{d}</p></article>)}</div></section> }
 function ConversionBanner() { return <section className="lab-cta"><p className="eyebrow light">Your next move</p><h3>Give knowledge teams<br />time back.</h3><p>Start with one high-value workflow and prove the outcome.</p><button className="button inverse">Start a conversation ↗</button></section> }
 function CorporateFooter() { return <footer className="lab-footer"><div><strong>Produc8ive</strong><p>Knowledge, put to work.</p></div><div><span>Platform</span><a href="#">Agents</a><a href="#">How it works</a><a href="#">Security</a></div><div><span>Company</span><a href="#">About</a><a href="#">Insights</a><a href="#">Contact</a></div><small>© 2026 Produc8ive. Built for teams that get work done.</small></footer> }
 
@@ -214,20 +214,20 @@ function LandingPageOne() {
     <FloatingNavbar />
     <main>
       <section className="tabbed-hero landing-hero-redesign" id="platform">
-        <div className="hero-lines" aria-hidden="true"><FloatingLines lineCount={18} lineDistance={16} animationSpeed={.28} middleWavePosition={{x: 1.4, y: -.15, rotate: .24}} linesGradient={['#69766d', '#b98b38']} /></div>
+        <div className="hero-lines" aria-hidden="true"><FloatingLines lineCount={18} lineDistance={16} animationSpeed={.28} middleWavePosition={{ x: 1.4, y: -.15, rotate: .24 }} linesGradient={['#69766d', '#b98b38']} /></div>
         <h1>Turn Your Finance Knowledge<br /><em>Into Work That Gets Done</em></h1>
         <p className="landing-lead">Produc8ive turns your SOPs, institutional knowledge and live enterprise data into governed AI agents that complete repeatable finance workflows across your existing systems.</p>
         <div className="landing-actions"><a className="button primary" href="#contact">Map One Finance Workflow ↗</a></div>
         <div className="hero-dashboard-frame"><img src={dashboardImage} alt="Produc8ive finance automation dashboard" /></div>
       </section>
-       <ClientsSection />
+      <ClientsSection />
       <section className="growth-strip" id="proof" aria-label="Growth and efficiency outcomes"><div>
         <article><strong>10+ hours</strong><p>saved per week</p></article>
         <article><strong>8x</strong><p>faster processing</p></article>
         <article><strong>95%+</strong><p>data accuracy</p></article>
         <article><strong>60%</strong><p>lower processing cost</p></article>
       </div></section>
-     
+
       <ProblemSection />
       <FinanceShiftSection />
       <WhyProduc8iveSection />
@@ -237,9 +237,9 @@ function LandingPageOne() {
       <ProductInActionSection />
       <IntegrationsSection />
       <HumanControlSection />
-      <LeadershipSection/>
-      
-     
+      <LeadershipSection />
+
+
       <ContactSection />
       <WorkflowCtaSection />
       <LandingFooter />
@@ -424,18 +424,18 @@ function HumanControlSection() {
 
 function IntegrationsSection() {
   const logos = [
-    { src: `${BASE}/acumatic.svg`,   alt: 'Acumatica'  },
-    { src: `${BASE}/oracle.svg`,     alt: 'Oracle'     },
-    { src: `${BASE}/quickbook.png`,  alt: 'QuickBooks' },
-    { src: `${BASE}/sap.svg`,        alt: 'SAP'        },
-    { src: `${BASE}/tally.svg`,      alt: 'Tally'      },
-    { src: `${BASE}/zoho2.png`,       alt: 'Zoho'       },
+    { src: `${BASE}/acumatic.svg`, alt: 'Acumatica' },
+    { src: `${BASE}/oracle.svg`, alt: 'Oracle' },
+    { src: `${BASE}/quickbook.png`, alt: 'QuickBooks' },
+    { src: `${BASE}/sap.svg`, alt: 'SAP' },
+    { src: `${BASE}/tally.svg`, alt: 'Tally' },
+    { src: `${BASE}/zoho2.png`, alt: 'Zoho' },
   ]
   return (
     <section className="integrations-section" id="Integration">
       <div className="integrations-inner">
         <div className="integrations-copy">
-         
+
           <h2>Produc8ive works with the systems your finance team already uses.</h2>
           <p className="integrations-sub">Connect Produc8ive with 1,000+ applications across ERP, accounting, banking, email, document management and enterprise operations. Use prebuilt integrations where available or configure custom connections for your existing systems.</p>
         </div>
@@ -479,9 +479,9 @@ function ProductInActionSection() {
               alt="Produc8ive demo thumbnail"
             />
             <span className="pia-play-btn" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
             </span>
-        
+
           </button>
         )}
       </div>
@@ -501,7 +501,7 @@ function LandingFooter() {
     <footer className="landing-footer">
       <div className="landing-footer-inner">
         <div className="landing-footer-brand">
-          <span className="landing-footer-logo">Produc8ive</span>
+          <span className="landing-footer-logo"><img src={`${BASE}/footer-logo.png`} alt="Produc8ive" style={{ height: '32px', width: 'auto', display: 'block' }} /></span>
           <p className="landing-footer-desc">Produc8ive turns your finance processes, institutional knowledge and enterprise data into governed AI workflows that help teams analyse, coordinate and execute work with greater speed and control.</p>
           <address className="landing-footer-address">
             Flat C-1301 Sr No 69 &amp; 70, Hill View Residency,<br />
@@ -545,13 +545,13 @@ function WorkflowCtaSection() {
 function ClientsSection() {
   const clients = [
     { src: `${BASE}/Suma-Logo-BlackText.svg`, alt: 'Suma Shilp' },
-    { src: `${BASE}/serum-logo.png`,              alt: 'Serum Institute of India' },
-    { src: `${BASE}/Kale-New-Logofo.png`,         alt: 'Kalé' },
-    { src: `${BASE}/globalview.png`,              alt: 'Globeview Advisors LLP' },
+    { src: `${BASE}/serum-logo.png`, alt: 'Serum Institute of India' },
+    { src: `${BASE}/Kale-New-Logofo.png`, alt: 'Kalé' },
+    { src: `${BASE}/globalview.png`, alt: 'Globeview Advisors LLP' },
   ]
   return (
     <section className="clients-section">
-    
+
       <h2 className="clients-title"> Trusted by Teams Running Critical Operations </h2>
       <div className="clients-grid">
         {clients.map(({ src, alt }) => (
@@ -612,7 +612,7 @@ function LeadershipSection() {
             <p className="leader-role">{role}</p>
             <a href={linkedin} className="leader-linkedin" aria-label={`${name} on LinkedIn`} target="_blank" rel="noreferrer">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
               </svg>
               LinkedIn Profile
             </a>
@@ -628,6 +628,48 @@ function LeadershipSection() {
 
 
 function ContactSection() {
+  const [status, setStatus] = useState('idle') // idle | sending | success | error
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setStatus('sending')
+
+    const form = e.target
+    const name = form.Name.value
+    const email = form.email.value
+    const phone = form.phone.value
+    const message = form.message.value
+
+    try {
+      const res = await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': import.meta.env.VITE_BREVO_API_KEY,
+        },
+        body: JSON.stringify({
+          email,
+          attributes: {
+            FIRSTNAME: name,
+            SMS: phone,
+            MESSAGE: message,
+          },
+          listIds: [7],
+          updateEnabled: true,
+        }),
+      })
+
+      if (res.ok || res.status === 204) {
+        setStatus('success')
+        form.reset()
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
+  }
+
   return <section className="contact-section" id="contact">
     <div className="contact-intro">
       <p className="eyebrow">Start with one workflow</p>
@@ -635,17 +677,19 @@ function ContactSection() {
       <p>Tell us where your finance team is spending time on repetitive preparation, reconciliation or follow-up. We'll start with the workflow, its controls and the people who need to stay in the loop.</p>
       <a href="mailto:smishra@produc8ive.com">smishra@produc8ive.com <span aria-hidden="true">&rarr;</span></a>
     </div>
-    <form className="contact-form" action="mailto:smishra@produc8ive.com" method="post" encType="text/plain">
+    <form className="contact-form" onSubmit={handleSubmit}>
       <p>Contact details</p>
       <div className="contact-name-fields">
         <label>Name<input name="Name" autoComplete="given-name" required /></label>
-        
       </div>
       <label>Work email<input name="email" type="email" autoComplete="email" required /></label>
       <label><div className="phone1">Phone <span>Optional</span></div><input name="phone" type="tel" autoComplete="tel" /></label>
       <label>What workflow should move faster?<textarea name="message" rows="5" required /></label>
-      <button className="button primary" type="submit">Send message <b aria-hidden="true">&rarr;</b></button>
-     
+      <button className="button primary" type="submit" disabled={status === 'sending'}>
+        {status === 'sending' ? 'Sending…' : <>Send message <b aria-hidden="true">&rarr;</b></>}
+      </button>
+      {status === 'success' && <p style={{ color: 'green', marginTop: '1rem' }}>Message sent. We'll be in touch soon.</p>}
+      {status === 'error' && <p style={{ color: 'red', marginTop: '1rem' }}>Something went wrong. Please try again or email us directly.</p>}
     </form>
   </section>
 }
@@ -664,7 +708,7 @@ function FloatingNavbar() {
     addEventListener('scroll', update, { passive: true })
     return () => removeEventListener('scroll', update)
   }, [])
-  return <header className={`floating-navbar ${visible ? 'nav-visible' : 'nav-hidden'} ${scrolled ? 'scrolled' : ''}`}><Link to="/" className="site-logo">Produc8ive</Link><nav aria-label="Primary"><a href="#platform">Platform</a><a href="#proof">Outcomes</a><a href="#agents">Agents</a></nav><a className="nav-action" href="#contact">Map One Finance Workflow <span aria-hidden="true">↗</span></a></header>
+  return <header className={`floating-navbar ${visible ? 'nav-visible' : 'nav-hidden'} ${scrolled ? 'scrolled' : ''}`}><Link to="/" className="site-logo"><img src={`${BASE}/logo_hero.png`} alt="Produc8ive" style={{ height: '32px', width: 'auto', display: 'block' }} /></Link><nav aria-label="Primary"><a href="#finance-brain-flow">How it works?</a><a href="#proof">Outcomes</a><a href="#agents1">Agents</a><a href="#productInAction">Autonomous AP</a><a href="#Integration">Integrations</a></nav><a className="nav-action" href="#contact">Map One Finance Workflow <span aria-hidden="true">↗</span></a></header>
 }
 
 function stripBase(pathname) {
@@ -674,7 +718,7 @@ function stripBase(pathname) {
   return pathname
 }
 
-const pages = {'/brand': Overview, '/logo': Logo, '/colors': Colors, '/typography': Typography, '/actions': Actions, '/surfaces': Surfaces, '/patterns': Patterns, '/tokens': Tokens, '/components': SectionLibrary}
+const pages = { '/brand': Overview, '/logo': Logo, '/colors': Colors, '/typography': Typography, '/actions': Actions, '/surfaces': Surfaces, '/patterns': Patterns, '/tokens': Tokens, '/components': SectionLibrary }
 function App() {
   const [path, setPath] = useState(() => stripBase(decodeURIComponent(location.pathname)))
   useEffect(() => {

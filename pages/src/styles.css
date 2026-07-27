@@ -8402,7 +8402,7 @@ details p {
 }
 
 @media (max-width: 700px) {
-  .clients-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .clients-grid { grid-template-columns: 1fr; gap: 10px; }
   .clients-logo-card { padding: 20px 16px; min-height: 80px; }
   .clients-logo-card img { max-width: 130px; max-height: 44px; }
 }
