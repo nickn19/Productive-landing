@@ -179,7 +179,7 @@ const tokenSnippet = `:root {
   --focus-ring: #69766d;
 }`
 function Tokens() {
-  return <><PageHead eyebrow="Handoff / 08" title="One source of truth." intro="Use semantic tokens in production work. Primitive values describe what a color is; semantic values describe what it does." />
+  return <><PageHead eyebrow="Operations / 08" title="One source of truth." intro="Use semantic tokens in production work. Primitive values describe what a color is; semantic values describe what it does." />
     <section className="code-block large"><div><span>CSS · Core semantic tokens</span><Copy value={tokenSnippet} label="Copy tokens" /></div><pre>{tokenSnippet}</pre></section>
     <section className="section"><p className="eyebrow">Naming model</p><div className="token-model"><div><span>Primitive</span><code>--ink-900</code><p>Raw value. Do not use directly in components.</p></div><i>→</i><div><span>Semantic</span><code>--text-primary</code><p>Purpose. Preferred in layouts and prose.</p></div><i>→</i><div><span>Component</span><code>--button-bg</code><p>Local role. Maps back to a semantic token.</p></div></div></section>
     <section className="section"><p className="eyebrow">Quick copy</p><div className="quick-copy">{[['Primary background', 'var(--surface-primary)'], ['Primary text', 'var(--text-primary)'], ['Inverse section', 'var(--surface-inverse)'], ['Primary action', 'var(--action-primary)']].map(([a, b]) => <div key={a}><span>{a}</span><code>{b}</code><Copy value={b} /></div>)}</div></section>
@@ -322,7 +322,7 @@ function WhyProduc8iveSection() {
 
 function UseCasesSection() {
   const agents = [
-    ['Bookkeeping Handoff Assistant', 'Organises client emails, statements, invoices and receipts into a clean, review-ready bookkeeping packet.'],
+    ['Bookkeepin Operations Assistant', 'Organises client emails, statements, invoices and receipts into a clean, review-ready bookkeeping packet.'],
     ['AP Invoice Processing Assistant', 'Extracts invoice data, checks it against purchase and approval records, and prepares validated invoices for posting.'],
     ['Variance Analysis Assistant', 'Compares budgets and estimates against actual expenses to identify material variances and exceptions.'],
     ['AR Collections Assistant', 'Prioritises overdue invoices and prepares contextual payment reminders for finance-team review.'],
@@ -535,7 +535,7 @@ function WorkflowCtaSection() {
       <div className="workflow-cta-inner">
         <span className="pia-pill">Start with one workflow</span>
         <h2>Find the Finance Workflow Worth Automating First</h2>
-        <p>Start with one repetitive, high-friction process. We will map how it works today, identify the manual handoffs and show how Produc8ive can turn it into a controlled, repeatable workflow.</p>
+        <p>Start with one repetitive, high-friction process. We will map how it works today, identify the manual Operations and show how Produc8ive can turn it into a controlled, repeatable workflow.</p>
         <a className="button primary workflow-cta-btn" href="#contact">Map One Finance Workflow <b aria-hidden="true">↗</b></a>
       </div>
     </section>
