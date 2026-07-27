@@ -668,7 +668,10 @@ function FloatingNavbar() {
 }
 
 function stripBase(pathname) {
-  return pathname.startsWith(BASE) ? pathname.slice(BASE.length) || '/' : pathname
+  if (pathname.startsWith(BASE)) return pathname.slice(BASE.length) || '/'
+  // Also handle /pages/ prefix (public-facing URL)
+  if (pathname.startsWith('/pages')) return pathname.slice('/pages'.length) || '/'
+  return pathname
 }
 
 const pages = {'/brand': Overview, '/logo': Logo, '/colors': Colors, '/typography': Typography, '/actions': Actions, '/surfaces': Surfaces, '/patterns': Patterns, '/tokens': Tokens, '/components': SectionLibrary}
