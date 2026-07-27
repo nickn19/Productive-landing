@@ -17,6 +17,6 @@ function ghPages404() {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/pages/',
+  base: '/react-build/',
   plugins: [react(), ghPages404()],
 })
