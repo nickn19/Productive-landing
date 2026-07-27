@@ -1,0 +1,23 @@
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+.cache/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Local tooling
+.agents/
+.codex/
+
+# Preserve the former standalone CMS repository locally without publishing it
+cms/.git-local-backup/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
