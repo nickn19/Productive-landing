@@ -699,8 +699,6 @@ function FloatingNavbar() {
 
 function stripBase(pathname) {
   if (pathname.startsWith(BASE)) return pathname.slice(BASE.length) || '/'
-  // Also handle /pages/ prefix (public-facing URL)
-  if (pathname.startsWith('/pages')) return pathname.slice('/pages'.length) || '/'
   return pathname
 }
 
@@ -712,8 +710,8 @@ function App() {
     addEventListener('popstate', update)
     return () => removeEventListener('popstate', update)
   }, [])
-  if (path === '/') return <HomeHero />
-  if (path === '/ai-automation-use-cases') return <LandingPageOne />
+  if (path === '/') return <LandingPageOne />
+  if (path === '/brand-home') return <HomeHero />
   const Page = pages[path] || Overview
   return <Shell path={pages[path] ? path : '/brand'}><Page /></Shell>
 }

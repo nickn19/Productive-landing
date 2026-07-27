@@ -1,25 +1,17 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <script>
-      // GitHub Pages 404 redirect trick for SPA routing
-      // If the path starts with /pages/, redirect to react-build with the path encoded
-      var path = window.location.pathname;
-      var search = window.location.search;
-      var hash = window.location.hash;
-
-      if (path.indexOf('/pages/') === 0 || path === '/pages') {
-        // Store the intended path and redirect to react-build/index.html
-        sessionStorage.setItem('spa-redirect', path + search + hash);
-        window.location.replace(
-          window.location.origin + '/react-build/index.html'
-        );
-      } else {
-        // Not a React route, show a simple 404
-        document.write('<h1>404 - Page not found</h1>');
-      }
-    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f0e8" />
+    <title>Produc8ive Brand System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-B0bFq6Ys.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BV2zLZO6.css">
   </head>
-  <body></body>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
