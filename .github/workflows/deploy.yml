@@ -20,17 +20,4 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            echo "========== DEBUG =========="
-            whoami
-            id
-            pwd
-
-            echo "========== SUDO =========="
-            sudo -l
-
-            echo "========== DIRECTORY =========="
-            ls -ld /var/www/produc8ive-frontend
-
-            echo "========== DEPLOY =========="
-            cd /var/www/produc8ive-frontend
-            bash deploy.sh
+            sudo /usr/local/bin/deploy-produc8ive
