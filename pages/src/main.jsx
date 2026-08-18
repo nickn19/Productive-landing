@@ -593,6 +593,13 @@ function LeadershipSection() {
       img: `${BASE}/akash.png`,
       bio: 'Akash Hande is the Co-founder and Product Manager at Produc8ive, where he drives the vision and execution of AI-powered products. With a strong focus on blending technology, automation, and business strategy, Akash specializes in building scalable solutions for finance, e-commerce, and sport domain. He thrives on turning complex workflows into simple, outcome-driven products.',
       linkedin: 'https://www.linkedin.com/in/akashhande/'
+    },
+    {
+      name: 'Rishabh Bhandari',
+      role: 'Domain Lead & CRM',
+      img: `${BASE}/rishabh.png`,
+      bio: 'Rishabh is a Chartered Accountant leading the domain strategy and client engagement at Produc8ive, bringing a finance practitioner’s perspective to enterprise AI. He works at the intersection of finance, business processes and AI, translating complex workflows and operational challenges into practical, scalable AI solutions. His focus is on driving measurable business outcomes while ensuring strong human oversight.',
+      linkedin: 'https://www.linkedin.com/in/rishabh-bhandari-231906162'
     }
   ]
 
