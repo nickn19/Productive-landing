@@ -569,21 +569,21 @@ function LeadershipSection() {
     {
       name: 'Ameya Kunte',
       role: 'Co-founder & Experienced Finance Professional',
-      img: `${BASE}/ameya.jpg`,
+      img: `${BASE}/Ameya.png`,
       bio: 'Ameya Kunte is a Chartered Accountant, tax expert, and entrepreneur with over two decades of experience in restructuring advisory, corporate tax, and M&A. He is the Founder of Globeview Advisors LLP, a boutique consulting firm delivering tax-centric business advisory services to leading businesses and promoters. Previously with Ernst & Young and PwC, Ameya also co-founded Taxsutra, India\'s premier B2B tax news platform.',
       linkedin: 'https://www.linkedin.com/in/ameya-kunte-01606010/'
     },
     {
       name: 'Saurav Mishra',
       role: 'Co-Founder & AI Advocate',
-      img: `${BASE}/Saurav.jpg`,
+      img: `${BASE}/saurav.png`,
       bio: 'Saurav is a growth strategist and entrepreneur who enables T-Shaped Growth for businesses by combining deep expertise in marketing and sales with a broad understanding of HR, finance, operations, and supply chains. He helps organizations deploy AI-driven automation and scalable growth playbooks. Previously, he founded and scaled a 300+ member technology company, later acquired by a New York private equity firm.',
       linkedin: 'https://www.linkedin.com/in/saurav-mishra/'
     },
     {
       name: 'Sawan Jain',
       role: 'Co-Founder & Tech Arch',
-      img: `${BASE}/sawan.jpg`,
+      img: `${BASE}/sawan.png`,
       bio: 'Sawan is the Co-founder of Varseno with over 20 years of experience in enterprise software strategy, design, and delivery. He is passionate about solving complex problems through innovative and scalable technology solutions. Known for his pragmatic leadership style, Sawan brings together strategy, creativity, and execution to build high-performing teams and deliver meaningful business impact.',
       linkedin: 'https://www.linkedin.com/in/sawanjain/'
     },
