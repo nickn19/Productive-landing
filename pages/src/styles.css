@@ -6026,6 +6026,46 @@ details p {
   letter-spacing: .08em
 }
 
+.problem-card {
+  min-height: 400px;
+}
+
+.problem-card .why-visual {
+  min-height: 180px;
+}
+
+.problem-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(105, 118, 109, .1);
+  border-radius: 50%;
+  color: var(--sage-500)
+}
+
+.problem-icon svg {
+  width: 16px;
+  height: 16px
+}
+
+.problem-dashboard-shot {
+  width: 100%;
+  height: 176px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: var(--paper-100);
+  box-shadow: 0 8px 20px rgba(23, 23, 23, .06)
+}
+
+.problem-dashboard-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block
+}
+
 .process-steps {
   width: 100%;
   display: grid;
@@ -7526,7 +7566,9 @@ details p {
   margin: 0;
   padding-top: 57px;
 }
-
+.pia-subtext.right-align{
+  text-align: right;
+}
 /* Video wrapper */
 .pia-video-wrap {
   width: min(1090px, 100%);
@@ -8634,4 +8676,815 @@ details p {
   .landing-footer-brand { grid-column: 1; grid-row: 1; }
   .landing-footer-nav { grid-column: 1; grid-row: 2; }
   .landing-footer-bottom { grid-column: 1; grid-row: 3; flex-direction: column; align-items: flex-start; gap: 6px; }
+}
+
+/* ── AI in Accounts Payable guide ── */
+.ap-guide .floating-navbar {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+}
+
+.ap-img-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  min-height: 280px;
+  width: 100%;
+  padding: 24px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 4px;
+  background:
+    linear-gradient(160deg, rgba(255, 253, 248, .55), rgba(233, 228, 220, .9)),
+    repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(98, 95, 88, .05) 10px, rgba(98, 95, 88, .05) 20px);
+}
+
+.ap-img-placeholder.cool {
+  background:
+    linear-gradient(160deg, rgba(105, 118, 109, .18), rgba(52, 54, 51, .12)),
+    repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(98, 95, 88, .06) 10px, rgba(98, 95, 88, .06) 20px);
+}
+
+.ap-img-placeholder > span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--sage-500);
+}
+
+.ap-img-placeholder > p {
+  margin: 0;
+  max-width: 42ch;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.ap-guide-hero {
+  min-height: 0;
+  padding: 140px 5vw 110px;
+}
+
+.ap-hero-eyebrow {
+  margin: 0 0 18px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: none;
+  color: var(--sage-500);
+}
+
+.ap-hero-media {
+  margin-top: 48px;
+}
+
+.ap-metric-strip {
+  padding: 5vw 7vw;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--surface-secondary);
+}
+
+.ap-metric-label {
+  margin: 0 0 28px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--sage-500);
+}
+
+.ap-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.ap-metric-grid article {
+  padding-right: 16px;
+  border-right: 1px solid var(--border-subtle);
+}
+
+.ap-metric-grid article:last-child {
+  border-right: 0;
+}
+
+.ap-metric-grid strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.4vw, 46px);
+  font-weight: 500;
+  letter-spacing: -.03em;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.ap-metric-grid p {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.ap-metric-source,
+.ap-metric-note {
+  margin: 28px 0 0;
+  max-width: 920px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.ap-metric-note {
+  margin-top: 10px;
+}
+
+.ap-shift-section {
+  align-items: start;
+}
+
+.ap-shift-beats {
+  display: grid;
+  gap: 24px;
+  margin-top: 42px;
+}
+
+.ap-shift-beats h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+}
+
+.ap-shift-beats p {
+  margin: 0 0 12px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ap-misnomer {
+  padding: 22px 24px;
+  border-left: 3px solid var(--signal-500);
+  background: rgba(185, 139, 56, .08);
+}
+
+.ap-misnomer-label {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--signal-500);
+}
+
+.ap-misnomer blockquote {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+.ap-stakes {
+  padding-top: 8px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 16px !important;
+  color: var(--text-primary) !important;
+}
+
+.ap-shift-visual {
+  position: sticky;
+  top: 110px;
+}
+
+.ap-principles .ap-reframe {
+  margin: 0 0 18px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--sage-500);
+}
+
+.ap-principles-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.ap-principles-grid .why-card {
+  min-height: auto;
+}
+
+.ap-principles .why-card {
+  min-height: 0;
+}
+
+.ap-principle-icon {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 18px;
+  color: var(--sage-500);
+}
+
+.ap-principle-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ap-principle-num {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--text-muted);
+}
+
+.ap-operating-model .ap-model-story {
+  max-width: 760px;
+  margin: 0 0 40px;
+}
+
+.ap-operating-model .ap-model-story p {
+  margin: 0 0 14px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.ap-model-layout {
+  gap: 28px;
+  align-items: start;
+}
+
+.ap-compare {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-secondary);
+}
+
+.ap-compare-head,
+.ap-compare-row {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  min-width: 540px;
+  border-collapse: collapse;
+}
+
+.ap-compare-head {
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+}
+
+.ap-compare-head span,
+.ap-compare-row p {
+  display: table-cell;
+  margin: 0;
+  padding: 16px 18px;
+  font-size: 14px;
+  line-height: 1.55;
+  vertical-align: top;
+}
+
+.ap-compare-head span {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.ap-compare-head span + span,
+.ap-compare-row p + p {
+  border-left: 1px solid rgba(255, 253, 248, .12);
+  background: rgba(105, 118, 109, .08);
+}
+
+.ap-compare-row {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.ap-compare-row p + p {
+  border-left-color: var(--border-subtle);
+  background: rgba(105, 118, 109, .05);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.ap-turn {
+  margin: 32px 0 0;
+  max-width: 760px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--text-primary);
+}
+
+.ap-judgment-table {
+  display: block;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  overflow-x: auto;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-secondary);
+}
+
+.ap-judgment-head,
+.ap-judgment-row {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  min-width: 540px;
+  border-collapse: collapse;
+}
+
+.ap-judgment-head {
+  background: var(--surface-muted);
+}
+
+.ap-judgment-head span,
+.ap-judgment-row p {
+  display: table-cell;
+  margin: 0;
+  padding: 14px 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.ap-judgment-head span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--sage-500);
+}
+
+.ap-judgment-row {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.ap-judgment-row p + p {
+  border-left: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.ap-judgment-visual {
+  position: sticky;
+  top: 110px;
+}
+
+.ap-across-grid {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.ap-see-section .pia-header {
+  margin-bottom: 28px;
+}
+
+.ap-tab-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.ap-tab-bar button {
+  padding: 10px 16px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.ap-tab-bar button.active {
+  background: var(--surface-inverse);
+  border-color: var(--surface-inverse);
+  color: var(--text-inverse);
+}
+
+.ap-tab-panel {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+}
+
+.ap-tab-panel > p,
+.ap-tab-panel figcaption {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.ap-workflow-section {
+  padding: 6vw 7vw;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--surface-secondary);
+}
+
+.ap-workflow-section > header {
+  max-width: 760px;
+  margin-bottom: 40px;
+}
+
+.ap-workflow-section h2 {
+  margin: 12px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.6vw, 46px);
+  font-weight: 500;
+  letter-spacing: -.03em;
+  line-height: 1.08;
+}
+
+.ap-workflow-diagram {
+  display: grid;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+  gap: 8px;
+  align-items: start;
+}
+
+.ap-workflow-diagram article {
+  grid-column: span 1;
+  min-width: 0;
+}
+
+.ap-workflow-diagram article:nth-child(odd) {
+  grid-column: span 1;
+}
+
+.ap-workflow-diagram > article {
+  padding: 16px 12px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-primary);
+}
+
+.ap-workflow-diagram > article > span {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--sage-500);
+}
+
+.ap-step-thumb {
+  height: 64px;
+  margin-bottom: 14px;
+  border: 1px dashed var(--border-subtle);
+  background: rgba(105, 118, 109, .08);
+}
+
+.ap-workflow-diagram h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.ap-workflow-diagram p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.ap-workflow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 48px;
+  color: var(--text-muted);
+  font-style: normal;
+}
+
+.ap-workflow-loop,
+.ap-workflow-note {
+  margin: 24px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.finance-brain-flow .ap-workflow-note {
+  max-width: 760px;
+  margin: 40px auto 0;
+  text-align: center;
+}
+
+.ap-baseline-section .implementation-copy {
+  max-width: 960px;
+}
+
+.ap-baseline-areas article i {
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--sage-500);
+}
+
+.ap-key-insight {
+  margin-top: 28px;
+  padding: 22px 24px;
+  border: 1px solid var(--border-subtle);
+  background:
+    linear-gradient(120deg, rgba(185, 139, 56, .12), transparent 55%),
+    var(--surface-secondary);
+}
+
+.ap-key-insight > p:last-child {
+  margin: 8px 0 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--text-primary);
+}
+
+.ap-baseline-line {
+  margin: 22px 0 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.ap-problems-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.ap-problem-dash {
+  margin-top: 18px;
+}
+
+.ap-problem-dash .ap-img-placeholder {
+  min-height: 140px;
+}
+
+.ap-faq-section {
+  padding: 5vw 7vw;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--surface-primary);
+}
+
+.ap-faq-section > header {
+  max-width: 760px;
+  margin-bottom: 36px;
+}
+
+.ap-faq-section h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-section);
+  font-weight: 500;
+  letter-spacing: -.03em;
+  line-height: 1.08;
+}
+
+.ap-faq-accordion {
+  max-width: 900px;
+}
+
+.ap-faq-answer {
+  display: grid;
+  gap: 12px;
+}
+
+.ap-faq-answer p,
+.ap-faq-answer li {
+  max-width: none !important;
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.ap-faq-answer ul {
+  margin: 0;
+  padding-left: 1.2em;
+  display: grid;
+  gap: 6px;
+}
+
+.ap-faq-flag {
+  padding: 12px 14px;
+  border-left: 3px solid var(--signal-500);
+  background: rgba(185, 139, 56, .1);
+  color: var(--text-primary) !important;
+  font-size: 14px;
+}
+
+.ap-limits-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  padding: 5vw 7vw;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--surface-secondary);
+}
+
+.ap-limits-section h2 {
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-size: var(--type-section);
+  font-weight: 500;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+}
+
+.ap-limits-intro {
+  margin: 0 0 12px;
+  color: var(--text-secondary);
+}
+
+.ap-limits-block ul {
+  margin: 0 0 24px;
+  padding-left: 1.15em;
+  display: grid;
+  gap: 8px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.ap-pilot-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.ap-pilot-steps li {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.ap-pilot-steps li span {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--sage-500);
+}
+
+.ap-pilot-steps h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ap-pilot-steps p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* Bring AP-only text blocks onto the landing page's section scale. */
+.ap-operating-model {
+  padding: 5vw 7vw;
+  text-align: center;
+}
+
+.ap-operating-model > h2 {
+  max-width: 760px;
+  margin: 0 auto 28px;
+  font-size: var(--type-section);
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+
+.ap-operating-model > .eyebrow,
+.ap-faq-section > header > .eyebrow,
+.ap-limits-section .eyebrow {
+  margin-bottom: 18px;
+  color: var(--sage-500);
+}
+
+.ap-faq-section > header {
+  max-width: 1180px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.ap-faq-section > header > .eyebrow {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.ap-faq-accordion {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.ap-operating-model .ap-model-story,
+.ap-operating-model .ap-model-layout,
+.ap-operating-model .ap-turn {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.ap-operating-model .ap-model-layout {
+  max-width: 980px;
+}
+
+.ap-operating-model .ap-compare {
+  text-align: left;
+}
+
+.ap-guide .landing-footer-nav ul {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, auto);
+}
+
+.ap-guide .landing-footer-nav li:nth-child(4),
+.ap-guide .landing-footer-nav li:nth-child(5),
+.ap-guide .landing-footer-nav li:nth-child(6) {
+  grid-column: 2;
+}
+
+.ap-guide .landing-footer-nav li:nth-child(4) { grid-row: 1; }
+.ap-guide .landing-footer-nav li:nth-child(5) { grid-row: 2; }
+.ap-guide .landing-footer-nav li:nth-child(6) { grid-row: 3; }
+
+@media (max-width: 1100px) {
+  .ap-metric-grid,
+  .ap-principles-grid,
+  .ap-across-grid,
+  .ap-problems-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ap-metric-grid article:nth-child(2) {
+    border-right: 0;
+  }
+
+  .ap-principles-grid .why-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .ap-model-layout,
+  .ap-limits-section,
+  .ap-shift-section.finance-shift {
+    grid-template-columns: 1fr;
+  }
+
+  .ap-shift-visual,
+  .ap-judgment-visual {
+    position: static;
+  }
+
+  .ap-workflow-diagram {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .ap-workflow-arrow {
+    padding: 0;
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 700px) {
+  .ap-metric-grid,
+  .ap-principles-grid,
+  .ap-across-grid,
+  .ap-problems-grid,
+  .ap-compare-head,
+  .ap-compare-row,
+  .ap-judgment-head,
+  .ap-judgment-row {
+    grid-template-columns: 1fr;
+  }
+
+  .ap-metric-grid article,
+  .ap-compare-head span + span,
+  .ap-compare-row p + p,
+  .ap-judgment-row p + p {
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .ap-metric-grid article {
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .ap-guide .floating-navbar nav {
+    display: none;
+  }
 }
