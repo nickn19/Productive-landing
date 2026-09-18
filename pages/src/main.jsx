@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import FloatingLines from './FloatingLines'
 import AccountsPayableGuide from './AccountsPayableGuide'
 import FinanceBrainTimeline from './FinanceBrainTimeline'
+import ReliableAIPage from './ReliableAIPage'
 import dashboardImage from '../hero.png'
 import './styles.css'
 
@@ -701,7 +702,7 @@ function stripBase(pathname) {
   return pathname
 }
 
-const pages = { '/brand': Overview, '/logo': Logo, '/colors': Colors, '/typography': Typography, '/actions': Actions, '/surfaces': Surfaces, '/patterns': Patterns, '/tokens': Tokens, '/components': SectionLibrary }
+const pages = { '/brand': Overview, '/logo': Logo, '/colors': Colors, '/typography': Typography, '/actions': Actions, '/surfaces': Surfaces, '/patterns': Patterns, '/tokens': Tokens, '/components': SectionLibrary, '/reliable-ai': ReliableAIPage }
 function App() {
   const [path, setPath] = useState(() => stripBase(decodeURIComponent(location.pathname)))
   useEffect(() => {
@@ -712,6 +713,7 @@ function App() {
   if (path === '/') return <LandingPageOne />
   if (path === '/ai-accounts-payable') return <AccountsPayableGuide />
   if (path === '/brand-home') return <HomeHero />
+  if (path === '/reliable-ai') return <ReliableAIPage />
   const Page = pages[path] || Overview
   return <Shell path={pages[path] ? path : '/brand'}><Page /></Shell>
 }
