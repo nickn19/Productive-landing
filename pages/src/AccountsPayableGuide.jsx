@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import FinanceBrainTimeline from './FinanceBrainTimeline'
 import dashboardImage from '../hero.png'
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '')
@@ -12,11 +11,11 @@ const metrics = [
 ]
 
 const principles = [
-  ['Consolidate invoice intake', 'Invoices may arrive through email, portals, shared folders, scans or internal forwards. A central intake layer makes classification, tracking and validation easier.'],
-  ['Use structured identifiers for vendor matching', 'In India, GSTIN can provide a stronger matching signal than vendor name alone, particularly where naming conventions vary across invoices and systems.'],
-  ['Measure exception rates separately from invoice volumes', 'Two AP teams processing the same number of invoices can have very different workloads if their exception rates differ materially.'],
-  ['Document accounting and approval rules', 'A tolerance nobody wrote down cannot be automated, delegated, audited, or handed to a successor.'],
-  ['Capture evidence during processing', 'Scrutiny response windows run to days. Evidence assembled later is evidence assembled too late.']
+  ['Capture invoices through a defined process', 'Invoices may arrive through email, shared folders or other channels. Whatever the source, they should enter a defined processing workflow rather than remain scattered across individual inboxes.'],
+  ['Validate before you post', 'Vendor details, duplicate invoices, required invoice fields and applicable internal checks should be completed before an invoice is posted into the ERP.'],
+  ['Let routine invoices move. Stop the exceptions.', 'Not every invoice needs the same level of attention. Transactions that meet predefined rules can move forward, while exceptions should be held with a clear reason for review.'],
+  ['Keep approvals within the process', 'Approval status should be visible within the workflow instead of being reconstructed through email chains and manual follow-ups.'],
+  ['Maintain a clear audit trail', 'Your team should be able to see what was checked, what failed, who approved the invoice and what ultimately reached the ERP.']
 ]
 
 const modelRows = [
@@ -55,15 +54,6 @@ const demoStages = [
   ['Exception', 'A vendor mismatch surfaced with the supporting evidence attached.'],
   ['Approval', 'Routed to the right owner, with everything they need to decide.'],
   ['Draft entry', 'Prepared in your ERP. Held until a person confirms it.']
-]
-
-const workflowSteps = [
-  ['Gather the evidence', 'Collects documents, system data, emails and supporting records for the task.'],
-  ['Apply your rules', 'Checks completeness, matches records, applies your SOPs, thresholds and approval logic.'],
-  ['Surface exceptions', 'Flags missing information, mismatches, policy deviations and anything requiring judgment.'],
-  ['Prepare the decision', 'Creates a review-ready summary with supporting context and a recommended next action.'],
-  ['Route for approval', 'Sends the case to the right finance owner with the evidence attached.'],
-  ['Keep it traceable', 'Records every check, recommendation, approval and change for oversight and audit.']
 ]
 
 const baselines = [
@@ -132,6 +122,106 @@ function PrincipleIcon({ name }) {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>
 }
 
+function IntakeVisual() {
+  return (
+    <div className="ap-visual-intake">
+      <div className="ap-intake-sources">
+        <span className="ap-source-pill" title="Email"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+        <span className="ap-source-pill" title="Document"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+        <span className="ap-source-pill" title="Scan / OCR"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></span>
+        <span className="ap-source-pill" title="Cloud"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
+      </div>
+      <svg className="ap-intake-lines" viewBox="0 0 40 70" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3">
+        <path d="M0 10 C 25 10, 20 35, 40 35" />
+        <path d="M0 26 C 20 26, 20 35, 40 35" />
+        <path d="M0 44 C 20 44, 20 35, 40 35" />
+        <path d="M0 60 C 25 60, 20 35, 40 35" />
+      </svg>
+      <div className="ap-invoice-doc">
+        <div className="ap-doc-header"><span>INVOICE</span></div>
+        <div className="ap-doc-line w-80"></div>
+        <div className="ap-doc-line w-60"></div>
+        <div className="ap-doc-line w-70"></div>
+        <div className="ap-doc-line w-40 highlight"></div>
+      </div>
+    </div>
+  )
+}
+
+function VendorCheckVisual() {
+  return (
+    <div className="ap-visual-vendor">
+      <div className="ap-vendor-window">
+        <div className="ap-win-dots"><span></span><span></span><span></span></div>
+        <div className="ap-win-content">
+          <div className="ap-vendor-avatar-wrap">
+            <span className="ap-avatar-icon"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+            <span className="ap-check-badge"><svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          </div>
+          <div className="ap-vendor-rows">
+            <span className="ap-row-bar w-75"></span>
+            <span className="ap-row-bar w-50"></span>
+            <span className="ap-row-bar w-60"></span>
+          </div>
+        </div>
+      </div>
+      <div className="ap-floating-glass">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2.2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+      </div>
+    </div>
+  )
+}
+
+function ValidationVisual() {
+  return (
+    <div className="ap-visual-validation">
+      <div className="ap-val-card">
+        <div className="ap-val-item"><span className="ap-val-check"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg></span><span className="ap-val-line w-60"></span></div>
+        <div className="ap-val-item"><span className="ap-val-check"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg></span><span className="ap-val-line w-75"></span></div>
+        <div className="ap-val-item"><span className="ap-val-check"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg></span><span className="ap-val-line w-50"></span></div>
+        <div className="ap-val-item"><span className="ap-val-check"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg></span><span className="ap-val-line w-65"></span></div>
+      </div>
+      <div className="ap-floating-shield">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10" fill="none" stroke="currentColor" strokeWidth="2"/></svg>
+      </div>
+    </div>
+  )
+}
+
+function ApprovalVisual() {
+  return (
+    <div className="ap-visual-approval">
+      <div className="ap-approval-card">
+        <div className="ap-appr-header">
+          <div className="ap-appr-avatar">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span className="ap-check-badge"><svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+          </div>
+        </div>
+        <div className="ap-appr-lines">
+          <div className="ap-appr-line-item"><span className="ap-appr-chk"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg></span><span className="ap-val-line w-75"></span></div>
+          <div className="ap-appr-line-item"><span className="ap-appr-chk"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg></span><span className="ap-val-line w-60"></span></div>
+          <div className="ap-appr-line-item"><span className="ap-appr-chk"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg></span><span className="ap-val-line w-45"></span></div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function ErpPostingVisual() {
+  return (
+    <div className="ap-visual-erp">
+      <div className="ap-erp-card">
+        <div className="ap-erp-logos">
+          <span className="ap-erp-badge ap-erp-tally">Tally</span>
+          <span className="ap-erp-badge ap-erp-sap">SAP</span>
+        </div>
+        <div className="ap-erp-other-pill">+ Other ERP</div>
+      </div>
+    </div>
+  )
+}
+
 function GuideFooter() {
   const links = [['The shift', '#the-shift'], ['Operating principles', '#ap-lifecycle'], ['Where AI fits', '#where-ai-fits'], ['Workflow', '#workflow'], ['Questions', '#questions'], ['Start here', '#start']]
   return <footer className="landing-footer"><div className="landing-footer-inner"><div className="landing-footer-brand"><span className="landing-footer-logo"><img src={`${BASE}/footer-logo.png`} alt="Produc8ive" style={{ height: '32px', width: 'auto', display: 'block' }} /></span><p className="landing-footer-desc">Produc8ive turns finance processes, institutional knowledge and enterprise data into governed AI workflows that help teams analyse, coordinate and execute work with greater speed and control.</p><p className="landing-footer-entity">Produc8ive Solutions Private Limited</p></div><nav className="landing-footer-nav" aria-label="Guide footer navigation"><p className="landing-footer-nav-heading">In this guide</p><ul>{links.map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul></nav><div className="landing-footer-bottom"><span>© {new Date().getFullYear()} Produc8ive Solutions Private Limited. All rights reserved.</span><span>Built for teams that get work done.</span></div></div></footer>
@@ -158,12 +248,12 @@ export default function AccountsPayableGuide() {
       </section>
 
       <section className="finance-shift" id="the-shift">
-        <div className="finance-shift-copy"><p className="eyebrow">The shift</p><h2>Why Accounts Payable is becoming more control-intensive</h2>
+        <div className="finance-shift-copy"><p className="eyebrow">The shift</p><h2>AP automation is moving beyond invoice data entry</h2>
         <div className="ap-shift-beats">
           <div><h3>The situation</h3><p>Invoices arrive at four addresses. Sometimes five. One vendor, three spellings, two entities. Someone keys the same figures into a sheet, then the ERP, then a payment file.</p><p>As month-end approaches, unresolved invoices, mismatches and approval delays accumulate into a concentrated reconciliation workload.</p></div>
           <div className="ap-misnomer"><p className="ap-misnomer-label">The misnomer</p><blockquote>“We have an AP inbox, so intake is handled.”</blockquote><p>A shared inbox centralises invoice receipt, but does not by itself classify, validate, route or track invoices.</p></div>
           <div><h3>The shift</h3><p>Indian tax compliance moved from report and correct to verify before filing.</p><p>Outward liability in GSTR-3B stopped being editable. IMS decides what reaches your GSTR-2B — and taking no action counts as acceptance.</p></div>
-          <p className="ap-stakes">The direction of Indian tax administration increasingly requires finance teams to validate transaction data earlier in the reporting cycle rather than relying primarily on month-end correction.</p>
+          <p className="ap-stakes">The objective is simple: your team should spend less time processing routine invoices and more time dealing with the transactions that actually need their attention.</p>
         </div></div>
         <div className="shift-visual" aria-label="Accounts Payable control workflow">
           <header><span>Accounts Payable</span><b><i></i> In review</b></header>
@@ -175,13 +265,13 @@ export default function AccountsPayableGuide() {
       </section>
 
       <section className="why-produc8ive ap-principles">
-        <header className="why-header"><div><p className="why-pill">Operating principles</p><p className="ap-reframe">The old approach was to process faster. The new one is to prepare better.</p><h2>Five rules that separate a controlled AP from a crowded one.</h2></div><p>These are product-agnostic. They hold whether or not you ever talk to us.</p></header>
+        <header className="why-header"><div><p className="why-pill">Operating principles</p><p className="ap-reframe">The old approach was to process faster. The new one is to prepare better.</p><h2>What does a well-controlled AP process look like?</h2></div><p>These are product-agnostic. They hold whether or not you ever talk to us.</p></header>
         <div className="why-grid">{principles.map(([title, description], index) => <article className="why-card" key={title}><span className="ap-principle-icon"><PrincipleIcon name={['intake', 'match', 'measure', 'rules', 'evidence'][index]} /></span><h3>{title}</h3><p>{description}</p></article>)}</div>
       </section>
 
       <section className="section ap-operating-model">
-        <p className="eyebrow">A mature operating model</p><h2>What the twentieth of the month looks like afterwards.</h2>
-        <div className="ap-model-story"><p>It is the 18th. The GSTR-2B reconciliation is already done, because it has been running all month.</p><p>Your controller opens a queue of nine items. Not nine hundred. Two vendor mismatches. One missing HSN. One MSME payment at day 41.</p><p>She resolves them before lunch.</p><p>The close does not have a backlog waiting for it. The audit file is already the audit file.</p></div>
+        <p className="eyebrow">A mature operating model</p><h2>What can the AP workflow look like?</h2>
+        <div className="ap-model-story"><p>Not every invoice needs to follow the same path.</p><p>A valid invoice from an existing vendor may move through predefined checks and approvals with limited intervention.</p><p>If there is a duplicate, vendor mismatch, missing information or another exception, the invoice should stop and reach the appropriate person with a clear reason for review.</p><p>The table remains</p></div>
         <div className="ap-model-layout"><div className="ap-compare"><div className="ap-compare-head"><span>Traditional operating model</span><span>More automated operating model</span></div>{modelRows.map(([before, after]) => <div className="ap-compare-row" key={before}><p>{before}</p><p>{after}</p></div>)}</div></div>
         <p className="ap-turn">This is not a future state. It is what a well-designed AP function already looks like.</p>
       </section>
@@ -207,11 +297,185 @@ export default function AccountsPayableGuide() {
         </figure>
       </section>
 
-      <section className="finance-brain-flow" id="workflow"><header><p className="flow-pill">How a typical AI-assisted AP workflow works</p><h2>Six steps, and a person decides at the end.</h2></header><FinanceBrainTimeline stages={workflowSteps.map(([title, description], index) => [["capture", "validate", "coordinate", "deliver", "coordinate", "deliver"][index], `Step ${index + 1}`, title, description])} /><p className="ap-workflow-note">The precise workflow varies by organisation, but most AI-assisted AP processes follow some variation of these stages.</p></section>
+      <section className="ap-flow-section" id="workflow">
+        <header className="ap-flow-header">
+          <p className="flow-pill">AP Workflow</p>
+          <h2>A practical AP automation workflow</h2>
+          <p className="ap-flow-subtext">How an AI-assisted AP workflow moves from invoice intake to ERP posting—with exception governance and human oversight built in.</p>
+        </header>
+
+        <div className="ap-flow-canvas">
+          <div className="ap-unified-flow-grid">
+            {/* ── STEP 1 ── */}
+            <div className="ap-grid-node node-step-1">
+              <div className="ap-flow-visual-card">
+                <IntakeVisual />
+              </div>
+              <div className="ap-flow-step-meta">
+                <span className="ap-flow-step-num">1</span>
+                <h3>Invoice intake</h3>
+                <p>The invoice enters through the designated channel and is captured for processing.</p>
+              </div>
+            </div>
+
+            {/* Connector 1 -> 2 */}
+            <div className="ap-grid-connector conn-1-2" aria-hidden="true">
+              <span className="ap-connector-wire"></span>
+              <span className="ap-connector-circle">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+
+            {/* ── STEP 2 ── */}
+            <div className="ap-grid-node node-step-2">
+              <div className="ap-flow-visual-card">
+                <VendorCheckVisual />
+              </div>
+              <div className="ap-flow-step-meta">
+                <span className="ap-flow-step-num">2</span>
+                <h3>Vendor and duplicate checks</h3>
+                <p>The vendor is matched against the vendor master and the invoice is checked for potential duplicates.</p>
+              </div>
+            </div>
+
+            {/* Connector 2 -> 3 */}
+            <div className="ap-grid-connector conn-2-3" aria-hidden="true">
+              <span className="ap-connector-wire"></span>
+              <span className="ap-connector-circle">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+
+            {/* ── STEP 3 ── */}
+            <div className="ap-grid-node node-step-3">
+              <div className="ap-flow-visual-card">
+                <ValidationVisual />
+              </div>
+              <div className="ap-flow-step-meta">
+                <span className="ap-flow-step-num">3</span>
+                <h3>Validation</h3>
+                <p>Required invoice fields, internal rules and applicable compliance checks are applied before the invoice proceeds.</p>
+              </div>
+            </div>
+
+            {/* ── STEP 4 (Exception Handling Branch) ── */}
+            <div className="ap-grid-node node-step-4">
+              {/* Branch In: If something doesn't match */}
+              <div className="ap-branch-mismatch-header">
+                <div className="ap-mismatch-stem"></div>
+                <span className="ap-branch-pill ap-pill-mismatch">If something doesn’t match</span>
+                <div className="ap-mismatch-arrow">
+                  <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M8 2v10M3 8l5 5 5-5"/></svg>
+                </div>
+              </div>
+
+              <div className="ap-exception-composite-box">
+                {/* 3 Action Badges */}
+                <div className="ap-exception-actions">
+                  <span className="ap-action-badge">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    Assign
+                  </span>
+                  <span className="ap-action-badge">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                    Reason
+                  </span>
+                  <span className="ap-action-badge">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    Resolve
+                  </span>
+                </div>
+
+                {/* 3-way dotted fan */}
+                <svg className="ap-action-fan-svg" viewBox="0 0 28 68" fill="none" aria-hidden="true">
+                  <path d="M0 12 C 18 12, 14 34, 28 34" stroke="var(--signal-500)" strokeWidth="1.3" strokeDasharray="3 3" />
+                  <path d="M0 34 L 28 34" stroke="var(--signal-500)" strokeWidth="1.3" strokeDasharray="3 3" />
+                  <path d="M0 56 C 18 56, 14 34, 28 34" stroke="var(--signal-500)" strokeWidth="1.3" strokeDasharray="3 3" />
+                </svg>
+
+                {/* Exception card container */}
+                <div className="ap-exception-card">
+                  <div className="ap-exception-alert-wrap">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                      <line x1="12" y1="9" x2="12" y2="13" />
+                      <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                  </div>
+                  <div className="ap-exception-text-content">
+                    <span className="ap-flow-step-num ap-num-signal">4</span>
+                    <h3>Exception handling</h3>
+                    <p>If something does not match, the invoice is held and routed to the appropriate person with the reason clearly identified.</p>
+                  </div>
+                </div>
+
+                {/* Return curve: Once resolved */}
+                <div className="ap-exception-return-path">
+                  <div className="ap-return-badge-wrapper">
+                    <span className="ap-branch-pill ap-pill-resolved">Once resolved</span>
+                  </div>
+                  <svg className="ap-return-track-svg" viewBox="0 0 80 150" fill="none" aria-hidden="true">
+                    <path d="M0 135 C 40 135, 52 120, 52 75 L 52 10" stroke="var(--sage-500)" strokeWidth="1.5" strokeDasharray="3 3" />
+                    <polygon points="47,14 52,2 57,14" fill="var(--sage-500)" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Mobile-only resolved transition line into step 5 */}
+              <div className="ap-mobile-resolved-transition" aria-hidden="true">
+                <span className="ap-branch-pill ap-pill-resolved">Once resolved</span>
+                <div className="ap-mismatch-arrow ap-arrow-sage">
+                  <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M8 2v10M3 8l5 5 5-5"/></svg>
+                </div>
+              </div>
+            </div>
+
+            {/* Connector 3 -> 5 (Main Line) */}
+            <div className="ap-grid-connector conn-3-5" aria-hidden="true">
+              <span className="ap-connector-wire"></span>
+              <span className="ap-connector-circle">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+
+            {/* ── STEP 5 ── */}
+            <div className="ap-grid-node node-step-5">
+              <div className="ap-flow-visual-card">
+                <ApprovalVisual />
+              </div>
+              <div className="ap-flow-step-meta">
+                <span className="ap-flow-step-num">5</span>
+                <h3>Approval</h3>
+                <p>The invoice follows the organisation’s existing approval matrix based on the relevant amount, business unit, cost centre or other defined rules.</p>
+              </div>
+            </div>
+
+            {/* Connector 5 -> 6 */}
+            <div className="ap-grid-connector conn-5-6" aria-hidden="true">
+              <span className="ap-connector-wire"></span>
+              <span className="ap-connector-circle">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+
+            {/* ── STEP 6 ── */}
+            <div className="ap-grid-node node-step-6">
+              <div className="ap-flow-visual-card">
+                <ErpPostingVisual />
+              </div>
+              <div className="ap-flow-step-meta">
+                <span className="ap-flow-step-num">6</span>
+                <h3>ERP posting</h3>
+                <p>Once the required checks and approvals are complete, the accounting entry can be prepared or posted into Tally, SAP or another ERP.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="implementation-journey ap-baseline-section"><div className="implementation-copy"><p className="implementation-pill">Before implementation</p><h2>Measure your AP process before introducing AI automation.</h2><p className="implementation-intro">Establish the baseline before asking automation to improve it.</p><div className="implementation-principles ap-baseline-areas">{baselines.map(([title, description], index) => <article key={title}><i>{String(index + 1).padStart(2, '0')}</i><div><h3>{title}</h3><p>{description}</p></div></article>)}</div><div className="ap-key-insight"><p className="eyebrow">Key insight</p><p>The objective is not to automate every invoice. It is to reduce repetitive intervention while preserving human judgment where it matters.</p></div><p className="ap-baseline-line">Without a baseline, AP may feel faster after automation — but it is difficult to establish what actually improved.</p></div><div className="deployment-stage"><div className="deployment-workspace"><header><div><small>AP BASELINE / REVIEW</small><h3>Implementation readiness</h3></div><span>Start with the facts</span></header><div className="deployment-checklist">{[['complete', 'Workflow map', 'Captured', 'Invoice intake through payment documented.'], ['complete', 'Baseline metrics', 'Measured', 'Cycle time, exceptions and touchpoints recorded.'], ['progress', 'Rules and judgment', 'In review', 'Policies, tolerances and approval logic separated.'], ['pending', 'Pilot scope', 'Next', 'One bounded workflow selected.']].map(([state, title, status, description]) => <article className={state} key={title}><i aria-hidden="true">{state === 'complete' ? '✓' : state === 'progress' ? '◒' : '·'}</i><div><h4>{title}</h4><p>{description}</p></div><b>{status}</b></article>)}</div><footer><div className="readiness-copy"><span>Readiness</span><strong>01</strong><i><b></b></i></div><button type="button">Review the baseline <span aria-hidden="true">→</span></button></footer></div><div className="deployment-support"><article><small>Process clarity</small><strong>Documented workflow</strong></article><article><small>Control design</small><strong>Human review gates</strong></article><article><small>Measurement</small><strong>Reference metrics</strong></article></div></div></section>
 
-      <section className="why-produc8ive common-problems"><header className="why-header"><div><p className="why-pill">Common problems</p><h2>Common AP problems where automation can help</h2></div><p>Each in the buyer’s words.</p></header><div className="why-grid">{problems.map(([title, description], index) => <article className="why-card problem-card" key={title}><span className="ap-principle-num">0{index + 1}</span><h3>{title}</h3><p>{description}</p><div className="why-visual"><ProblemVisual title={title} index={index} total={problems.length} /></div></article>)}</div></section>
+      <section className="why-produc8ive common-problems"><header className="why-header"><div><p className="why-pill">Common problems</p><h2>Common AP problems where automation can help</h2></div></header><div className="why-grid">{problems.map(([title, description], index) => <article className="why-card problem-card" key={title}><span className="ap-principle-num">0{index + 1}</span><h3>{title}</h3><p>{description}</p><div className="why-visual"><ProblemVisual title={title} index={index} total={problems.length} /></div></article>)}</div></section>
 
       <section className="ap-faq-section" id="questions"><header><p className="eyebrow">Questions we get asked</p><h2>Common questions about AI in Accounts Payable</h2></header><div className="accordion ap-faq-accordion">{faqs.map(([question, answer], index) => <details key={question} open={index === 0}><summary>{question}<b>+</b></summary><div className="ap-faq-answer">{answer}</div></details>)}</div></section>
 
