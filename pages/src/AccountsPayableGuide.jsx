@@ -243,8 +243,6 @@ export default function AccountsPayableGuide() {
       <section className="ap-metric-strip" aria-labelledby="ap-snapshot">
         <p className="ap-metric-label" id="ap-snapshot">A snapshot of Accounts Payable performance</p>
         <div className="ap-metric-grid">{metrics.map(([number, label]) => <article key={label}><strong>{number}</strong><p>{label}</p></article>)}</div>
-        <p className="ap-metric-source">Source: Ardent Partners, <i>AP Metrics That Matter 2025</i>. Predominantly Western samples — use them as direction, not as your target.</p>
-        <p className="ap-metric-note">These benchmarks provide directional context. AP performance varies materially by invoice volume, process design, ERP environment, geography and level of automation.</p>
       </section>
 
       <section className="finance-shift" id="the-shift">
@@ -252,8 +250,7 @@ export default function AccountsPayableGuide() {
         <div className="ap-shift-beats">
           <div><h3>The situation</h3><p>Invoices arrive at four addresses. Sometimes five. One vendor, three spellings, two entities. Someone keys the same figures into a sheet, then the ERP, then a payment file.</p><p>As month-end approaches, unresolved invoices, mismatches and approval delays accumulate into a concentrated reconciliation workload.</p></div>
           <div className="ap-misnomer"><p className="ap-misnomer-label">The misnomer</p><blockquote>“We have an AP inbox, so intake is handled.”</blockquote><p>A shared inbox centralises invoice receipt, but does not by itself classify, validate, route or track invoices.</p></div>
-          <div><h3>The shift</h3><p>Indian tax compliance moved from report and correct to verify before filing.</p><p>Outward liability in GSTR-3B stopped being editable. IMS decides what reaches your GSTR-2B — and taking no action counts as acceptance.</p></div>
-          <p className="ap-stakes">The objective is simple: your team should spend less time processing routine invoices and more time dealing with the transactions that actually need their attention.</p>
+          <div><h3>The shift</h3><p>The objective is simple: your team should spend less time processing routine invoices and more time dealing with the transactions that actually need their attention.</p></div>
         </div></div>
         <div className="shift-visual" aria-label="Accounts Payable control workflow">
           <header><span>Accounts Payable</span><b><i></i> In review</b></header>
@@ -265,13 +262,13 @@ export default function AccountsPayableGuide() {
       </section>
 
       <section className="why-produc8ive ap-principles">
-        <header className="why-header"><div><p className="why-pill">Operating principles</p><p className="ap-reframe">The old approach was to process faster. The new one is to prepare better.</p><h2>What does a well-controlled AP process look like?</h2></div><p>These are product-agnostic. They hold whether or not you ever talk to us.</p></header>
+        <header className="why-header"><div><p className="why-pill">Operating principles</p><p className="ap-reframe">The old approach was to process faster. The new one is to prepare better.</p><h2>What does a well-controlled AP process look like?</h2></div></header>
         <div className="why-grid">{principles.map(([title, description], index) => <article className="why-card" key={title}><span className="ap-principle-icon"><PrincipleIcon name={['intake', 'match', 'measure', 'rules', 'evidence'][index]} /></span><h3>{title}</h3><p>{description}</p></article>)}</div>
       </section>
 
       <section className="section ap-operating-model">
         <p className="eyebrow">A mature operating model</p><h2>What can the AP workflow look like?</h2>
-        <div className="ap-model-story"><p>Not every invoice needs to follow the same path.</p><p>A valid invoice from an existing vendor may move through predefined checks and approvals with limited intervention.</p><p>If there is a duplicate, vendor mismatch, missing information or another exception, the invoice should stop and reach the appropriate person with a clear reason for review.</p><p>The table remains</p></div>
+        <div className="ap-model-story"><p>Not every invoice needs to follow the same path.</p><p>A valid invoice from an existing vendor may move through predefined checks and approvals with limited intervention.</p><p>If there is a duplicate, vendor mismatch, missing information or another exception, the invoice should stop and reach the appropriate person with a clear reason for review.</p></div>
         <div className="ap-model-layout"><div className="ap-compare"><div className="ap-compare-head"><span>Traditional operating model</span><span>More automated operating model</span></div>{modelRows.map(([before, after]) => <div className="ap-compare-row" key={before}><p>{before}</p><p>{after}</p></div>)}</div></div>
         <p className="ap-turn">This is not a future state. It is what a well-designed AP function already looks like.</p>
       </section>
