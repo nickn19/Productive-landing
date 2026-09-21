@@ -377,7 +377,7 @@ export default function ReliableAIPage() {
         </section>
 
         {/* SECTION 5: MORE CONTEXT CAN FAIL */}
-        <section className="why-produc8ive ap-principles">
+        <section className="why-produc8ive">
           <header className="why-header">
             <div>
               <p className="why-pill">Knowledge Management</p>
@@ -388,7 +388,7 @@ export default function ReliableAIPage() {
               Dumping all corporate documents into a vector database creates confusion. Workflows should access only the specific knowledge relevant to their boundary.
             </p>
           </header>
-          <div className="why-grid ap-principles-grid">
+          <div className="why-grid ">
             {knowledgeTypes.map((item, index) => (
               <article className="why-card" key={item.title}>
                 <span className="ap-principle-num">0{index + 1}</span>
@@ -449,7 +449,7 @@ export default function ReliableAIPage() {
               A robust architecture cleanly distinguishes internal records from external regulations and task execution instructions.
             </p>
           </header>
-          <div className="why-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          <div className="why-grid internal-knowledge" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
             <article className="why-card">
               <span className="ap-principle-num">LAYER A</span>
               <h3>Internal Knowledge</h3>
@@ -533,7 +533,7 @@ export default function ReliableAIPage() {
           </div>
           <div>
             <p className="eyebrow">The Tri-Partite Operating Logic</p>
-            <div style={{ display: 'grid', gap: '16px', marginTop: '16px' }}>
+            <div className="ap-principles-cont" style={{ display: 'grid', gap: '16px', marginTop: '16px' }}>
               <div className="why-card" style={{ borderLeft: '4px solid var(--sage-500)' }}>
                 <span className="ap-principle-num">01</span>
                 <h3>Known Rule → Execute Deterministically</h3>
@@ -579,7 +579,7 @@ export default function ReliableAIPage() {
         </section>
 
         {/* SECTION 12: EXISTING AI TOOLS / ORCHESTRATION */}
-        <section className="use-cases-section">
+        <section className="use-cases-section reverse">
           <div className="use-cases-copy">
             <p className="eyebrow">The Orchestration Era</p>
             <h2>The next stage of AI maturity is orchestration, not replacement.</h2>
@@ -632,7 +632,7 @@ export default function ReliableAIPage() {
           </div>
           <div>
             <p className="eyebrow">Explicit Boundary Examples</p>
-            <div style={{ display: 'grid', gap: '14px', marginTop: '16px' }}>
+            <div className="ap-principles-cont" style={{ display: 'grid', gap: '14px', marginTop: '16px' }}>
               <div className="why-card">
                 <h3>Payroll Workflow</h3>
                 <p>Limited strictly to employee compensation schemas and payroll GLs. Isolated from procurement contracts.</p>
@@ -660,7 +660,7 @@ export default function ReliableAIPage() {
               The LLM is merely one component. Predictable execution requires the full stack working in harmony.
             </p>
           </header>
-          <div className="why-grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
+          <div className="why-grid ap-principles" >
             {architectureLayers.map((layer) => (
               <article className="why-card" key={layer.num}>
                 <span className="ap-principle-num">LAYER {layer.num}</span>
@@ -798,9 +798,9 @@ export default function ReliableAIPage() {
             </div>
             <p>A rigorous checklist for CFOs, Controllers, and Transformation heads.</p>
           </header>
-          <div className="why-grid ap-principles-grid">
+          <div className="why-grid ">
             {leaderQuestions.map((q, idx) => (
-              <article className="why-card problem-card" key={idx}>
+              <article className="why-card " key={idx}>
                 <span className="ap-principle-num">Q{String(idx + 1).padStart(2, '0')}</span>
                 <p style={{ fontWeight: 500, color: 'var(--text-primary)', margin: 0, fontSize: '15px', lineHeight: 1.5 }}>
                   {q}

@@ -5323,7 +5323,9 @@ details p {
   background: var(--surface-primary);
   border-bottom: 1px solid var(--border-subtle)
 }
-
+.use-cases-section.reverse {
+  grid-template-columns: .8fr 1.2fr
+}
 .agent-scroll {
   position: relative;
   height: 620px;
@@ -5820,14 +5822,16 @@ details p {
 .why-grid {
   max-width: 1180px;
   margin: auto;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  /* display: grid;
+  grid-template-columns: repeat(6, 1fr); */
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px
 }
 
 .why-card {
-  grid-column: span 2;
-  min-height: 360px;
+ flex: 1 1 calc((100% - (16px * 2)) / 3); 
+  max-width: 100%; 
   padding: 28px;
   display: flex;
   flex-direction: column;
@@ -6163,7 +6167,7 @@ details p {
 
   .why-card,
   .why-card-large {
-    grid-column: span 3
+     flex: 1 1 calc((100% - 16px) / 2);
   }
 }
 
@@ -6182,9 +6186,7 @@ details p {
 
   .why-card,
   .why-card-large {
-    grid-column: 1/-1;
-    min-height: 360px;
-    padding: 24px
+    flex: 1 1 100%;
   }
 
   .why-card-large {
@@ -8874,7 +8876,7 @@ details p {
 
 .ap-principles-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 16px;
 }
 
@@ -8882,8 +8884,9 @@ details p {
   min-height: auto;
 }
 
-.ap-principles .why-card {
+.ap-principles .why-card , .internal-knowledge .why-card , .ap-principles-cont .why-card {
   min-height: 0;
+  grid-column: auto;
 }
 
 .ap-principle-icon {
