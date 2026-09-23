@@ -13,31 +13,25 @@ const metrics = [
 
 const strugglingQuestions = [
   'Why does the same task produce different results across runs?',
-  'Why does a workflow work quickly one day and struggle the next?',
-  'Why does AI take a different route when the process is already defined?',
-  'Why does adding more context sometimes make the output worse?',
-  'Why are expensive models being used for relatively simple tasks?',
-  'How much of a finance process should AI actually be responsible for?'
+  'Why does AI take a different route when the finance process is already defined?',
+  'Why do workflows that succeed in pilots become unreliable at scale?',
+  'Why are expensive models being used for relatively simple tasks? ',
 ]
 
 const aiUseCases = [
-  'Interpreting unstructured documents',
-  'Understanding nuanced contracts & emails',
-  'Summarising reconciliation findings',
-  'Explaining unusual accounting anomalies',
-  'Classifying ambiguous descriptions',
-  'Generating management commentary',
-  'Supporting professional judgment'
+  'Interpret documents',
+  'Understand ambiguous information',
+  'Explain anomalies',
+  'Investigate exceptions',
+  'Prepare commentary',
 ]
 
 const nonAITasks = [
-  'Extracting structured records from ERP',
-  'Filtering transactions by date & entity',
-  'Performing exact mathematical calculations',
-  'Applying strict tolerance thresholds',
-  'Validating debits equal credits',
-  'Executing predefined approval logic',
-  'Reconciling structured ledger datasets'
+  'Retrieve records',
+  'Filter data',
+  'Perform calculations',
+  'Apply predefined rules',
+  'Validate defined conditions',
 ]
 
 const deterministicSteps = [
@@ -60,12 +54,8 @@ const knowledgeTypes = [
   { title: 'Vendor Master Data', desc: 'Payment terms, banking details, GSTIN, MSME classifications.' },
   { title: 'Payroll & HR Data', desc: 'Salary structures, department allocations, benefits rules.' },
   { title: 'Commercial Contracts', desc: 'Service agreements, SLAs, discount structures, penalty clauses.' },
-  { title: 'Approval Matrices', desc: 'Delegation of authority, spend limits, signatory rules.' },
-  { title: 'Historical Reconciliations', desc: 'Prior period workpapers, recurring differences, audit notes.' },
-  { title: 'SOPs & Guidelines', desc: 'Month-end close checklists, journal entry posting procedures.' },
-  { title: 'Management Directives', desc: 'Budget constraints, temporary freezes, forecast assumptions.' },
-  { title: 'Customer Requirements', desc: 'Billing formats, PO references, milestone sign-offs.' },
-  { title: 'Regulatory Guidance', desc: 'Statutory filing timelines, reporting formats, compliance rules.' }
+   { title: 'SOPs & Guidelines', desc: 'Month-end close checklists, journal entry posting procedures.' },
+  
 ]
 
 const taskModelMapping = [
@@ -79,14 +69,11 @@ const taskModelMapping = [
 ]
 
 const architectureLayers = [
-  { num: '1', title: 'Rules & Controls', description: 'SOPs, accounting policies, materiality tolerances, approval logic and statutory control requirements.' },
-  { num: '2', title: 'Controlled Enterprise Knowledge', description: 'Relevant internal documents, historical workpapers, master records and institutional memory.' },
-  { num: '3', title: 'Enterprise Data & Systems', description: 'ERP, email inboxes, spreadsheets, document repositories, relational databases and operational systems.' },
-  { num: '4', title: 'External Knowledge Sources', description: 'Authorised regulatory filings, tax rate tables, accounting standards, FX rates and market data.' },
-  { num: '5', title: 'Deterministic Tools', description: 'Code execution, database APIs, mathematical calculation modules, format parsers and schema validators.' },
-  { num: '6', title: 'AI Reasoning Modules', description: 'Document interpretation, anomaly investigation, classification, summarisation and judgment support.' },
-  { num: '7', title: 'Orchestration Engine', description: 'Determines which component performs which task, in what sequence, with what data, and when to halt.' },
-  { num: '8', title: 'Human Oversight & Approvals', description: 'Exception review, threshold overrides, final sign-offs and decisions where accountability is required.' }
+  { num: '1', title: 'Rules & Controls', description: 'Policies, SOPs, tolerances, approvals.' },
+  { num: '2', title: 'Business Context', description: 'Enterprise knowledge, historical decisions and authorised external information.' },
+  { num: '3', title: 'Systems & Data', description: 'ERP, email, spreadsheets, documents and operational systems.' },
+  { num: '4', title: 'Execution & Reasoning', description: 'Deterministic computation where rules are known; AI where interpretation is required.' },
+  { num: '5', title: 'Human Oversight', description: 'Exceptions, judgment, approvals and accountability.' },
 ]
 
 const diagnosticQuestions = [
@@ -134,6 +121,273 @@ const agentWorkflowStages = [
   ['coordinate', 'Step 5: Human Exception Gate', 'Route to owner for decision', 'Surfaces high-confidence recommendations while flagging low-confidence values and policy deviations for sign-off.'],
   ['deliver', 'Step 6: Traceable Posting', 'Write back to ERP with audit trail', 'Logs every prompt, data payload, model decision and human approval into a tamper-proof audit register.']
 ]
+
+function StepRetrieveGraphic() {
+  return (
+    <svg width="120" height="95" viewBox="0 0 120 95" fill="none" xmlns="http://www.w3.org/2000/svg" className="step-graphic-svg" aria-label="Retrieve Document">
+      <defs>
+        <filter id="c1-shadow" x="0" y="0" width="120" height="95" filterUnits="userSpaceOnUse">
+          <feDropShadow dx="0" dy="4" stdDeviation="5" floodColor="#171717" floodOpacity="0.08" />
+        </filter>
+        <linearGradient id="folderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#e3c287" />
+          <stop offset="100%" stopColor="#cf9f54" />
+        </linearGradient>
+        <linearGradient id="paperGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="100%" stopColor="#f7f4ed" />
+        </linearGradient>
+      </defs>
+      <g transform="rotate(-6 35 55)">
+        <path d="M18 29 C18 26 20 24 23 24 L34 24 L40 28 L60 28 C62 28 64 30 64 32 L64 78 C64 80 62 82 60 82 L22 82 C20 82 18 80 18 78 Z" fill="url(#folderGrad)" />
+      </g>
+      <rect x="28" y="16" width="50" height="64" rx="4" fill="#ede7db" stroke="#ded6c8" strokeWidth="1" transform="rotate(-2 53 48)" />
+      <g filter="url(#c1-shadow)">
+        <rect x="36" y="10" width="54" height="70" rx="6" fill="url(#paperGrad)" stroke="#e4ded3" strokeWidth="1" />
+        <rect x="76" y="7" width="8" height="9" rx="2" fill="#3d4e43" />
+        <circle cx="80" cy="11" r="1" fill="#8cb99c" />
+        <text x="44" y="26" fill="#171717" fontSize="7" fontWeight="800" letterSpacing="0.4" fontFamily="Inter, sans-serif">INVOICE</text>
+        <rect x="44" y="34" width="38" height="2.5" rx="1.25" fill="#8d8980" />
+        <rect x="44" y="40" width="28" height="2" rx="1" fill="#cbcfc7" />
+        <rect x="44" y="45" width="34" height="2" rx="1" fill="#cbcfc7" />
+        <rect x="44" y="50" width="20" height="2" rx="1" fill="#cbcfc7" />
+        <rect x="44" y="58" width="38" height="1" fill="#e5dfd5" />
+        <rect x="44" y="64" width="16" height="2" rx="1" fill="#58685e" />
+        <rect x="66" y="64" width="16" height="2" rx="1" fill="#171717" />
+      </g>
+    </svg>
+  )
+}
+
+function StepValidateGraphic() {
+  return (
+    <svg width="120" height="95" viewBox="0 0 120 95" fill="none" xmlns="http://www.w3.org/2000/svg" className="step-graphic-svg" aria-label="Validate Profile">
+      <defs>
+        <filter id="c2-shadow" x="0" y="0" width="120" height="95" filterUnits="userSpaceOnUse">
+          <feDropShadow dx="0" dy="5" stdDeviation="6" floodColor="#171717" floodOpacity="0.08" />
+        </filter>
+        <linearGradient id="winGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#faf7f2" />
+          <stop offset="100%" stopColor="#eae4d8" />
+        </linearGradient>
+        <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="rgba(255,255,255,0.7)" />
+          <stop offset="100%" stopColor="rgba(230,240,245,0.25)" />
+        </linearGradient>
+      </defs>
+      <g filter="url(#c2-shadow)">
+        <rect x="20" y="14" width="76" height="62" rx="8" fill="url(#winGrad)" stroke="#dcd4c6" strokeWidth="1" />
+        <rect x="20" y="14" width="76" height="12" rx="8" fill="#dfd8cb" />
+        <rect x="20" y="22" width="76" height="4" fill="#dfd8cb" />
+        <circle cx="84" cy="20" r="1.5" fill="#a49e91" />
+        <circle cx="89" cy="20" r="1.5" fill="#a49e91" />
+        <circle cx="40" cy="45" r="12" fill="#ded7ca" stroke="#c5beaf" strokeWidth="1" />
+        <circle cx="40" cy="42" r="4.5" fill="#5a5e5a" />
+        <path d="M32 53 C32 48 35 47 40 47 C45 47 48 48 48 53 Z" fill="#5a5e5a" />
+        <rect x="58" y="38" width="28" height="3" rx="1.5" fill="#8d8980" />
+        <rect x="58" y="46" width="20" height="2.5" rx="1.25" fill="#b8b2a5" />
+        <rect x="58" y="53" width="24" height="2" rx="1" fill="#cfc9bd" />
+        <rect x="30" y="64" width="56" height="2" rx="1" fill="#e0d9cc" />
+      </g>
+      <g transform="translate(68, 38) rotate(-10)">
+        <circle cx="16" cy="16" r="13" fill="url(#glassGrad)" stroke="#1e2220" strokeWidth="3.5" />
+        <circle cx="16" cy="16" r="11" stroke="rgba(255,255,255,0.6)" strokeWidth="1" fill="none" />
+        <ellipse cx="12" cy="12" rx="4" ry="2" fill="rgba(255,255,255,0.5)" transform="rotate(-30 12 12)" />
+        <path d="M26 26 L38 38" stroke="#1e2220" strokeWidth="5.5" strokeLinecap="round" />
+        <path d="M26 26 L29 29" stroke="#8d8980" strokeWidth="5.5" />
+      </g>
+    </svg>
+  )
+}
+
+function StepCalculateGraphic() {
+  return (
+    <svg width="120" height="95" viewBox="0 0 120 95" fill="none" xmlns="http://www.w3.org/2000/svg" className="step-graphic-svg" aria-label="Calculate Ledger">
+      <defs>
+        <filter id="c3-shadow" x="0" y="0" width="120" height="95" filterUnits="userSpaceOnUse">
+          <feDropShadow dx="0" dy="5" stdDeviation="6" floodColor="#171717" floodOpacity="0.08" />
+        </filter>
+        <linearGradient id="calcGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#c7dcd0" />
+          <stop offset="100%" stopColor="#9fb6a7" />
+        </linearGradient>
+        <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#2c3b32" />
+          <stop offset="100%" stopColor="#1e2922" />
+        </linearGradient>
+      </defs>
+      <g filter="url(#c3-shadow)">
+        <rect x="46" y="10" width="58" height="68" rx="6" fill="#ffffff" stroke="#ded6c7" strokeWidth="1" />
+        <text x="96" y="24" fill="#242b26" fontSize="6.5" fontWeight="700" textAnchor="end" fontFamily="Inter, sans-serif">1,24,50,000</text>
+        <text x="96" y="34" fill="#4d5550" fontSize="6.5" fontWeight="600" textAnchor="end" fontFamily="Inter, sans-serif">12,450</text>
+        <text x="96" y="44" fill="#4d5550" fontSize="6.5" fontWeight="600" textAnchor="end" fontFamily="Inter, sans-serif">3,000</text>
+        <line x1="56" y1="50" x2="96" y2="50" stroke="#e0dad0" strokeWidth="1" strokeDasharray="2 2" />
+      </g>
+      <g filter="url(#c3-shadow)">
+        <rect x="16" y="16" width="40" height="58" rx="8" fill="url(#calcGrad)" stroke="#8da394" strokeWidth="1" />
+        <rect x="22" y="22" width="28" height="11" rx="3" fill="url(#screenGrad)" />
+        <rect x="24" y="25" width="8" height="2" rx="1" fill="#7ba58b" opacity="0.8" />
+        <rect x="22" y="38" width="7" height="6" rx="2" fill="#1b2820" />
+        <rect x="32.5" y="38" width="7" height="6" rx="2" fill="#1b2820" />
+        <rect x="43" y="38" width="7" height="6" rx="2" fill="#1b2820" />
+        <rect x="22" y="47" width="7" height="6" rx="2" fill="#1b2820" />
+        <rect x="32.5" y="47" width="7" height="6" rx="2" fill="#1b2820" />
+        <rect x="43" y="47" width="7" height="6" rx="2" fill="#1b2820" />
+        <rect x="22" y="56" width="7" height="6" rx="2" fill="#1b2820" />
+        <rect x="32.5" y="56" width="7" height="6" rx="2" fill="#1b2820" />
+        <rect x="43" y="56" width="7" height="6" rx="2" fill="#3f614d" />
+      </g>
+      <g transform="translate(84, 54)">
+        <circle cx="10" cy="10" r="10" fill="#58946f" stroke="#ffffff" strokeWidth="1.5" />
+        <path d="M6 10 L8.5 12.5 L13.5 7.5" stroke="#ffffff" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+    </svg>
+  )
+}
+
+function StepInvestigateGraphic() {
+  return (
+    <svg width="120" height="95" viewBox="0 0 120 95" fill="none" xmlns="http://www.w3.org/2000/svg" className="step-graphic-svg" aria-label="Investigate Exception">
+      <defs>
+        <filter id="c4-shadow" x="0" y="0" width="120" height="95" filterUnits="userSpaceOnUse">
+          <feDropShadow dx="0" dy="5" stdDeviation="6" floodColor="#171717" floodOpacity="0.08" />
+        </filter>
+        <filter id="alertGlow" x="0" y="0" width="60" height="60" filterUnits="userSpaceOnUse">
+          <feDropShadow dx="0" dy="4" stdDeviation="5" floodColor="#e63946" floodOpacity="0.3" />
+        </filter>
+        <linearGradient id="alertGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#ff7b72" />
+          <stop offset="100%" stopColor="#e63946" />
+        </linearGradient>
+      </defs>
+      <rect x="24" y="20" width="62" height="58" rx="6" fill="#e8e2d5" stroke="#ded6c7" strokeWidth="1" />
+      <g filter="url(#c4-shadow)">
+        <rect x="32" y="14" width="58" height="66" rx="6" fill="#ffffff" stroke="#ded8cc" strokeWidth="1" />
+        <rect x="40" y="24" width="24" height="3" rx="1.5" fill="#55524e" />
+        <rect x="40" y="32" width="34" height="2.5" rx="1.25" fill="#55524e" />
+        <rect x="40" y="39" width="40" height="2.5" rx="1.25" fill="#9e988e" />
+        <rect x="40" y="46" width="36" height="2.5" rx="1.25" fill="#9e988e" />
+        <rect x="40" y="53" width="28" height="2.5" rx="1.25" fill="#363937" />
+        <rect x="40" y="60" width="38" height="2.5" rx="1.25" fill="#c7c1b5" />
+        <rect x="40" y="67" width="18" height="2.5" rx="1.25" fill="#55524e" />
+      </g>
+      <g transform="translate(68, 8)" filter="url(#alertGlow)">
+        <path d="M16 3 C17.5 0.5 20.5 0.5 22 3 L34 23 C35.5 25.5 34 29 31 29 L7 29 C4 29 2.5 25.5 4 23 Z" fill="url(#alertGrad)" />
+        <rect x="18" y="10" width="2.5" height="9" rx="1.25" fill="#ffffff" />
+        <circle cx="19.25" cy="23" r="1.5" fill="#ffffff" />
+      </g>
+    </svg>
+  )
+}
+
+function StepExplainGraphic() {
+  return (
+    <svg width="120" height="95" viewBox="0 0 120 95" fill="none" xmlns="http://www.w3.org/2000/svg" className="step-graphic-svg" aria-label="Explain Reasoning">
+      <defs>
+        <filter id="c5-shadow" x="0" y="0" width="120" height="95" filterUnits="userSpaceOnUse">
+          <feDropShadow dx="0" dy="5" stdDeviation="6" floodColor="#171717" floodOpacity="0.08" />
+        </filter>
+        <filter id="starGlow" x="0" y="0" width="50" height="50" filterUnits="userSpaceOnUse">
+          <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#3b82f6" floodOpacity="0.35" />
+        </filter>
+        <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#60a5fa" />
+          <stop offset="100%" stopColor="#2563eb" />
+        </linearGradient>
+      </defs>
+      <g transform="translate(24, 12)" filter="url(#c5-shadow)">
+        <rect x="0" y="0" width="58" height="42" rx="7" fill="#f4f0e6" stroke="#ded6c6" strokeWidth="1" />
+        <rect x="8" y="10" width="22" height="3" rx="1.5" fill="#58544e" />
+        <rect x="8" y="17" width="34" height="2.5" rx="1.25" fill="#a09a8f" />
+        <rect x="8" y="24" width="28" height="2.5" rx="1.25" fill="#a09a8f" />
+      </g>
+      <g transform="translate(34, 28)" filter="url(#c5-shadow)">
+        <rect x="0" y="0" width="60" height="48" rx="8" fill="#ffffff" stroke="#ded7cb" strokeWidth="1" />
+        <rect x="8" y="12" width="38" height="3" rx="1.5" fill="#5a5650" />
+        <rect x="8" y="19" width="44" height="2.5" rx="1.25" fill="#888277" />
+        <rect x="8" y="26" width="32" height="2.5" rx="1.25" fill="#c2bcb0" />
+        <rect x="8" y="33" width="22" height="2.5" rx="1.25" fill="#c2bcb0" />
+      </g>
+      <g transform="translate(80, 24)" filter="url(#starGlow)">
+        <path d="M11 0 C11 5.5 16.5 11 22 11 C16.5 11 11 16.5 11 22 C11 16.5 5.5 11 0 11 C5.5 11 11 5.5 11 0 Z" fill="url(#starGrad)" />
+        <circle cx="21" cy="3" r="2" fill="#93c5fd" />
+      </g>
+    </svg>
+  )
+}
+
+function StepReviewGraphic() {
+  return (
+    <svg width="120" height="95" viewBox="0 0 120 95" fill="none" xmlns="http://www.w3.org/2000/svg" className="step-graphic-svg" aria-label="Review and Approve">
+      <defs>
+        <filter id="c6-shadow" x="0" y="0" width="120" height="95" filterUnits="userSpaceOnUse">
+          <feDropShadow dx="0" dy="5" stdDeviation="6" floodColor="#171717" floodOpacity="0.08" />
+        </filter>
+        <filter id="btnShadow" x="0" y="0" width="80" height="50" filterUnits="userSpaceOnUse">
+          <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="#1b2820" floodOpacity="0.25" />
+        </filter>
+        <linearGradient id="approveBtnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#415448" />
+          <stop offset="100%" stopColor="#2c3a31" />
+        </linearGradient>
+      </defs>
+      <g filter="url(#c6-shadow)">
+        <rect x="26" y="10" width="68" height="62" rx="10" fill="#ffffff" stroke="#ded8cb" strokeWidth="1" />
+        <g transform="translate(48, 18)">
+          <circle cx="12" cy="12" r="12" fill="#edf2ee" stroke="#d3ded5" strokeWidth="1" />
+          <circle cx="12" cy="9" r="4.5" fill="#2d3b32" />
+          <path d="M4 20 C4 15 7 14 12 14 C17 14 20 15 20 20 Z" fill="#2d3b32" />
+          <circle cx="20" cy="18" r="5.5" fill="#4d8262" stroke="#ffffff" strokeWidth="1.2" />
+          <path d="M18 18 L19.5 19.5 L22.5 16.5" stroke="#ffffff" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        </g>
+      </g>
+      <g transform="translate(30, 48)" filter="url(#btnShadow)">
+        <rect x="0" y="0" width="60" height="24" rx="6" fill="url(#approveBtnGrad)" stroke="#52685a" strokeWidth="1" />
+        <text x="30" y="16" fill="#ffffff" fontSize="9" fontWeight="700" textAnchor="middle" letterSpacing="0.3" fontFamily="Inter, sans-serif">Approve</text>
+      </g>
+    </svg>
+  )
+}
+
+const pipelineStepsData = [
+  {
+    num: 1,
+    title: 'Retrieve',
+    description: 'Get the right data from the relevant systems.',
+    graphic: <StepRetrieveGraphic />
+  },
+  {
+    num: 2,
+    title: 'Validate',
+    description: 'Check completeness, accuracy and applicability.',
+    graphic: <StepValidateGraphic />
+  },
+  {
+    num: 3,
+    title: 'Calculate',
+    description: 'Perform defined calculations and reconciliations.',
+    graphic: <StepCalculateGraphic />
+  },
+  {
+    num: 4,
+    title: 'Investigate',
+    description: 'Analyse exceptions and identify likely causes.',
+    graphic: <StepInvestigateGraphic />
+  },
+  {
+    num: 5,
+    title: 'Explain',
+    description: 'Prepare clear explanations and context.',
+    graphic: <StepExplainGraphic />
+  },
+  {
+    num: 6,
+    title: 'Review',
+    description: 'Route for approval and ensure accountability.',
+    graphic: <StepReviewGraphic />
+  }
+]
+
 
 function ReliableNav() {
   const [visible, setVisible] = useState(true)
@@ -256,21 +510,16 @@ export default function ReliableAIPage() {
             <h2>Many finance teams already have AI. So why are they still struggling?</h2>
             <div className="ap-shift-beats">
               <div>
-                <h3>The first wave was about access</h3>
+                <h3>The question has moved from “Can AI do it?” to “Can we rely on it?” </h3>
                 <p>
-                  Give finance teams a powerful model. Connect it to enterprise data. Build prompts and skills. Identify use cases. Start automating.
-                </p>
-                <p>
-                  Many organisations have already moved beyond this stage. Yet as soon as workflows move from demo to production, teams run into fundamental consistency issues.
+               Many finance teams already have access to powerful AI models, copilots, enterprise data and workflow tools. Some have gone further — building prompts, skills and integrations into ERP systems.Yet a different set of problems is emerging.
                 </p>
               </div>
 
               <div className="ap-misnomer">
                 <p className="ap-misnomer-label">The Misconception</p>
                 <blockquote>“We have an enterprise LLM subscription, so AI automation is handled.”</blockquote>
-                <p>
-                  A general-purpose model interprets text, but does not by itself enforce accounting policies, calculate ledger balances, enforce tolerances or maintain audit trails.
-                </p>
+               
               </div>
 
               <div>
@@ -288,7 +537,7 @@ export default function ReliableAIPage() {
               </div>
 
               <p className="ap-stakes">
-                Enterprise AI reliability is not a model prompt problem. It is a workflow architecture and governance problem.
+                Enterprise AI becomes reliable when intelligence is supported by well-designed workflows, clear rules and strong governance.
               </p>
             </div>
           </div>
@@ -325,16 +574,15 @@ export default function ReliableAIPage() {
           <header className="why-header">
             <div>
               <p className="why-pill">Intelligence vs Appropriateness</p>
-              <h2>More intelligence does not automatically mean better automation.</h2>
+              <h2>Not every finance task needs AI reasoning </h2>
             </div>
             <p>
-              Large language models are extraordinarily capable at reasoning over unstructured information, but deterministic tasks require deterministic software.
-            </p>
+Some tasks require interpretation and judgment. Others simply require the system to follow a defined rule correctly every time.             </p>
           </header>
           <div className="ap-judgment-table">
             <div className="ap-judgment-head">
-              <span>Large Language Models Excel At (Probabilistic)</span>
-              <span>Deterministic Software Handles (Exact &amp; Rule-Bound)</span>
+              <span>Use AI where judgment is required</span>
+              <span>Use rules where consistency is required</span>
             </div>
             {aiUseCases.map((useCase, idx) => (
               <div className="ap-judgment-row" key={idx}>
@@ -381,12 +629,10 @@ export default function ReliableAIPage() {
           <header className="why-header">
             <div>
               <p className="why-pill">Knowledge Management</p>
-              <p className="ap-reframe">More context is not the same as better context.</p>
-              <h2>11 Knowledge types that must be segregated, not blended together.</h2>
+              <h2>Different workflows require different knowledge — and clear boundaries between them. </h2>
             </div>
             <p>
-              Dumping all corporate documents into a vector database creates confusion. Workflows should access only the specific knowledge relevant to their boundary.
-            </p>
+More knowledge does not always mean better outcomes. Each workflow should access only the information relevant to the task it is designed to perform.             </p>
           </header>
           <div className="why-grid ">
             {knowledgeTypes.map((item, index) => (
@@ -468,8 +714,8 @@ export default function ReliableAIPage() {
           </div>
         </section>
 
-        {/* SECTION 8: ONE AGENT SHOULD NOT DO EVERYTHING */}
-        <section className="finance-brain-flow" id="workflow">
+        {/* NEW SECTION: PREDICTABLE WORKFLOW PIPELINE (NARROWER TASKS, CLEARER RULES) */}
+        <section className="predictable-pipeline-section finance-brain-flow" id="process-pipeline">
           <header>
             <p className="flow-pill">Process Specialization</p>
             <h2>Complex workflows become reliable when responsibilities are narrower.</h2>
@@ -477,11 +723,88 @@ export default function ReliableAIPage() {
           <p className="ap-workflow-note" style={{ marginBottom: '40px' }}>
             Reduce the freedom of each component to increase the reliability of the overall process.
           </p>
-          <FinanceBrainTimeline stages={agentWorkflowStages} />
-          <p className="ap-workflow-note">
-            Each stage has a single bounded responsibility with strict input/output contracts. No single agent manages the end-to-end lifecycle alone.
-          </p>
+          <div className="pipeline-canvas-wrapper">
+           
+            <div className="pipeline-scroll-area">
+              <div className="pipeline-steps-row">
+                {pipelineStepsData.map((step, idx) => (
+                  <React.Fragment key={step.title}>
+                    <div className="pipeline-step-item">
+                      <div className="pipeline-visual-box">{step.graphic}</div>
+                      <div className="pipeline-card-body">
+                        <span className="pipeline-num-badge">{step.num}</span>
+                        <h3 className="pipeline-step-title">{step.title}</h3>
+                        <p className="pipeline-step-desc">{step.description}</p>
+                      </div>
+                    </div>
+                    {idx < pipelineStepsData.length - 1 && (
+                      <div className="pipeline-step-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M5 12h14" />
+                          <path d="M13 6l6 6-6 6" />
+                        </svg>
+                      </div>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
+
+              {/* Exception Routing Branch */}
+              <div className="pipeline-exception-area">
+                <svg className="pipeline-dashed-curve" viewBox="0 0 160 52" fill="none" aria-hidden="true">
+                  <path d="M155 38 H60 C30 38 15 28 15 8" stroke="#bda581" strokeWidth="1.5" strokeDasharray="3 3" fill="none" />
+                  <path d="M11 14 L15 6 L19 14" stroke="#bda581" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                </svg>
+
+                <div className="pipeline-exception-center">
+                  <div className="pipeline-down-indicator" aria-hidden="true">
+                    <svg width="16" height="18" viewBox="0 0 16 18" fill="none">
+                      <path d="M8 1 V13 M3.5 9 L8 13.5 L12.5 9" stroke="#998971" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <div className="pipeline-exception-pill">
+                    <div className="pipeline-alert-icon">
+                      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <defs>
+                          <filter id="alertIconGlow" x="0" y="0" width="28" height="28" filterUnits="userSpaceOnUse">
+                            <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#e63946" floodOpacity="0.25" />
+                          </filter>
+                        </defs>
+                        <path d="M14 3 C15.2 1.5 17.2 1.5 18.4 3 L25.5 17 C26.7 19 25.5 22 23 22 L5 22 C2.5 22 1.3 19 2.5 17 Z" fill="#ff7675" filter="url(#alertIconGlow)" />
+                        <path d="M14 4 L24.5 19 H3.5 Z" fill="#eb4d4b" opacity="0.85" />
+                        <rect x="13.2" y="9" width="1.6" height="6" rx="0.8" fill="#ffffff" />
+                        <circle cx="14" cy="17.5" r="1" fill="#ffffff" />
+                      </svg>
+                    </div>
+                    <div className="pipeline-exception-meta">
+                      <span className="pipeline-exception-sub">If something doesn't match</span>
+                      <strong className="pipeline-exception-main">Handle as an exception</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <svg className="pipeline-dashed-curve" viewBox="0 0 160 52" fill="none" aria-hidden="true">
+                  <path d="M5 38 H100 C130 38 145 28 145 8" stroke="#bda581" strokeWidth="1.5" strokeDasharray="3 3" fill="none" />
+                  <path d="M141 14 L145 6 L149 14" stroke="#bda581" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                </svg>
+              </div>
+
+            
+            </div>
+              {/* Bottom Rule Pill */}
+              <div className="pipeline-bottom-banner">
+                <span className="pipeline-gear-badge" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </span>
+                <p className="pipeline-bottom-text">Narrower tasks. Clearer rules. More predictable outcomes.</p>
+              </div>
+          </div>
         </section>
+
+        
 
         {/* SECTION 9: PROMPTS AND SKILLS VS ARCHITECTURE */}
         <section className="section ap-operating-model">
@@ -654,7 +977,7 @@ export default function ReliableAIPage() {
           <header className="why-header">
             <div>
               <p className="why-pill">Complete System Architecture</p>
-              <h2>Reliable enterprise AI requires 8 interconnected layers.</h2>
+              <h2>Reliable enterprise AI requires 5 interconnected layers.</h2>
             </div>
             <p>
               The LLM is merely one component. Predictable execution requires the full stack working in harmony.
@@ -669,12 +992,7 @@ export default function ReliableAIPage() {
               </article>
             ))}
           </div>
-          <div className="ap-key-insight" style={{ maxWidth: '1180px', margin: '40px auto 0' }}>
-            <p className="eyebrow">The Enterprise AI Formula</p>
-            <p>
-              Enterprise AI = Rules + Controlled Context + Enterprise Data + Deterministic Tools + AI Reasoning + Orchestration + Human Oversight
-            </p>
-          </div>
+         
         </section>
 
         {/* SECTION 15: GOOD ENTERPRISE AI */}
