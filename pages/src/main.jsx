@@ -4,6 +4,7 @@ import FloatingLines from './FloatingLines'
 import AccountsPayableGuide from './AccountsPayableGuide'
 import FinanceBrainTimeline from './FinanceBrainTimeline'
 import ReliableAIPage from './ReliableAIPage'
+import LogisticsCaseStudyPage from './LogisticsCaseStudyPage'
 import dashboardImage from '../hero.png'
 import './styles.css'
 
@@ -702,7 +703,7 @@ function stripBase(pathname) {
   return pathname
 }
 
-const pages = { '/brand': Overview, '/logo': Logo, '/colors': Colors, '/typography': Typography, '/actions': Actions, '/surfaces': Surfaces, '/patterns': Patterns, '/tokens': Tokens, '/components': SectionLibrary, '/reliable-ai': ReliableAIPage }
+const pages = { '/brand': Overview, '/logo': Logo, '/colors': Colors, '/typography': Typography, '/actions': Actions, '/surfaces': Surfaces, '/patterns': Patterns, '/tokens': Tokens, '/components': SectionLibrary, '/reliable-ai': ReliableAIPage, '/case-study-logistics-ap': LogisticsCaseStudyPage, '/logistics-case-study': LogisticsCaseStudyPage, '/case-study': LogisticsCaseStudyPage }
 function App() {
   const [path, setPath] = useState(() => stripBase(decodeURIComponent(location.pathname)))
   useEffect(() => {
@@ -714,6 +715,7 @@ function App() {
   if (path === '/ai-accounts-payable') return <AccountsPayableGuide />
   if (path === '/brand-home') return <HomeHero />
   if (path === '/reliable-ai') return <ReliableAIPage />
+  if (path === '/case-study-logistics-ap' || path === '/logistics-case-study' || path === '/case-study' || path === '/logistics-ap-netsuite') return <LogisticsCaseStudyPage />
   const Page = pages[path] || Overview
   return <Shell path={pages[path] ? path : '/brand'}><Page /></Shell>
 }
