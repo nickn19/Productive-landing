@@ -13,7 +13,8 @@ const metaItems = [
 const heroMetrics = [
   ['2,200–2,500', 'Invoices processed per month'],
   ['70%', 'Reduction in invoice processing time'],
-  ['> 95%', 'Invoice processing accuracy']
+  ['> 95%', 'Invoice processing accuracy'],
+  ['6 Weeks', 'Implementation time']
 ]
 
 const automatedStages = [
@@ -318,7 +319,7 @@ const pipelineSteps = [
   {
     num: 4,
     title: 'APPLY RULES',
-    description: 'GL classification, booking date, prepaid treatment, amortisation and GST-related information are determined.',
+    description: 'GL classification, booking date and GST-related information are determined.',
     graphic: <StepRulesGraphic />
   },
   {
@@ -523,7 +524,6 @@ export default function LogisticsCaseStudyPage() {
 
         {/* METRICS STRIP */}
         <section className="ap-metric-strip" aria-labelledby="cs-metrics-heading">
-          <p className="ap-metric-label" id="cs-metrics-heading">6 weeks implementation along with integration with NetSuite and Outlook</p>
           <div className="ap-metric-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
             {heroMetrics.map(([number, label]) => (
               <article key={label}>
@@ -588,10 +588,11 @@ export default function LogisticsCaseStudyPage() {
           <header>
             <p className="flow-pill">End-to-End Execution</p>
             <h2>From Inbox to NetSuite</h2>
-          </header>
-          <p className="ap-workflow-note" style={{ marginBottom: '40px' }}>
+              <p className="ap-workflow-note" style={{ marginBottom: '40px' }}>
             A structured workflow connecting the central AP mailbox directly to NetSuite bill creation.
           </p>
+          </header>
+        
           <div className="pipeline-canvas-wrapper">
             <div className="pipeline-scroll-area">
               <div className="pipeline-steps-row">
