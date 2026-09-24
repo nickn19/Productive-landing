@@ -449,7 +449,7 @@ function ContactSection() {
         <p className="eyebrow">Automate Your AP Workflow</p>
         <h2>Let's discuss how to automate your invoice-to-ERP operations.</h2>
         <p>
-          Share your current AP environment and volumes, and we'll show you how to structure automated invoice intake, master mapping, accounting rules and NetSuite bill creation while keeping Finance in control.
+          Share your current AP environment and volumes, and we'll show you how to structure automated invoice intake, master mapping, accounting rules and ERP bill creation while keeping Finance in control.
         </p>
         <a href="mailto:smishra@produc8ive.com">
           smishra@produc8ive.com <span aria-hidden="true">&rarr;</span>
@@ -523,7 +523,7 @@ export default function LogisticsCaseStudyPage() {
 
         {/* METRICS STRIP */}
         <section className="ap-metric-strip" aria-labelledby="cs-metrics-heading">
-          <p className="ap-metric-label" id="cs-metrics-heading">Implementation Performance Snapshot</p>
+          <p className="ap-metric-label" id="cs-metrics-heading">6 weeks implementation along with integration with NetSuite and Outlook</p>
           <div className="ap-metric-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
             {heroMetrics.map(([number, label]) => (
               <article key={label}>
@@ -535,52 +535,26 @@ export default function LogisticsCaseStudyPage() {
         </section>
 
         {/* SECTION 1: THE CHALLENGE */}
-        <section className="finance-shift" id="challenge">
-          <div className="finance-shift-copy">
-            <p className="eyebrow">Case Background</p>
-            <h2>The Challenge</h2>
-            <div className="ap-shift-beats">
+        <section className="finance-shift" id="challenge" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div className="finance-shift-copy" style={{ maxWidth: '840px', margin: '0 auto', textAlign: 'center' }}>
+            <p className="eyebrow" style={{ textAlign: 'center' }}>Case Background</p>
+            <h2 style={{ maxWidth: '100%', margin: '0 auto 24px', textAlign: 'center' }}>The Challenge</h2>
+            <div className="ap-shift-beats" style={{ marginTop: '24px', textAlign: 'left' }}>
               <div>
-                <p>
+                <p style={{textAlign:'center', fontSize: '16px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '16px' }}>
                   The company operates a centralised Accounts Payable function, with an 8–10 member AP team receiving invoices for its subsidiaries across different locations.
                 </p>
-                <p>
+                <p style={{ textAlign:'center', fontSize: '16px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '16px' }}>
                   Invoice processing was largely manual. The team reviewed emails received in the central AP mailbox, downloaded invoices and supporting documents, captured invoice information, determined the appropriate accounting treatment and master mappings, and created vendor bills in NetSuite.
                 </p>
-                <p>
+                <p style={{ textAlign:'center', fontSize: '16px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '16px' }}>
                   At a volume of approximately 2,200–2,500 invoices every month, this meant significant time was spent on repetitive processing and data entry.
                 </p>
-                <p>
+                <p style={{ textAlign:'center', fontSize: '16px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '0' }}>
                   The requirement was to reduce invoice processing time, standardise accounting treatment and create capacity for increasing volumes — while retaining Finance review and approval.
                 </p>
               </div>
             </div>
-          </div>
-
-          <div className="shift-visual" aria-label="Accounts Payable Challenge and Architecture Visual">
-            <header>
-              <span>AP Operations</span>
-              <b><i></i> Centralised Mailbox</b>
-            </header>
-            <div className="workflow-summary">
-              <small>CENTRAL AP ENVIRONMENT</small>
-              <strong>8–10 Member Team</strong>
-              <span>2,200–2,500 invoices processed every month</span>
-            </div>
-            <div className="workflow-path" aria-hidden="true">
-              <span>Outlook Inbox</span><i>→</i><span>Master Mapping</span><i>→</i><span>NetSuite Bills</span><i>→</i><span>Finance Approval</span>
-            </div>
-            <div className="exception-card">
-              <span>
-                <small>CONTROL REQUIREMENT</small>
-                <strong>Finance Review &amp; Approval Retained</strong>
-              </span>
-              <b>In Control</b>
-            </div>
-            <footer>
-              <span>Subsidiaries <b>Multi-entity</b></span>
-              <span>Turnaround <b>-70% time</b></span>
-            </footer>
           </div>
         </section>
 
@@ -725,19 +699,11 @@ export default function LogisticsCaseStudyPage() {
             </div>
           </div>
 
-          {/* IMPACT METRICS */}
-          <div className="ap-metric-grid" style={{ marginTop: '48px', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
-            {impactMetrics.map(([number, label]) => (
-              <article key={label} style={{ background: 'var(--surface-secondary)', padding: '24px', border: '1px solid var(--border-subtle)' }}>
-                <strong>{number}</strong>
-                <p>{label}</p>
-              </article>
-            ))}
-          </div>
+      
         </section>
 
         {/* SECTION 7: SUMMARY & TAKEAWAYS (A SHIFT FROM PROCESSING TO REVIEW & A MORE SCALABLE AP PROCESS) */}
-        <section className="ap-limits-section">
+        {/* <section className="ap-limits-section">
           <div>
             <p className="eyebrow">Team Transformation</p>
             <h2>A Shift from Processing to Review</h2>
@@ -767,13 +733,14 @@ export default function LogisticsCaseStudyPage() {
               </p>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* WORKFLOW CTA SECTION */}
         <section className="workflow-cta-section">
           <div className="workflow-cta-inner">
             <span className="pia-pill">Scale Your AP Operations</span>
-            <h2>Ready to automate invoice processing to NetSuite?</h2>
+            <h2>Ready to automate your Accounts Payable function?
+</h2>
             <p>
               See how Produc8ive can connect your central AP inboxes and ERP to eliminate manual data entry while keeping your finance team in full control of every approval and exception.
             </p>
