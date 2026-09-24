@@ -2143,7 +2143,9 @@ details p {
   display: flex;
   justify-content: space-between;
   gap: 28px;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+    align-items: center;
+    flex-direction:column;
 }
 
 .domain-strip span {
@@ -2193,7 +2195,8 @@ details p {
   }
 
   .domain-strip div {
-    justify-content: center
+    justify-content: center;
+    width: 100%;
   }
 }
 
@@ -2282,6 +2285,7 @@ details p {
   .domain-strip span {
     font-size: 13px
   }
+ 
 }
 
 /* Component lab */
@@ -10385,7 +10389,7 @@ details p {
 }
 
 .pipeline-canvas-wrapper {
-  max-width: 1240px;
+  max-width: 1300px;
   margin: 0 auto;
   position: relative;
 }
@@ -10409,7 +10413,6 @@ details p {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  max-width: 172px;
   position: relative;
   padding-top: 3rem;
 }
@@ -10476,7 +10479,7 @@ details p {
 
 .pipeline-step-title {
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--text-primary);
   margin: 0;
@@ -10647,6 +10650,9 @@ details p {
   }
   .pipeline-exception-pill{
     width: 250px;
+  }
+   .ap-guide-hero{
+    padding: 130px 22px 50px;
   }
 }
 
